@@ -16,7 +16,6 @@ const recipeSchema = new mongoose.Schema({
     },
     coverImage: {
         type: String,
-        required: true
     },
     createdAt: {
         type: Date,

@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator')
 const asyncWrapper = require('../middleware/asyncWrapper')
 const Recipe = require('../models/recipe.model')
 const appError = require('../utils/appError')
@@ -6,13 +7,34 @@ const httpStatus = require('../utils/httpStatusText')
 
 const getAllRecipes = asyncWrapper(
     async (req, res, next) => {
-        const query = req.query
-        const limit = query.limit || 10
-        const page = query.page || 1
-        const skip = (page - 1) * limit
+        const query = req.query;
 
-        const recipes = await Recipe.find({}, { '__v': false }).limit(limit).skip(skip)
-        res.json({ status: httpStatus.SUCCESS, data: { recipes } })
+        const limit = Number(query.limit) || 10;
+        const page = Number(query.page) || 1;
+        const skip = (page - 1) * limit;
+
+        const totalRecipes = await Recipe.countDocuments();
+
+        const recipes = await Recipe.find({}, { __v: false })
+            .limit(limit)
+            .skip(skip);
+
+        const totalPages = Math.ceil(totalRecipes / limit);
+
+        res.json({
+            status: httpStatus.SUCCESS,
+            data: {
+                recipes,
+                pagination: {
+                    currentPage: page,
+                    limit,
+                    totalRecipes,
+                    totalPages,
+                    hasNextPage: page < totalPages,
+                    hasPrevPage: page > 1
+                }
+            }
+        });
     }
 )
 
@@ -28,10 +50,10 @@ const getSingleRecipe = asyncWrapper(
 
 const addRecipe = asyncWrapper(
     async (req, res, next) => {
-        const { title, ingredients, instructions } = req.body
+        const errors = validationResult(req)
 
-        if (!title || !ingredients || !instructions) {
-            return next(appError.create('All fields are required', 400, httpStatus.FAIL))
+        if (!errors.isEmpty()) {
+            return next(appError.create(errors.array(), 400, httpStatus.FAIL))
         }
 
         const newRecipe = new Recipe(req.body)

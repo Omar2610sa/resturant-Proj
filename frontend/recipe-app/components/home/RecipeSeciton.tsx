@@ -1,5 +1,5 @@
 import { SectionHeading } from './SectionTitle';
-import {  ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export default function RecipeSection() {
     return (
@@ -15,7 +15,7 @@ export default function RecipeSection() {
                         className="hidden shrink-0 items-center gap-2 rounded-xl border border-[#ddd5cc] bg-white px-5 py-3 font-extrabold text-[#47423d] transition-colors hover:border-[#e95432] hover:text-[#e95432] sm:flex"
                     >
                         كل الوصفات
-                            <ArrowLeft className="h-5 w-5" />
+                        <ArrowLeft className="h-5 w-5" />
                     </button>
                 </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

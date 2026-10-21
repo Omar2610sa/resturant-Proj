@@ -5,6 +5,7 @@ const app = express()
 const dns = require("node:dns");
 const connectDB = require("./config/connectionDB");
 const httpStatus = require('./utils/httpStatusText')
+const cors = require('cors')
 
 
 
@@ -13,6 +14,11 @@ dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 // connect to DB
 connectDB()
+
+// to work at client side
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+}));
 
 // to send body as json 
 app.use(express.json())
@@ -32,6 +38,7 @@ app.use((error, req, res, next) => {
         data: null
     })
 })
+
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

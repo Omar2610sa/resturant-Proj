@@ -1,7 +1,6 @@
 import { Button } from "@base-ui/react";
-import { HatGlasses } from "lucide-react";
 import Link from "next/link";
-
+import Logo from "../Logo";
 export default function Navbar() {
 
     const headerLinks = [
@@ -22,12 +21,7 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 border-b border-[#eee9e2] bg-[#fffdf9]/95 backdrop-blur-xl text-xl">
             <div className="mx-auto flex h-10  items-center justify-between  container">
                 {/* <Logo /> */}
-                <div className="flex items-center gap-5">
-                    <div className="size-12 bg-primary flex justify-center items-center rounded-xl">
-                        <HatGlasses className="text-white size-6" />
-                    </div>
-                    <span className="font-bold text-3xl">مَذاق</span>
-                </div>
+                <Logo />
                 <nav className="hidden items-center   md:flex space-x-12" >
 
                     {headerLinks.map((link, index) => {

@@ -17,6 +17,7 @@
     "express-validator": "^7.3.2",
     "i": "^0.3.7",
     "mongoose": "^9.11.2",
+    "multer": "^2.4.0",
     "nodemon": "^3.1.14",
     "nodenpm": "^0.1.6"
   }

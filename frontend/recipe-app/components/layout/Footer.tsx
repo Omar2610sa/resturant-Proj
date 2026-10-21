@@ -1,17 +1,13 @@
 import { HatGlasses } from "lucide-react";
 import Link from "next/link";
+import Logo from "../Logo";
 
 export default function Footer() {
     return (
         <footer className="bg-black text-white text-xl">
-            <div className="mx-auto flex justify-between items-center space-x-10 container flex-col sm:px-8 md:flex-row">
+            <div className="mx-auto flex justify-between md:items-center space-y-10 md:space-x-10 container flex-col sm:px-8 md:flex-row">
                 <div>
-                    <div className="flex items-center gap-2.5">
-                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-primary">
-                            <HatGlasses name="chef" className="h-6 w-6" />
-                        </span>
-                        <span className="text-xl font-extrabold">مَذاق</span>
-                    </div>
+                    <Logo />
                     <p className="mt-4 max-w-sm text-md leading-7 text-gray-300 ">
                         وصفات منزلية موثوقة، نشاركها معك لتصنع لحظات ألذ حول المائدة.
                     </p>

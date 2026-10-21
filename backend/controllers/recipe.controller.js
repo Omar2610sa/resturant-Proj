@@ -51,12 +51,20 @@ const getSingleRecipe = asyncWrapper(
 const addRecipe = asyncWrapper(
     async (req, res, next) => {
         const errors = validationResult(req)
-
+        const { title, description, ingredients, instructions, cookingTime, difficulty } = req.body
         if (!errors.isEmpty()) {
             return next(appError.create(errors.array(), 400, httpStatus.FAIL))
         }
 
-        const newRecipe = new Recipe(req.body)
+        const newRecipe = new Recipe({
+            title,
+            description,
+            ingredients,
+            instructions,
+            cookingTime,
+            difficulty,
+            coverImage :req.file.filename
+        })
         await newRecipe.save()
         res.status(201).json({ status: httpStatus.SUCCESS, data: { recipe: newRecipe } })
     }

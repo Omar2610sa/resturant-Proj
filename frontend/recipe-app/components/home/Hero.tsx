@@ -14,11 +14,11 @@ export function Hero() {
                         <span className="h-2 w-2 rounded-full bg-primary" />
                         وصفات مجرّبة بكل حب
                     </span>
-                    <h1 className=" text-xl font-black leading-20 text-foreground sm:text-6xl">
+                    <h1 className=" text-5xl font-black leading-16 sm:leading-20 text-foreground sm:text-6xl">
                         كل يوم طعم جديد
                         <span className="block text-primary">على مائدتك</span>
                     </h1>
-                    <p className=" text-md  font-semibold text-muted-foreground">
+                    <p className=" text-xl  font-semibold text-muted-foreground">
                         اكتشف وصفات عربية شهية وسهلة التحضير، بمكوّنات متوفرة وخطوات واضحة
                         لوجبات تجمع العائلة.
                     </p>
@@ -34,7 +34,7 @@ export function Hero() {
 
                 <div className="relative mx-auto w-full ">
                     <div className="absolute -bottom-5 -left-5 h-full w-full rounded-[34px] border-2 border-primary/40" />
-                    <div className="relative  overflow-hidden rounded-[32px] bg-muted shadow-2xl sm:h-96">
+                    <div className="relative  overflow-hidden rounded-2xl bg-muted shadow-2xl h-96">
                         <Image
                             src={heroPhoto}
                             alt="مائدة شهية تضم أطباقًا عربية متنوعة"

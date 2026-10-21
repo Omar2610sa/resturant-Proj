@@ -5,7 +5,8 @@ const app = express()
 const dns = require("node:dns");
 const connectDB = require("./config/connectionDB");
 const httpStatus = require('./utils/httpStatusText')
-const cors = require('cors')
+const cors = require('cors');
+const path = require("node:path");
 
 
 
@@ -21,6 +22,8 @@ app.use(cors({
 }));
 
 // to send body as json 
+app.use('/uploads', express.static(path.join(__dirname, "uploads")))
+
 app.use(express.json())
 
 // Routes

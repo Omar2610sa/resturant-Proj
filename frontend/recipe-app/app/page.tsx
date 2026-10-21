@@ -1,16 +1,15 @@
 import { Hero } from "@/components/home/Hero";
-import RecipeSection from "@/components/home/RecipeSeciton";
+import RecipeSection from "@/feature/recipes/components/RecipeSeciton";
+import { Suspense } from "react";
 
-export default async function page() {
-  // const recipeData = await fetch('http://localhost:5000/api/recipe')
-  //   .then((response) => response.json())
-  //   .then((data) => {
-  //     console.log(data.data.recipes[0].title);
-  //   });
+export default function page() {
+
   return (
     <div >
       <Hero />
+      <Suspense fallback={<div className="text-center text-2xl font-extrabold text-primary">Loading...</div>}>
       <RecipeSection />
+      </Suspense>
     </div>
   )
 }

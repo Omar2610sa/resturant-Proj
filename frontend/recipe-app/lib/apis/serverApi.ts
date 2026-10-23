@@ -23,6 +23,7 @@ export async function serverApi<T = unknown>(
     const res = await fetch(
         `${process.env.BASE_URL}/${endpoint}`,
         {
+            cache: "no-cache",
             method,
             headers: {
                 "Content-Type": "application/json",

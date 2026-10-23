@@ -1,6 +1,7 @@
 import { Button } from "@base-ui/react";
 import Link from "next/link";
 import Logo from "../Logo";
+import { DarkModeToggle } from "../DarkMode";
 export default function Navbar() {
 
     const headerLinks = [
@@ -18,7 +19,7 @@ export default function Navbar() {
         },
     ]
     return (
-        <header className="sticky top-0 z-50 border-b border-[#eee9e2] bg-[#fffdf9]/95 backdrop-blur-xl text-xl">
+        <header className="sticky top-0 z-50 border-b  bg-accent backdrop-blur-xl text-xl">
             <div className="mx-auto flex h-10  items-center justify-between  container">
                 {/* <Logo /> */}
                 <Logo />
@@ -33,6 +34,7 @@ export default function Navbar() {
                     })}
                 </nav>
                 <div className="hidden items-center gap-3 md:flex">
+                    <DarkModeToggle />
                     <Link
                         href="/login"
                     >

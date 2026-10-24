@@ -25,7 +25,7 @@ export async function BreadCrumb({ secondLink, thirdLink }: { secondLink?: strin
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink className="text-2xl  text-accent-foreground" href="/">
+          <BreadcrumbLink className="text-2xl  text-accent-foreground  hover:text-accent-foreground/70 duration-200" href="/">
             الرئيسية
           </BreadcrumbLink>
         </BreadcrumbItem>
@@ -37,7 +37,7 @@ export async function BreadCrumb({ secondLink, thirdLink }: { secondLink?: strin
               </BreadcrumbSeparator>
 
               <BreadcrumbItem>
-                <BreadcrumbLink href={`/recipes`} className="text-2xl text-accent-foreground">
+                <BreadcrumbLink href={`/recipes`} className="text-2xl text-accent-foreground hover:text-accent-foreground/70 duration-200">
                   {secondLink}
                 </BreadcrumbLink>
               </BreadcrumbItem>

@@ -149,3 +149,10 @@
     max-width: 1400px;
   }
 }
+
+@utility flexSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+

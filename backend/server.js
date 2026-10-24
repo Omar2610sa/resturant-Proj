@@ -7,6 +7,7 @@ const connectDB = require("./config/connectionDB");
 const httpStatus = require('./utils/httpStatusText')
 const cors = require('cors');
 const path = require("node:path");
+const AuthRouter = require('./routes/auth.route')
 
 
 
@@ -28,6 +29,7 @@ app.use(express.json())
 
 // Routes
 app.use('/api/recipe', recipeRouter)
+app.use('/api/auth', AuthRouter)
 
 
 

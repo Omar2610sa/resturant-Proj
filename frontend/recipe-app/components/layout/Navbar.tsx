@@ -1,7 +1,8 @@
-import { Button } from "@base-ui/react";
 import Link from "next/link";
 import Logo from "../Logo";
 import { DarkModeToggle } from "../DarkMode";
+import { Suspense } from "react";
+import NavbarAuth from "./NavbarAuth";
 export default function Navbar() {
 
     const headerLinks = [
@@ -35,20 +36,9 @@ export default function Navbar() {
                 </nav>
                 <div className="hidden items-center gap-3 md:flex">
                     <DarkModeToggle />
-                    <Link
-                        href="/login"
-                    >
-                        <Button className="rounded-xl px-4 py-2.5 font-bold  transition-colors hover:bg-gray-200/70"
-                        >
-                            تسجيل الدخول
-                        </Button>
-                    </Link>
-                    <Link
-                        href="/register"
-                        className="rounded-xl bg-primary px-5 py-2.5 font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#d94728]"
-                    >
-                        إنشاء حساب
-                    </Link>
+                    <Suspense fallback={<div className="h-10 w-24" />}>
+                        <NavbarAuth />
+                    </Suspense>
                 </div>
             </div>
         </header>

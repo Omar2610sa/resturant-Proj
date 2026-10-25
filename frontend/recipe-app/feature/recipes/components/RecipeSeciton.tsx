@@ -2,6 +2,7 @@ import { SectionHeading } from '../../../components/home/SectionTitle';
 import { ArrowLeft } from 'lucide-react';
 import { Recipe} from "@/feature/recipes/types";
 import RecipeCard from '@/feature/recipes/components/RecipeCard';
+import Link from 'next/link';
 
 
 export default function RecipeSection({ recipes }: { recipes: Recipe[] }) {
@@ -16,12 +17,13 @@ export default function RecipeSection({ recipes }: { recipes: Recipe[] }) {
                         title="أحدث الوصفات"
                         description="أفكار شهية ومتنوعة اخترناها لتجعل طبخك اليومي أبسط وألذ."
                     />
-                    <button
+                    <Link
+                    href='/recipes'
                         className="hidden shrink-0 items-center gap-2 rounded-xl border border-primary bg-white px-5 py-3 font-extrabold text-primary transition-colors hover:border-black hover:text-black sm:flex"
                     >
                         كل الوصفات
                         <ArrowLeft className="h-5 w-5" />
-                    </button>
+                    </Link>
                 </div>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {recipes.map((recipe) => (

@@ -6,7 +6,7 @@ export default function Logo() {
     return (
         <Link href="/" className="flex items-center group gap-5">
             <div className="size-14 bg-primary relative flex justify-center items-center rounded-xl">
-                <div className="bg-white flex justify-center items-center size-10 rounded-xl">
+                <div className="bg-white flex justify-center items-center size-9 rounded-xl">
                     <Image
                         src={hatIcon}
                         alt="hat icon"

@@ -18,14 +18,12 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     return (
         <Sheet open={open} onOpenChange={setOpen} >
             <SheetTrigger>
-                <Button
-                    variant="outline"
-                    size="icon"
-                    className="size-10 rounded-xl lg:hidden"
+                <div
+                    className="size-10 flex justify-center items-center bg-white rounded-xl lg:hidden"
                     aria-label="فتح القائمة"
                 >
                     <Menu className="size-5" />
-                </Button>
+                </div>
             </SheetTrigger>
 
             <SheetContent side="right" className="w-72 p-0" showCloseButton={false}>

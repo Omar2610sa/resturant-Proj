@@ -6,3 +6,5 @@ export type Options = {
     headers?: Record<string, string>
     next?: NextFetchRequestConfig
 }
+
+export type Status = "success" | "error"

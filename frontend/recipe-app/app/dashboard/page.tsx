@@ -1,5 +1,9 @@
+import { StatsSection } from "@/feature/analytics/components/StatsSection";
+
 export default function page() {
     return (
-        <div>page</div>
+        <div>
+            <StatsSection />
+        </div>
     )
 }

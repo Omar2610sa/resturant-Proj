@@ -8,6 +8,7 @@ const httpStatus = require('./utils/httpStatusText')
 const cors = require('cors');
 const path = require("node:path");
 const AuthRouter = require('./routes/auth.route')
+const AnalyticsRouter = require('./routes/analytics.route')
 
 
 
@@ -30,10 +31,13 @@ app.use(express.json())
 // Routes
 app.use('/api/recipe', recipeRouter)
 app.use('/api/auth', AuthRouter)
+app.use('/api/analytics', AnalyticsRouter)
 
 
 
-
+app.all('/{*splat}', (req, res, next) => {
+    return res.status(404).json({ status: httpStatus.ERROR, message: "this resource is not avaiable" })
+})
 // Global error handler 
 app.use((error, req, res, next) => {
     res.status(error.statusCode || 500).json({

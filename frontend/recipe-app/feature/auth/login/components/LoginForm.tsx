@@ -18,13 +18,14 @@ import { LockKeyhole, Mail } from "lucide-react";
 import { AuthCard } from "../../components/AuthCard";
 import { AuthField } from "../../components/AuthField";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "../../store/auth.store";
 
 export function LoginForm({
     className,
 }: React.ComponentProps<"div">) {
     const { showToast } = useStatusToast();
     const router = useRouter()
-
+const setUser = useAuthStore((state) => state.setUser)
     const {
         register,
         handleSubmit,
@@ -44,11 +45,13 @@ export function LoginForm({
             
             if (response?.status === "success") {
                 const token = response.data?.token
+                const user = response.data
                 Cookies.set(TOKEN_NAME, token)
                 showToast({
                     type: "success",
                     description: "تم تسجيل الدخول بنجاح",
                 })
+                setUser(user)
                 router.refresh()
                 router.push("/")
             }

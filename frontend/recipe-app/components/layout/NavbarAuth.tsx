@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { Button } from "@base-ui/react";
 import { TOKEN_NAME } from "@/lib/constants";
-import LogoutBtn from "./LogoutBtn";
+import UserInfo from "../UserInfo";
 
 export default async function NavbarAuth() {
     const token = (await cookies()).get(TOKEN_NAME)?.value ?? null
@@ -11,13 +11,7 @@ export default async function NavbarAuth() {
         <>
             {token ? (
                 <>
-                    <Link
-                        href="/dashboard"
-                        className="rounded-xl bg-white px-5 py-2.5 font-bold text-primary shadow-sm transition-all  border hover:border-primary"
-                    >
-                        لوحة التحكم
-                    </Link>
-<LogoutBtn  />
+                    <UserInfo />
                 </>
             ) : (
                 <>

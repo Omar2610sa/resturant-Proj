@@ -22,3 +22,13 @@ export type AuthFieldProps = {
     autoComplete?: string;
     error?: string;
 };
+
+export type UserRole = "admin" | "user";
+
+export type User = {
+        firstName: string;
+        lastName: string;
+        email: string;
+        role: string;
+        token: string;
+};

@@ -1,6 +1,14 @@
+import DashboardSectionsTitle from "@/components/dashboard/DashboardSectionsTitle";
 
 export default function page() {
   return (
-    <div>page recipes</div>
+    <section className=" flexSection">
+      <DashboardSectionsTitle
+        title="إدارة الوصفات"
+        description="أضف الوصفات وعدّل محتواها من مكان واحد."
+        add
+        nameAdd="وصفة جديدة"
+      />
+    </section>
   )
 }

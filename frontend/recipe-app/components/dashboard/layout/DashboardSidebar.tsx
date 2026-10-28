@@ -7,7 +7,7 @@ export function DashboardSidebar() {
     return (
         <div className="flex h-full flex-col">
             <div className="flex h-20 shrink-0 items-center border-b px-5">
-                    <Logo />
+                <Logo />
             </div>
             <DashboardNav />
             <DashboardUserCard />

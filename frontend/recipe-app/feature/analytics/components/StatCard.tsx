@@ -16,7 +16,7 @@ export function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProp
 
     return (
         <Card className="gap-0 rounded-2xl  py-0 shadow-none">
-            <CardContent className="space-y-4 p-5">
+            <CardContent className="space-y-3 p-4">
                 <div className="flex items-center justify-between">
                     <span
                         className={cn(
@@ -47,7 +47,7 @@ export function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProp
                 </div>
 
                 <div>
-                    <p className="text-sm font-bold text-muted-foreground">{label}</p>
+                    <p className="text-lg font-bold text-muted-foreground">{label}</p>
                     <p className="mt-1 text-3xl font-black">
                         {value.toLocaleString("ar-EG")}
                     </p>

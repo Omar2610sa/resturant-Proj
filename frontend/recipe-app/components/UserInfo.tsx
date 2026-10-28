@@ -2,26 +2,13 @@
 import { LogOut, PanelLeft, User2Icon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
-import { useStatusToast } from "@/hooks/use-status-toast";
-import { TOKEN_NAME } from "@/lib/constants";
-import Cookies from "js-cookie";
-import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/feature/auth/store/auth.store";
+import { useLogout } from "@/feature/auth/utils/logout";
 
 export default function UserInfo() {
-    const router = useRouter();
-    const { showToast } = useStatusToast();
     const user = useAuthStore((state) => state.user)
+    const { handleLogout } = useLogout();
 
-    const handleLogout = async () => {
-        Cookies.remove(TOKEN_NAME)
-        showToast({
-            type: "success",
-            description: "تم تسجيل الخروج بنجاح",
-        })
-        router.push("/")
-        router.refresh()
-    }
     return (
         <DropdownMenu>
             <DropdownMenuTrigger
@@ -38,7 +25,7 @@ export default function UserInfo() {
             <DropdownMenuContent className="w-20" align="center">
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
-                        <Link href='/dashboard' className="flex items-center justify-between gap-3">
+                        <Link href='/dashboard' className="flex  items-center justify-between gap-3">
                             <PanelLeft />
                             لوحة التحكم
                         </Link>

@@ -24,7 +24,7 @@ export function DashboardNav() {
                                 href={href}
                                 aria-current={isActive ? "page" : undefined}
                                 className={cn(
-                                    "flex items-center gap-3 rounded-xl px-4 py-3 text-lg font-bold transition-colors",
+                                    "flex items-center gap-3 rounded-xl px-4 py-3 text-md font-bold transition-colors",
                                     isActive
                                         ? "bg-primary/10 text-primary"
                                         : "text-muted-foreground hover:bg-muted hover:text-foreground",

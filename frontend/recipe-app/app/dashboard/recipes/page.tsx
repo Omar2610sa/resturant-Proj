@@ -1,6 +1,13 @@
 import DashboardSectionsTitle from "@/components/dashboard/DashboardSectionsTitle";
+import RecipesTableSection from "@/feature/recipes/components/dashboard/RecipesTable";
+import { Suspense } from "react";
 
-export default function page() {
+
+
+type Props = {
+  searchParams: Promise<{ page?: string; search?: string }>;
+};
+export default function page({ searchParams }: Props) {
   return (
     <section className=" flexSection">
       <DashboardSectionsTitle
@@ -9,6 +16,12 @@ export default function page() {
         add
         nameAdd="وصفة جديدة"
       />
+
+      <Suspense fallback={<p>جاري التحميل...</p>}>
+        <RecipesTableSection
+          searchParams={searchParams}
+        />
+      </Suspense>
     </section>
   )
 }

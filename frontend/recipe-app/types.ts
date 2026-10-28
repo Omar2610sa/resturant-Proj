@@ -8,3 +8,12 @@ export type Options = {
 }
 
 export type Status = "success" | "error"
+
+
+export type Pagination = {
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+};

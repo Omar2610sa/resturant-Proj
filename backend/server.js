@@ -9,6 +9,7 @@ const cors = require('cors');
 const path = require("node:path");
 const AuthRouter = require('./routes/auth.route')
 const AnalyticsRouter = require('./routes/analytics.route')
+const usersRouter = require('./routes/users.route')
 
 
 
@@ -32,6 +33,7 @@ app.use(express.json())
 app.use('/api/recipe', recipeRouter)
 app.use('/api/auth', AuthRouter)
 app.use('/api/analytics', AnalyticsRouter)
+app.use('/api/users', usersRouter)
 
 
 

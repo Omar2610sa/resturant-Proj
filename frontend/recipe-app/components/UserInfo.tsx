@@ -1,5 +1,5 @@
 "use client"
-import { LogOut, PanelLeft, User2Icon } from "lucide-react";
+import { LayoutDashboard, LogOut, User2Icon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
 import { useAuthStore } from "@/feature/auth/store/auth.store";
@@ -26,7 +26,7 @@ export default function UserInfo() {
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
                         <Link href='/dashboard' className="flex  items-center justify-between gap-3">
-                            <PanelLeft />
+                            <LayoutDashboard />
                             لوحة التحكم
                         </Link>
                     </DropdownMenuItem>

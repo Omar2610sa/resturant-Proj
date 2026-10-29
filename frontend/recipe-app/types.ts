@@ -1,4 +1,4 @@
-type Method = "GET" | "POST" | "PUT" | "DELETE"
+type Method = "GET" | "POST" | "PUT" | "DELETE" |"PATCH"
 
 export type Options = {
     method?: Method
@@ -17,3 +17,28 @@ export type Pagination = {
     hasNextPage: boolean;
     hasPrevPage: boolean;
 };
+
+export interface TableActionsProps {
+    isDelete?: boolean
+    edit?: boolean
+    itemId: number | string
+    itemName?: string
+    endpoint?: string
+    onDeleteSuccess?: () => void
+}
+
+export type GetParams = {
+    page?: number;
+    limit?: number;
+    search?: string;
+};
+
+export type searchParams = {
+    searchParams: Promise<{ page?: string; search?: string }>;
+};
+
+
+export type respones = {
+    message : string
+    status : Status
+}

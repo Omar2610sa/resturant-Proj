@@ -23,8 +23,3 @@ export interface RecipeData {
     };
 }
 
-export type GetRecipesParams = {
-  page?: number;
-  limit?: number;
-  search?: string;
-};

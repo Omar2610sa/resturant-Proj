@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import SerchFilter from "./SerchFilter";
+import SerchFilter from "../SerchFilter";
 
 export default function DashboardSectionsTitle({
     title,

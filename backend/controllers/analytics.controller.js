@@ -17,8 +17,7 @@ const getAnalytics = asyncWrapper(
             User.countDocuments()
         ])
 
-console.log(totalRecipes, recipesThisWeek, totalUsers)
-        if (!totalRecipes || !recipesThisWeek || !totalUsers) {
+        if (!totalRecipes || !totalUsers) {
             return next(appError.create('not found analytics', 404, httpStatus.FAIL))
         }
         res.json({ status: httpStatus.SUCCESS, data: { totalRecipes, recipesThisWeek, totalUsers } })

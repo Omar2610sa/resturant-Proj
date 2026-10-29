@@ -10,5 +10,6 @@ router.route('/')
 router.route('/:userId')
     .get(usersController.getUser)
     .patch(usersController.changeUserRole)
+    .delete(usersController.deleteUser)
 
 module.exports = router

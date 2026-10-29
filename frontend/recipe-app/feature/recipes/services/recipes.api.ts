@@ -1,11 +1,12 @@
 import { serverApi } from "@/lib/apis/serverApi";
-import { GetRecipesParams, RecipeData } from "../types";
+import { RecipeData } from "../types";
+import { GetParams } from "@/types";
 
 export const getRecipes = async ({
     page = 1,
     limit = 9,
     search,
-}: GetRecipesParams = {}) => {
+}: GetParams = {}) => {
     const params = new URLSearchParams({
         page: String(page),
         limit: String(limit),

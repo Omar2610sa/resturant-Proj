@@ -12,6 +12,8 @@ import { TOKEN_NAME } from "@/lib/constants";
 import Cookies from "js-cookie"
 import { useRouter } from "next/navigation";
 import { useStatusToast } from "@/hooks/use-status-toast";
+import { useAuthStore } from "../../store/auth.store";
+import { User } from "../../types";
 
 
 
@@ -20,6 +22,8 @@ export function RegisterForm({
 }: React.ComponentProps<"div">) {
     const { showToast } = useStatusToast();
     const router = useRouter()
+    const setUser = useAuthStore((state) => state.setUser)
+
     const { register, handleSubmit, setError, formState: { errors, isSubmitting },
     } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
@@ -34,14 +38,16 @@ export function RegisterForm({
     async function onSubmit(data: RegisterFormValues) {
         try {
             const response = await registerService(data);
-            
+
             if (response?.status === "success") {
                 const token = response.data?.token
+                const user = response.data as unknown as User
                 Cookies.set(TOKEN_NAME, token)
                 showToast({
                     type: "success",
                     description: "تم إنشاء الحساب بنجاح",
                 })
+                setUser(user)
                 router.refresh()
                 router.push("/")
             }

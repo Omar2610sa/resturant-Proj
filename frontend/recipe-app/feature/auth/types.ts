@@ -26,9 +26,11 @@ export type AuthFieldProps = {
 export type UserRole = "admin" | "user";
 
 export type User = {
-        firstName: string;
-        lastName: string;
-        email: string;
-        role: string;
-        token: string;
+    _id: string
+    firstName: string;
+    lastName: string;
+    email: string;
+    role: UserRole;
+    token: string;
+    createdAt: string
 };

@@ -1,23 +1,15 @@
-import DashboardSectionsTitle from "@/components/dashboard/DashboardSectionsTitle";
-import RecipesTableSection from "@/feature/recipes/components/dashboard/RecipesTable";
+import { DataTableSkeleton } from "@/components/data-table/DataTableSkeleton";
+import { RecipesTableSection } from "@/feature/recipes/components/dashboard/RecipeseSectionTable";
+import { searchParams } from "@/types";
 import { Suspense } from "react";
 
 
 
-type Props = {
-  searchParams: Promise<{ page?: string; search?: string }>;
-};
-export default function page({ searchParams }: Props) {
-  return (
-    <section className=" flexSection">
-      <DashboardSectionsTitle
-        title="إدارة الوصفات"
-        description="أضف الوصفات وعدّل محتواها من مكان واحد."
-        add
-        nameAdd="وصفة جديدة"
-      />
 
-      <Suspense fallback={<p>جاري التحميل...</p>}>
+export default function page({ searchParams }: searchParams) {
+  return (
+    <section>
+      <Suspense fallback={<DataTableSkeleton columns={5} rows={5} />}>
         <RecipesTableSection
           searchParams={searchParams}
         />

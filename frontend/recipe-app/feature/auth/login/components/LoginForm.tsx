@@ -19,6 +19,7 @@ import { AuthCard } from "../../components/AuthCard";
 import { AuthField } from "../../components/AuthField";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "../../store/auth.store";
+import { User } from "../../types";
 
 export function LoginForm({
     className,
@@ -45,7 +46,7 @@ const setUser = useAuthStore((state) => state.setUser)
             
             if (response?.status === "success") {
                 const token = response.data?.token
-                const user = response.data
+                const user = response.data as unknown as User
                 Cookies.set(TOKEN_NAME, token)
                 showToast({
                     type: "success",

@@ -64,8 +64,25 @@ const changeUserRole = asyncWrapper(async (req, res, next) => {
     res.json({ status: httpStatus.SUCCESS, data: { user } })
 });
 
+
+const deleteUser = asyncWrapper(
+    async (req, res, next) => {
+    const { userId } = req.params;
+        const findUser =  await User.findById(userId);
+        if (!findUser) {
+            return next(appError.create('User not found', 404, httpStatus.FAIL))
+
+        } else {
+            await User.deleteOne({ _id: userId })
+            res.json({ status: httpStatus.SUCCESS, data: "deleted successfully" })
+        }
+
+    }
+)
+
 module.exports = {
     getAllUsers,
     getUser,
-    changeUserRole
+    changeUserRole,
+    deleteUser
 }

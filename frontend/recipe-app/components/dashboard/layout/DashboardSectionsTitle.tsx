@@ -9,7 +9,8 @@ export default function DashboardSectionsTitle({
     nameAdd,
     addPath,
     search,
-    searchColumnId
+    searchColumnId,
+    searchPlaceHolder
 }: {
     title: string;
     description?: string;
@@ -17,6 +18,7 @@ export default function DashboardSectionsTitle({
     nameAdd?: string
     addPath?: string
     search?: boolean
+    searchPlaceHolder?: string
     searchColumnId?: string
 }) {
     return (
@@ -32,7 +34,7 @@ export default function DashboardSectionsTitle({
             {
                 add && (
                     <Link
-                        href={`/${addPath}`}
+                        href={`/dashboard/${addPath}`}
                         className="flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-extrabold text-white">
                         <Plus /> {nameAdd}
                     </Link>
@@ -41,8 +43,7 @@ export default function DashboardSectionsTitle({
             {/* Filters */}
             {search && searchColumnId && (
                 <SerchFilter
-                    // table={table}
-                    columnId={searchColumnId} />
+                    placeholder={searchPlaceHolder} />
             )}
         </div>
     );

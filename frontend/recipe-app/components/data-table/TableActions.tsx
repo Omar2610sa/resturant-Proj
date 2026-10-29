@@ -7,8 +7,9 @@ import { useDelete } from "@/utils/deleteAction";
 
 const TableActions = ({
     itemId,
-    edit,
-    isDelete,
+    edit = false,
+    editHref,
+    isDelete = false,
     itemName = "item",
     endpoint = "/dashboard/admin/slider",
     onDeleteSuccess
@@ -24,7 +25,7 @@ const TableActions = ({
         <div className="flex gap-2 items-center justify-center">
             {edit && (
                 <Link
-                    href={''}
+                    href={`/${editHref}/${itemId}`}
                     className="grid size-9 place-items-center rounded-lg text-[#6c655e] hover:bg-primary/10 hover:text-primary"
                 >
                     <Pen className="size-5" />
@@ -33,7 +34,7 @@ const TableActions = ({
             {
                 isDelete && (
                     <div
-                    onClick={handleDelete}
+                        onClick={handleDelete}
                         className="grid size-9 place-items-center rounded-lg text-red-900 hover:bg-red-200/60"
                     >
                         <Trash className="size-5" />

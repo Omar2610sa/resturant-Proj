@@ -4,34 +4,44 @@ const appError = require('../utils/appError')
 const httpStatus = require('../utils/httpStatusText')
 const userRole = require("../utils/userRole")
 
-const getAllUsers = asyncWrapper(
-    async (req, res) => {
-        const query = req.query
-        const limit = query.limit || 10
-        const page = query.page || 1
-        const skip = (page - 1) * limit
-        const totalUsers = await User.countDocuments();
+const getAllUsers = asyncWrapper(async (req, res) => {
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit) || 10, 1), 50); 
+    const search = (req.query.search || "").trim();
+    const skip = (page - 1) * limit;
 
-        const users = await User.find({}, { "__v": false, "password": false }).limit(limit).skip(skip)
-        const totalPages = Math.ceil(totalUsers / limit);
-
-        res.json({
-            status: httpStatus.SUCCESS,
-            data: {
-                users,
-                pagination: {
-                    currentPage: page,
-                    limit,
-                    totalUsers,
-                    totalPages,
-                    hasNextPage: page < totalPages,
-                    hasPrevPage: page > 1
-                }
-            }
-        });
+    const filter = {};
+    if (search) {
+        const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const regex = { $regex: escaped, $options: "i" };
+        filter.$or = [{ firstName: regex }, { email: regex },]; 
     }
 
-)
+    const [users, totalUsers] = await Promise.all([
+        User.find(filter, { __v: false, password: false })
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit),
+        User.countDocuments(filter), 
+    ]);
+
+    const totalPages = Math.ceil(totalUsers / limit);
+
+    res.json({
+        status: httpStatus.SUCCESS,
+        data: {
+            users,
+            pagination: {
+                currentPage: page,
+                limit,
+                totalUsers,
+                totalPages,
+                hasNextPage: page < totalPages,
+                hasPrevPage: page > 1,
+            },
+        },
+    });
+});
 
 const getUser = asyncWrapper(
     async (req, res, next) => {

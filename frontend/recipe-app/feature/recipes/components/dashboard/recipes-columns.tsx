@@ -68,6 +68,8 @@ export const recipesColumns: ColumnDef<Recipe, unknown>[] = [
                 <TableActions
                     isDelete
                     edit
+                    editHref="recipe"
+                    endpoint="recipe"
                     itemName="الوصفة"
                     itemId={row.original._id} />
             )

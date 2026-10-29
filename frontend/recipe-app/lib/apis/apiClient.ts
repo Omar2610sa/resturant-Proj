@@ -34,12 +34,16 @@ export async function apiClient<T = unknown>(
             cache: "no-cache",
             method,
             headers: {
-                "Content-Type": "application/json",
+                ...(body instanceof FormData
+                    ? {}
+                    : { "Content-Type": "application/json" }),
                 ...(token ? { Authorization: `Bearer ${token}` } : {}),
-                // ...(headers ? { "Accept-Language": Language } : {}),
             },
-            ...(body ? { body: JSON.stringify(body) } : {}),
-            ...(next ? { next } : {}),
+            ...(body
+                ? {
+                    body: body instanceof FormData ? body : JSON.stringify(body),
+                }
+                : {}), ...(next ? { next } : {}),
         }
     )
 

@@ -1,8 +1,10 @@
-type Method = "GET" | "POST" | "PUT" | "DELETE" |"PATCH"
+import { UseFormRegisterReturn } from "react-hook-form"
+
+type Method = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 
 export type Options = {
     method?: Method
-    body?: Record<string, unknown>
+    body?: Record<string, unknown> | FormData
     headers?: Record<string, string>
     next?: NextFetchRequestConfig
 }
@@ -21,6 +23,7 @@ export type Pagination = {
 export interface TableActionsProps {
     isDelete?: boolean
     edit?: boolean
+    editHref?: string
     itemId: number | string
     itemName?: string
     endpoint?: string
@@ -39,6 +42,34 @@ export type searchParams = {
 
 
 export type respones = {
-    message : string
-    status : Status
+    message: string
+    status: Status
 }
+
+export type AddCardProps = {
+    title: string;
+    description: string;
+    footerText: string;
+    footerHref: string;
+    children: React.ReactNode;
+    className?: string;
+};
+
+export type AddFieldProps = {
+    id: string;
+    label: string;
+    type?: React.HTMLInputTypeAttribute;
+    placeholder?: string;
+    autoComplete?: string;
+    defaultValue?: string;
+    error?: string;
+    registration: UseFormRegisterReturn;
+    input?: boolean;
+    upload?: boolean;
+    textarea?: boolean;
+    select?: boolean;
+    values?: {
+        label: string;
+        value: string;
+    }[];
+};

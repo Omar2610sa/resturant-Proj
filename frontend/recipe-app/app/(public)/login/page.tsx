@@ -1,4 +1,3 @@
-import { BreadCrumb } from "@/components/shared/Breadcrumb/BreadCrumb";
 import { LoginForm } from "@/feature/auth/login/components/LoginForm";
 
 export default function page() {

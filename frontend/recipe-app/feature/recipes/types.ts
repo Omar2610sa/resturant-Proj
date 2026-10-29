@@ -1,3 +1,5 @@
+import { Pagination } from "@/types";
+
 type difficulty = "easy" | "medium" | "hard";
 
 
@@ -15,11 +17,7 @@ export interface Recipe {
 
 export interface RecipeData {
     recipes: Recipe[];
-    pagination: {
-        total: number;
-        limit: number;
-        page: number;
-        pages: number;
-    };
+    pagination: Pagination
 }
+
 

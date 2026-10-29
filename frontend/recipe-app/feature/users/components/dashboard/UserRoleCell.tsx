@@ -3,10 +3,10 @@
 import { useState, useTransition } from "react";
 
 import { useStatusToast } from "@/hooks/use-status-toast";
-import { updateUserRole } from "../action/update-user-role";
 import { User } from "@/feature/auth/types";
-import { RoleSwitcher } from "./dashboard/RoleSwitcher";
 import { useRouter } from "next/navigation";
+import { RoleSwitcher } from "./RoleSwitcher";
+import { updateUserRole } from "../../action/update-user-role";
 
 export function UserRoleCell({ user }: { user: User }) {
     const [isAdmin, setIsAdmin] = useState(user.role === "admin");

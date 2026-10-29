@@ -1,5 +1,5 @@
 "use client"
-import { LayoutDashboard, LogOut, User2Icon } from "lucide-react";
+import { Home, LayoutDashboard, LogOut, User2Icon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
 import { useAuthStore } from "@/feature/auth/store/auth.store";
@@ -14,7 +14,6 @@ export default function UserInfo() {
             <DropdownMenuTrigger
                 className="flex items-center gap-2 rounded-full border  bg-background py-3 px-5  shadow-sm hover:bg-primary/30 cursor-pointer"
             >
-
                 <span className="grid size-7 place-items-center rounded-full bg-primary/70 text-sm font-black text-white">
                     <User2Icon className="size-4" />
                 </span>
@@ -22,8 +21,14 @@ export default function UserInfo() {
                     {user?.firstName} {user?.lastName}
                 </span>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-20" align="center">
+            <DropdownMenuContent className="w-40" align="center">
                 <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                        <Link href='/' className="flex  items-center justify-between gap-3">
+                            <Home />
+                            الصفحة الرئيسية
+                        </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href='/dashboard' className="flex  items-center justify-between gap-3">
                             <LayoutDashboard />

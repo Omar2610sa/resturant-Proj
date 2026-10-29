@@ -25,9 +25,9 @@ app.use(cors({
 }));
 
 // to send body as json 
+app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, "uploads")))
 
-app.use(express.json())
 
 // Routes
 app.use('/api/recipe', recipeRouter)

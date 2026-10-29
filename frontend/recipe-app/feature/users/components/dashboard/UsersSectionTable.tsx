@@ -2,6 +2,7 @@ import DashboardSectionsTitle from "@/components/dashboard/layout/DashboardSecti
 import { getUsers } from "../../services/users.api";
 import { searchParams } from "@/types";
 import { UserTable } from "./UsersTable";
+import PaginationRouter from "@/components/Pagination";
 
 
 
@@ -19,9 +20,11 @@ export async function UsersSectionTable({ searchParams }: searchParams) {
         title="المستخدمون"
         description="إدارة حسابات مستخدمي الموقع."
         search
+        searchPlaceHolder="إبحث عن مستخدم"
         searchColumnId="2"
       />
-      <UserTable users={data.users} />;
+      <UserTable users={data.users} />
+      <PaginationRouter pagination={data.pagination} />
     </div>
   )
 }

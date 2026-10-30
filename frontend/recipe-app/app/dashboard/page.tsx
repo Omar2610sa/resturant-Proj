@@ -1,4 +1,6 @@
+import NewRecipesPreview from "@/feature/analytics/components/NewRecipesPreview";
 import { StatsSection } from "@/feature/analytics/components/StatsSection";
+import { getAnalytics } from "@/feature/analytics/services/analytics.api";
 
 export async function generateMetadata() {
     return {
@@ -6,10 +8,12 @@ export async function generateMetadata() {
         description: "لوحة التحكم الخاصة بي مَذاق",
     };
 }
-export default function page() {
+export default async function page() {
+    const response = await getAnalytics();
     return (
-        <div>
-            <StatsSection />
+        <div className="flexSection">
+            <StatsSection countAnalytics={response.data.countAnalytics} />
+            <NewRecipesPreview newRecipes={response.data.newRecipes} />
         </div>
     )
 }

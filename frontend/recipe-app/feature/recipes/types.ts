@@ -1,6 +1,6 @@
 import { Pagination } from "@/types";
 
-type difficulty = "easy" | "medium" | "hard";
+export type difficulty = "easy" | "medium" | "hard";
 
 
 export interface Recipe {

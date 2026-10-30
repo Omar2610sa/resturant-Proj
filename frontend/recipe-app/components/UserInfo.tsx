@@ -10,7 +10,7 @@ export default function UserInfo() {
     const { handleLogout } = useLogout();
 
     return (
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
             <DropdownMenuTrigger
                 className="flex items-center gap-2 rounded-full border  bg-background py-3 px-5  shadow-sm hover:bg-primary/30 cursor-pointer"
             >
@@ -38,7 +38,9 @@ export default function UserInfo() {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem
                         onClick={handleLogout}
-                        className="flex items-center  gap-3" variant="destructive">
+                        variant="destructive"
+                        className="flex items-center text-red-700 bg-transparent  gap-3"
+                    >
                         <LogOut />
                         تسجيل خروج
                     </DropdownMenuItem>

@@ -16,7 +16,7 @@ export default function Navbar() {
 
                     {headerLinks.map((link, index) => {
                         return (
-                            <Link key={index} href={link.link} className="font-medium hover:text-primary duration-200" >
+                            <Link key={index} href={link.link} className="font-bold hover:text-primary duration-200" >
                                 {link.title}
                             </Link>
                         )

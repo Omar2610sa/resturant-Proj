@@ -33,7 +33,7 @@ export function DashboardUserCard() {
 
             <Button
                 variant="destructive"
-                className="w-full justify-start gap-3 p-5"
+                className="w-full text-xl bg-transparent justify-start gap-3 p-5"
                 onClick={handleLogout}
             >
                 <LogOut className="size-5" />

@@ -52,6 +52,8 @@
   --color-bg-input: var(--bg-input);
   --color-tableHead: var(--tableHead);
   --color-tableBody: var(--tableBody);
+  --color-about: var(--about);
+  --color-about-border: var(--about-border);
 }
 
 :root {
@@ -92,6 +94,8 @@
   --bg-input: #fffefa;
   --tableHead: #faf8f5;
   --tableBody: #f0ebe5;
+  --about: #fff8f1;
+  --about-border: #eee8e1;
 }
 
 .dark {
@@ -131,6 +135,8 @@
   --bg-input: #fffefa;
   --tableHead: #1C1A17;
   --tableBody: #f0ebe5;
+  --about: #24211e;
+  --about-border: #39332d;
 }
 
 @layer base {
@@ -170,4 +176,18 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-card);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 6px;
+  border: 3px solid var(--color-card);
 }

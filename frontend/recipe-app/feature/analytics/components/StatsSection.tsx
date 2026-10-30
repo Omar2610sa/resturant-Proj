@@ -1,12 +1,11 @@
 import { BookOpen, CalendarPlus, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import type { Analytics, StatTone } from "../types";
+import type {  countAalytics, StatTone } from "../types";
 import { StatCard } from "./StatCard";
-import { getAnalytics } from "../services/analytics.api";
 
 
 const statsConfig: {
-    key: keyof Analytics;
+    key: keyof countAalytics;
     label: string;
     icon: LucideIcon;
     tone: StatTone;
@@ -16,9 +15,8 @@ const statsConfig: {
         { key: "recipesThisWeek", label: "وصفات جديدة هذا الأسبوع", icon: CalendarPlus, tone: "success" },
     ];
 
-export async function StatsSection() {
-    const response = await getAnalytics();
-    const analytics = response.data;
+export async function StatsSection({ countAnalytics }: { countAnalytics: countAalytics }) {
+    const analytics = countAnalytics;
     return (
         <section
             aria-label="إحصائيات عامة"

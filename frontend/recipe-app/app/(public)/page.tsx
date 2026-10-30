@@ -1,4 +1,6 @@
 import { Hero } from "@/components/home/Hero";
+import InfoHomeBanner from "@/components/home/InfoHomeBanner";
+import AboutBanner from "@/feature/about/components/AboutBanner";
 import RecipeSection from "@/feature/recipes/components/RecipeSeciton";
 import { getRecipes } from "@/feature/recipes/services/recipes.api";
 
@@ -14,9 +16,11 @@ export default async function page() {
   const recipes = recipeData?.recipes;
 
   return (
-    <div >
+    <div>
       <Hero />
       <RecipeSection recipes={recipes} />
+      <AboutBanner />
+      <InfoHomeBanner />
     </div>
   )
 }

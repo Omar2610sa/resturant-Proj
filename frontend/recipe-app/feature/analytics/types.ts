@@ -1,5 +1,6 @@
 import { Status } from "@/types";
 import type { LucideIcon } from "lucide-react";
+import { Recipe } from "../recipes/types";
 
 export type StatTone = "primary" | "info" | "success";
 
@@ -11,10 +12,15 @@ export type StatCardProps = {
     trend?: number;
 };
 
-export type Analytics = {
+export interface countAalytics {
     totalRecipes: number;
     recipesThisWeek: number;
     totalUsers: number;
+}
+
+export type Analytics = {
+    countAnalytics: countAalytics
+    newRecipes: Recipe[]
 };
 
 export type AnalyticsData = {

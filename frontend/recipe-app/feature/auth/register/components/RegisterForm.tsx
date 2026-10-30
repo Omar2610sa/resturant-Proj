@@ -65,8 +65,8 @@ export function RegisterForm({
     }
     return (
         <AuthCard
-            title="مرحبًا بعودتك"
-            description="سجّل دخولك لتحتفظ بوصفاتك المفضلة."
+            title="أنشئ حسابك"
+            description="انضم إلينا واكتشف عالمًا من النكهات"
             className={className}
         >
             <form onSubmit={handleSubmit(onSubmit)} noValidate>

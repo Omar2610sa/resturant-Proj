@@ -6,7 +6,8 @@ import { Toaster } from "@/components/ui/toast";
 import { Suspense } from "react";
 import AuthReasonToast from "@/components/AuthReasonToast";
 import AuthExpiryWatcher from "@/components/AuthExpiryWatcher";
-
+import { Metadata } from "next";
+import logo from "@/assets/Orange Chef Hat App Icon.png"
 
 const tajawal = Tajawal({
   variable: "--font-tajawal",
@@ -14,6 +15,12 @@ const tajawal = Tajawal({
   weight: ["400", "500", "700", "800", "900"],
 });
 
+
+export const metadata: Metadata = {
+  icons: {
+    icon: logo.src,
+  },
+}
 
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

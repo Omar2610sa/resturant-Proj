@@ -3,22 +3,25 @@ const addRecipe = require('../controllers/recipe.controller')
 const recipeController = require('../controllers/recipe.controller')
 const { body } = require('express-validator')
 const upload = require('../middleware/upload')
+const verifyToken = require('../middleware/verifyToken')
+const userRole = require('../utils/userRole')
+const allowedTo = require('../middleware/allowedTo')
 
 const router = express.Router()
 
 
 router.route('/')
     .get(recipeController.getAllRecipes)
-    .post(upload.single('coverImage'),[body('title').not().isEmpty().withMessage('Title is required').isLength({ min: 2 }).withMessage('Title at least is 2 chrats'),
+    .post(verifyToken, allowedTo(userRole.ADMIN), upload.single('coverImage'), [body('title').not().isEmpty().withMessage('Title is required').isLength({ min: 2 }).withMessage('Title at least is 2 chrats'),
     body('description').not().isEmpty().withMessage('Description is required'),
     body('ingredients').not().isEmpty().withMessage('Ingredients are required'),
     body('instructions').not().isEmpty().withMessage('Instructions are required'),
     body('cookingTime').not().isEmpty().withMessage('Cooking time is required'),
-    body('difficulty').not().isEmpty().withMessage('Difficulty is required')] ,recipeController.addRecipe)
+    body('difficulty').not().isEmpty().withMessage('Difficulty is required')], recipeController.addRecipe)
 
 
 router.route('/:id')
     .get(recipeController.getSingleRecipe)
-    .put(recipeController.updateRecipe)
-    .delete(recipeController.deleteRecipe)
+    .put(verifyToken, allowedTo(userRole.ADMIN), recipeController.updateRecipe)
+    .delete(verifyToken, allowedTo(userRole.ADMIN), recipeController.deleteRecipe)
 module.exports = router

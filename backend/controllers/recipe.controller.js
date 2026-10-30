@@ -7,20 +7,26 @@ const httpStatus = require('../utils/httpStatusText')
 
 const getAllRecipes = asyncWrapper(
     async (req, res, next) => {
-        const query = req.query;
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit) || 10, 1), 50); 
+    const search = (req.query.search || "").trim();
+    const skip = (page - 1) * limit;
 
-        const limit = Number(query.limit) || 10;
-        const page = Number(query.page) || 1;
-        const skip = (page - 1) * limit;
-
-        const totalRecipes = await Recipe.countDocuments();
-
-        const recipes = await Recipe.find({}, { __v: false })
-            .limit(limit)
-            .skip(skip);
-
+    const filter = {};
+    if (search) {
+        const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const regex = { $regex: escaped, $options: "i" };
+        filter.$or = [{ title: regex },]; 
+    }
+        const [recipes, totalRecipes] = await Promise.all([
+            Recipe.find(filter, { __v: false, password: false })
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit),
+            Recipe.countDocuments(filter), 
+        ]);
+    
         const totalPages = Math.ceil(totalRecipes / limit);
-
         res.json({
             status: httpStatus.SUCCESS,
             data: {

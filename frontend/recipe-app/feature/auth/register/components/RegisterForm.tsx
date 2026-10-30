@@ -57,7 +57,7 @@ export function RegisterForm({
                     description: "فشل إنشاء الحساب راجع بياناتك وحاول مرة تانية",
                 })
             }
-        } catch (error) {
+        } catch {
             setError("root", {
                 message: "حصل خطأ أثناء إنشاء الحساب, حاول مرة تانية",
             });
@@ -67,9 +67,6 @@ export function RegisterForm({
         <AuthCard
             title="مرحبًا بعودتك"
             description="سجّل دخولك لتحتفظ بوصفاتك المفضلة."
-            footerText="ليس لديك حساب؟"
-            footerLinkLabel="إنشاء حساب"
-            footerHref="/register"
             className={className}
         >
             <form onSubmit={handleSubmit(onSubmit)} noValidate>

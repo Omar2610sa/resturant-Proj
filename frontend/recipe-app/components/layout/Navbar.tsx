@@ -3,25 +3,13 @@ import Logo from "../Logo";
 import { DarkModeToggle } from "../DarkMode";
 import { Suspense } from "react";
 import NavbarAuth from "./NavbarAuth";
+import { headerLinks } from "@/lib/navLinks";
+import MobileNav from "./MobileNav";
+import MobileNavAuth from "./MobileNavAuth";
 export default function Navbar() {
-
-    const headerLinks = [
-        {
-            title: 'الرئيسية',
-            link: '/',
-        },
-        {
-            title: 'الوصفات',
-            link: '/recipes',
-        },
-        {
-            title: 'من نحن',
-            link: '/',
-        },
-    ]
     return (
         <header className="sticky top-0 z-50 border-b  bg-accent backdrop-blur-xl text-xl">
-            <div className="mx-auto flex h-10  items-center justify-between  container">
+            <div className="mx-auto flex h-10   items-center justify-between  container">
                 {/* <Logo /> */}
                 <Logo />
                 <nav className="hidden items-center   md:flex space-x-12" >
@@ -40,6 +28,12 @@ export default function Navbar() {
                         <NavbarAuth />
                     </Suspense>
                 </div>
+
+                <MobileNav links={headerLinks}>
+                    <Suspense fallback={<div className="h-10" />}>
+                        <MobileNavAuth />
+                    </Suspense>
+                </MobileNav>
             </div>
         </header>
     )

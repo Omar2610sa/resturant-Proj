@@ -49,7 +49,7 @@ const login = asyncWrapper(
 
         const matchedPassword = await bcrypt.compare(password, user.password)
         if (user && matchedPassword) {
-            const token = await generateJWT({ email: user.email, id: user._id })
+            const token = await generateJWT({ email: user.email, id: user._id, role:user.role })
             user.token = token
             return res.json({ status: httpStatus.SUCCESS, data: user })
         } else {

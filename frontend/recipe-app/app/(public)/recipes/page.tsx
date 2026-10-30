@@ -3,6 +3,7 @@ import RecipeCard from "@/feature/recipes/components/RecipeCard";
 import PaginationRouter from "@/components/Pagination";
 import { getRecipes } from "@/feature/recipes/services/recipes.api";
 import { searchParams } from "@/types";
+import SearchFilter from "@/components/dashboard/SerchFilter";
 
 export default async function page({
     searchParams
@@ -13,9 +14,15 @@ export default async function page({
     const pagination = recipeData?.pagination
     return (
         <section className="container flexSection">
+            <div className="flex justify-between items-end">
+
             <BreadCrumb
                 secondLink="الوصفات"
-            />
+                />
+                <SearchFilter
+                placeholder="إبحث عن وصفتك"
+                /> 
+                </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {recipes.map((recipe) => (
                     <RecipeCard key={recipe._id} recipe={recipe} />

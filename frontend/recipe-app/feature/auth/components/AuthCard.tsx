@@ -31,16 +31,19 @@ export function AuthCard({
 
                 <CardContent className="space-y-6">
                     {children}
-
-                    <p className="flex items-center justify-center gap-2 text-center text-base text-muted-foreground">
-                        <span>{footerText}</span>
-                        <Link
-                            href={footerHref}
-                            className="font-bold text-primary hover:underline"
-                        >
-                            {footerLinkLabel}
-                        </Link>
-                    </p>
+                    {
+                        footerText && (
+                            <p className="flex items-center justify-center gap-2 text-center text-base text-muted-foreground">
+                                <span>{footerText}</span>
+                                <Link
+                                    href={footerHref ?? ""}
+                                    className="font-bold text-primary hover:underline"
+                                >
+                                    {footerLinkLabel}
+                                </Link>
+                            </p>
+                        )
+                    }
                 </CardContent>
             </Card>
         </div>

@@ -1,8 +1,11 @@
-import {  Tajawal } from "next/font/google";
+import { Tajawal } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toast";
+import { Suspense } from "react";
+import AuthReasonToast from "@/components/AuthReasonToast";
+import AuthExpiryWatcher from "@/components/AuthExpiryWatcher";
 
 
 const tajawal = Tajawal({
@@ -29,6 +32,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
+          <Suspense>
+            <AuthReasonToast />
+          </Suspense>
+          <AuthExpiryWatcher />
           {children}
         </ThemeProvider>
       </body>

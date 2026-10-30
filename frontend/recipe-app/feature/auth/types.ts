@@ -4,9 +4,9 @@ import { UseFormRegisterReturn } from "react-hook-form";
 export type AuthCardProps = {
     title: string;
     description: string;
-    footerText: string;
-    footerLinkLabel: string;
-    footerHref: string;
+    footerText?: string;
+    footerLinkLabel?: string;
+    footerHref?: string;
     children: React.ReactNode;
     className?: string;
 };

@@ -60,7 +60,6 @@ const setUser = useAuthStore((state) => state.setUser)
                 })
             }
         } catch (error) {
-
             setError("root", {
                 message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
             });
@@ -94,7 +93,7 @@ const setUser = useAuthStore((state) => state.setUser)
                         icon={LockKeyhole}
                         type="password"
                         autoComplete="كلمة المرور"
-                        placeholder=""
+                        placeholder="كلمة السر الخاصة بك"
                         registration={register("password")}
                         error={errors.password?.message}
                     />

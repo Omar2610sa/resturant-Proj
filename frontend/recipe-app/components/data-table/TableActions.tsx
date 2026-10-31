@@ -25,7 +25,7 @@ const TableActions = ({
         <div className="flex gap-2 items-center justify-center">
             {edit && (
                 <Link
-                    href={`/${editHref}/${itemId}`}
+                    href={`/dashboard/${editHref}/edit/${itemId}`}
                     className="grid size-9 place-items-center rounded-lg text-[#6c655e] hover:bg-primary/10 hover:text-primary"
                 >
                     <Pen className="size-5" />

@@ -49,8 +49,8 @@ export type respones = {
 export type AddCardProps = {
     title: string;
     description: string;
-    footerText: string;
-    footerHref: string;
+    footerText?: string;
+    footerHref?: string;
     children: React.ReactNode;
     className?: string;
 };
@@ -68,6 +68,7 @@ export type AddFieldProps = {
     upload?: boolean;
     textarea?: boolean;
     select?: boolean;
+    currentImageUrl?: string | null;
     values?: {
         label: string;
         value: string;

@@ -22,6 +22,6 @@ router.route('/')
 
 router.route('/:id')
     .get(recipeController.getSingleRecipe)
-    .put(verifyToken, allowedTo(userRole.ADMIN), recipeController.updateRecipe)
+    .put(verifyToken, upload.single('coverImage'), allowedTo(userRole.ADMIN), recipeController.updateRecipe)
     .delete(verifyToken, allowedTo(userRole.ADMIN), recipeController.deleteRecipe)
 module.exports = router

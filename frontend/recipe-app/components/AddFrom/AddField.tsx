@@ -17,6 +17,7 @@ export default function AddField({
     textarea = false,
     select = false,
     upload = false,
+    currentImageUrl
     // values = [],
 }: AddFieldProps) {
     return (
@@ -65,6 +66,7 @@ export default function AddField({
                     id={id}
                     label={label}
                     registration={registration}
+                    currentImageUrl={currentImageUrl}
                     error={error}
                 />
             )}

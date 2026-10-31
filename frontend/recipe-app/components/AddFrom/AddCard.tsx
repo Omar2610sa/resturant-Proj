@@ -1,10 +1,6 @@
-import React from 'react'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { cn } from 'cn'
-import Link from 'next/link'
 import { AddCardProps } from '@/types'
-import { Separator } from '../ui/separator'
-import { Button } from '../ui/button'
 
 export default function AddCard({
     title,

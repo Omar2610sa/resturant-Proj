@@ -3,29 +3,30 @@ const asyncWrapper = require('../middleware/asyncWrapper')
 const Recipe = require('../models/recipe.model')
 const appError = require('../utils/appError')
 const httpStatus = require('../utils/httpStatusText')
-
+const fs = require('fs/promises');
+const path = require('path');
 
 const getAllRecipes = asyncWrapper(
     async (req, res, next) => {
-    const page = Math.max(parseInt(req.query.page) || 1, 1);
-    const limit = Math.min(Math.max(parseInt(req.query.limit) || 10, 1), 50); 
-    const search = (req.query.search || "").trim();
-    const skip = (page - 1) * limit;
+        const page = Math.max(parseInt(req.query.page) || 1, 1);
+        const limit = Math.min(Math.max(parseInt(req.query.limit) || 10, 1), 50);
+        const search = (req.query.search || "").trim();
+        const skip = (page - 1) * limit;
 
-    const filter = {};
-    if (search) {
-        const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        const regex = { $regex: escaped, $options: "i" };
-        filter.$or = [{ title: regex },]; 
-    }
+        const filter = {};
+        if (search) {
+            const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const regex = { $regex: escaped, $options: "i" };
+            filter.$or = [{ title: regex },];
+        }
         const [recipes, totalRecipes] = await Promise.all([
             Recipe.find(filter, { __v: false, password: false })
                 .sort({ createdAt: -1 })
                 .skip(skip)
                 .limit(limit),
-            Recipe.countDocuments(filter), 
+            Recipe.countDocuments(filter),
         ]);
-    
+
         const totalPages = Math.ceil(totalRecipes / limit);
         res.json({
             status: httpStatus.SUCCESS,
@@ -69,7 +70,7 @@ const addRecipe = asyncWrapper(
             instructions,
             cookingTime,
             difficulty,
-            coverImage :req.file.filename
+            coverImage: req.file.filename
         })
         await newRecipe.save()
         res.status(201).json({ status: httpStatus.SUCCESS, data: { recipe: newRecipe } })
@@ -79,14 +80,29 @@ const addRecipe = asyncWrapper(
 
 const updateRecipe = asyncWrapper(
     async (req, res, next) => {
-        const { id } = req.params
-        const updateRecipe = await Recipe.findByIdAndUpdate(id, { $set: { ...req.body } })
+        const { id } = req.params;
 
-        if (!updateRecipe) {
-            return next(appError.create('Recipe not found', 400, httpStatus.FAIL))
+        const recipe = await Recipe.findById(id);
+        if (!recipe) {
+            if (req.file) await fs.unlink(req.file.path).catch(() => { });
+            return next(appError.create('Recipe not found', 404, httpStatus.FAIL));
         }
-        res.status(201).json({ status: httpStatus.SUCCESS, data: "updated successfully" })
 
+        const { title, description, ingredients, instructions, cookingTime, difficulty } = req.body;
+        const updates = { title, description, ingredients, instructions, cookingTime, difficulty };
+        Object.keys(updates).forEach((key) => updates[key] === undefined && delete updates[key]);
+
+        const oldImage = recipe.coverImage;
+        if (req.file) updates.coverImage = req.file.filename;
+
+        recipe.set(updates);
+        await recipe.save();
+
+        if (req.file && oldImage) {
+            await fs.unlink(path.join(__dirname, '..', 'uploads', oldImage)).catch(() => { });
+        }
+
+        res.status(200).json({ status: httpStatus.SUCCESS, data: { recipe } });
     }
 )
 

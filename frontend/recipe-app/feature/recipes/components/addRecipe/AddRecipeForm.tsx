@@ -57,10 +57,10 @@ const {
             } else {
                 showToast({
                     type: "error",
-                    description: "فشل إنشاء الحساب راجع بياناتك وحاول مرة تانية",
+                    description: "فشل في إضافة الوصفة وحاول مرة تانية",
                 });
             }
-        } catch (error) {
+        } catch  {
             
             setError("root", {
                 message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
@@ -76,7 +76,7 @@ const {
             footerHref="/register"
         >
             <Separator className='bg-[#eee8e1]' />
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form  onSubmit={handleSubmit(onSubmit)} noValidate>
                 <FieldGroup>
                     <AddField
                         input

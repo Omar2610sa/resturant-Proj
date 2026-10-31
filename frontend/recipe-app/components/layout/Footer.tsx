@@ -29,7 +29,6 @@ export default function Footer() {
                                 )
                             })
                         }
-
                     </div>
                 </div>
                 <div>
@@ -40,8 +39,11 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="border-t border-white/70 px-5 py-5 text-center text-sm text-gray-300">
+            <div className="border-t flex flex-col gap-3 border-white/70 px-5 py-5 text-center text-sm text-gray-300">
                 جميع الحقوق محفوظة لمذاق © 2026
+                <span className="text-lg">
+                    من تطوير وبرمجة <Link href="https://omarsalam-portofolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-muted duration-200">عمر معتز</Link>
+                </span>
             </div>
         </footer>
     );

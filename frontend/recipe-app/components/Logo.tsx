@@ -1,5 +1,3 @@
-import Image from "next/image";
-import hatIcon from "@/assets/hat.png"
 import Link from "next/link";
 import { ChefHat } from "lucide-react";
 

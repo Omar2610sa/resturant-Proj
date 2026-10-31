@@ -18,7 +18,6 @@ export function useLogout() {
                 type: "success",
                 description: "تم تسجيل الخروج بنجاح",
             });
-            router.push("/");
             router.refresh();
         };
     }

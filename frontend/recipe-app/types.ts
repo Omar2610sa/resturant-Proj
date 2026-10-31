@@ -73,3 +73,12 @@ export type AddFieldProps = {
         value: string;
     }[];
 };
+
+
+export interface ParamsPageProps {
+    params: Promise<{
+        lang: string;
+        title: string;
+        id: string;
+    }>;
+}

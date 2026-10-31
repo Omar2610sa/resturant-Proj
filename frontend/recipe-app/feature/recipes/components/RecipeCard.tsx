@@ -11,7 +11,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
     const difficulty = difficultyConfig[recipe.difficulty];
     const imageUrl = getImageUrl(recipe.coverImage);
     return (
-        <Link href={`/recipes/${recipe._id}`} className="group block h-full">
+        <Link href={`/recipe/${recipe._id}`} className="group block h-full">
             <Card className="h-full gap-0 overflow-hidden rounded-2xl border bg-card py-0 shadow-none ring-0 transition-shadow duration-300 group-hover:shadow-lg">
                 <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted">
                     {recipe.coverImage ? (

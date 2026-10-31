@@ -41,8 +41,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           <Suspense>
             <AuthReasonToast />
+            <AuthExpiryWatcher />
           </Suspense>
-          <AuthExpiryWatcher />
           {children}
         </ThemeProvider>
       </body>

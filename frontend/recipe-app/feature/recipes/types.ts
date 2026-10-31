@@ -17,6 +17,7 @@ export interface Recipe {
 
 export interface RecipeData {
     recipes: Recipe[];
+    recipe?: Recipe 
     pagination: Pagination
 }
 

@@ -25,10 +25,10 @@ export function DarkModeToggle() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="center">
                 <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
+                    فاتح
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
+                    داكن
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

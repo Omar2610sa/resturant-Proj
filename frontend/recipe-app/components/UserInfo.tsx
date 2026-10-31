@@ -21,7 +21,7 @@ export default function UserInfo() {
                     {user?.firstName} {user?.lastName}
                 </span>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-40" align="center">
+            <DropdownMenuContent className=" md:w-40" align="center">
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
                         <Link href='/' className="flex  items-center justify-between gap-3">

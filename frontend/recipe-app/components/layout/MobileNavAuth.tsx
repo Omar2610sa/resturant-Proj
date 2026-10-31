@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { Button } from "@/components/ui/button";
 import LogoutButton from "./LogoutButton";
 import { TOKEN_NAME } from "@/lib/constants";
+import SideBarUserCard from "../SideBarUserCard";
 
 export default async function MobileNavAuth() {
     const token = (await cookies()).get(TOKEN_NAME)?.value ?? null
@@ -22,6 +23,7 @@ export default async function MobileNavAuth() {
 
     return (
         <>
+        <SideBarUserCard />
             <Button variant="outline">
                 <Link href="/dashboard">لوحة التحكم</Link>
             </Button>

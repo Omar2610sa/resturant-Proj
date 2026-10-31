@@ -49,8 +49,7 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
                             return (
                                 <li key={`${item}-${index}`} className="list-disc text-primary text-xl">
                                     <label
-                                        htmlFor={`ingredient-${index}`}
-                                        className={cn("flex cursor-pointer items-center text-black gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-primary/10",
+                                        className={cn("flex cursor-pointer items-center text-accent-foreground gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-primary/10",
                                         )}  >
                                         <span
                                             className={cn("text-base font-semibold transition-all")}
@@ -87,7 +86,6 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
                                     <span className="z-10 flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary text-base font-black text-primary-foreground shadow-sm">
                                         {index + 1}
                                     </span>
-
                                     <div className="flex-1 rounded-xl border bg-muted/30 p-4">
                                         <p className="text-base leading-8 text-foreground/90">
                                             {step}.

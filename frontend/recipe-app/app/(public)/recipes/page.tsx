@@ -14,7 +14,7 @@ export default async function page({
     const pagination = recipeData?.pagination
     return (
         <section className=" flexSection">
-            <section className="border-b w-full  bg-about  sm:pb-10">
+            <section className="border-b w-full  bg-about ">
                 <div className="mx-auto container space-y-3 text-center">
                     <span className=" block text-lg font-extrabold text-primary">
                         اختيارات لكل الأذواق

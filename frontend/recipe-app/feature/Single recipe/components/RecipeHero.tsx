@@ -50,16 +50,16 @@ export default function RecipeHero({ recipe }: { recipe: Recipe }) {
                         {recipe.description}
                     </p>
                     <div className="flex flex-wrap gap-3">
-                        <span className="flex items-center gap-2 rounded-xl border border-[#eadfd5] bg-white px-4 py-3 text-sm font-extrabold text-black shadow-sm">
+                        <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
                             <Clock className="size-5 text-primary" />
-                            30 دقيقة
+                            {recipe.cookingTime} دقيقة
                         </span>
-                        <span className="flex items-center gap-2 rounded-xl border border-[#eadfd5] bg-white px-4 py-3 text-sm font-extrabold text-black shadow-sm">
+                        <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
                             <Calendar className="size-5 text-primary" />
                             نشر في : {formattedDate}
                         </span>
                         <span
-                            className={`rounded-xl py-3 px-4 text-sm font-extrabold shadow-sm ${difficult.className}`}
+                            className={`flex items-center gap-2 rounded-xl  px-4 py-3 text-sm font-extrabold  shadow-sm ${difficult.className}`}
                         >
                             {difficult.label}
                         </span>

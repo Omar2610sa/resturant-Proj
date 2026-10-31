@@ -43,7 +43,7 @@ export function Hero() {
                             className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-                        <div className="absolute bottom-5 start-5 rounded-2xl bg-background/95 px-5 py-4 shadow-xl backdrop-blur">
+                        <div className="absolute bottom-5 start-5 rounded-2xl bg-background/95 px-5 py-4 shadow-xl backdrop-blur ">
                             <span className="block text-xs font-bold text-muted-foreground">
                                 وصفة اليوم
                             </span>

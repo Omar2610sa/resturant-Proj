@@ -3,73 +3,22 @@ import { FieldGroup } from "@/components/ui/field";
 import { AuthCard } from "../../components/AuthCard";
 import { AuthField } from "../../components/AuthField";
 import { LockKeyhole, Mail, User2 } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterFormValues, registerSchema } from "../register.schema";
 import { Button } from "@/components/ui/button";
-import { registerService } from "../services/register.api";
-import { TOKEN_NAME } from "@/lib/constants";
-import Cookies from "js-cookie"
-import { useRouter } from "next/navigation";
-import { useStatusToast } from "@/hooks/use-status-toast";
-import { useAuthStore } from "../../store/auth.store";
-import { User } from "../../types";
-
-
+import { useRegister } from "../hooks/use-register";
 
 export function RegisterForm({
     className,
 }: React.ComponentProps<"div">) {
-    const { showToast } = useStatusToast();
-    const router = useRouter()
-    const setUser = useAuthStore((state) => state.setUser)
-
-    const { register, handleSubmit, setError, formState: { errors, isSubmitting },
-    } = useForm<RegisterFormValues>({
-        resolver: zodResolver(registerSchema),
-        defaultValues: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-        },
-    });
-
-    async function onSubmit(data: RegisterFormValues) {
-        try {
-            const response = await registerService(data);
-
-            if (response?.status === "success") {
-                const token = response.data?.token
-                const user = response.data as unknown as User
-                Cookies.set(TOKEN_NAME, token)
-                showToast({
-                    type: "success",
-                    description: "تم إنشاء الحساب بنجاح",
-                })
-                setUser(user)
-                router.refresh()
-                router.push("/")
-            }
-            else {
-                showToast({
-                    type: "error",
-                    description: "فشل إنشاء الحساب راجع بياناتك وحاول مرة تانية",
-                })
-            }
-        } catch {
-            setError("root", {
-                message: "حصل خطأ أثناء إنشاء الحساب, حاول مرة تانية",
-            });
-        }
-    }
+    const { form, onSubmit } = useRegister();
+    const { register, formState: { errors, isSubmitting },
+    } = form;
     return (
         <AuthCard
             title="أنشئ حسابك"
             description="انضم إلينا واكتشف عالمًا من النكهات"
             className={className}
         >
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form onSubmit={onSubmit} noValidate>
                 <FieldGroup>
                     <div className="flex justify-between gap-5">
                         <AuthField
@@ -114,7 +63,7 @@ export function RegisterForm({
                     <Button
                         type="submit"
                         size="lg"
-                        className="w-full font-extrabold"
+                        className="w-full font-extrabold text-white"
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? "جاري إنشاء الحساب..." : "إنشاء الحساب"}

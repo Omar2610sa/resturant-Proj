@@ -2,73 +2,24 @@
 import AddCard from '@/components/AddFrom/AddCard'
 import AddField from '@/components/AddFrom/AddField'
 import { FieldGroup } from '@/components/ui/field'
-import { useForm } from 'react-hook-form';
-import { addRecipeSchema, RecipeFormValues } from '../../schema/recipe.schema';
-import type { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Separator } from '@/components/ui/separator';
 import { CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useStatusToast } from '@/hooks/use-status-toast'
-import { useRouter } from 'next/navigation'
-import { respones } from '@/types'
 import Link from 'next/link'
-import { addRecipeApi } from '../../services/addRecipe.api';
+import { useAddRecipe } from '../../hooks/use-add-recipe';
 
 export default function AddRecipeForm() {
-    const { showToast } = useStatusToast();
-    const router = useRouter()
-const {
+    const { form, onSubmit } = useAddRecipe();
+    const {
         register,
-        handleSubmit,
-        reset,
-        setError,
         formState: { errors, isSubmitting },
-    } = useForm<z.input<typeof addRecipeSchema>, unknown, RecipeFormValues>({
-        resolver: zodResolver(addRecipeSchema),
-        defaultValues: {
-            title: "",
-            description: "",
-            difficulty: 'easy',
-            ingredients: "",
-            instructions: "",
-            cookingTime: 1,
-            servingSize: 1,
-            coverImage: ""
-        },
-    });
-    const difficultyOptions = [
+    } = form;
+
+        const difficultyOptions = [
         { label: "سهل", value: "easy" },
         { label: "متوسط", value: "medium" },
         { label: "صعب", value: "hard" },
     ];
-
-    const onSubmit = async (values: RecipeFormValues) => {
-        try {
-            const response = await addRecipeApi(values) as respones;
-            if (response?.status === "success") {
-
-                showToast({
-                    type: "success",
-                    description: "تم إضافة الوصفة بنجاح",
-                })
-                router.refresh()
-                router.push("/dashboard/recipes")
-                reset()
-            } else {
-                showToast({
-                    type: "error",
-                    description: "فشل في إضافة الوصفة وحاول مرة تانية",
-                });
-            }
-        } catch  {
-            
-            setError("root", {
-                message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
-            });
-        }
-    };
-
     return (
         <AddCard
             title="بيانات الوصفة"
@@ -77,7 +28,7 @@ const {
             footerHref="/register"
         >
             <Separator className='bg-accent' />
-            <form  onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form  onSubmit={onSubmit} noValidate>
                 <FieldGroup>
                     <AddField
                         input

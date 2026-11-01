@@ -2,39 +2,23 @@
 import AddCard from '@/components/AddFrom/AddCard'
 import AddField from '@/components/AddFrom/AddField'
 import { FieldGroup } from '@/components/ui/field'
-import { useForm } from 'react-hook-form';
-import { EditRecipeFormValues, editRecipeSchema, RecipeFormValues } from '../../schema/recipe.schema';
-import type { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Separator } from '@/components/ui/separator';
 import { CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useStatusToast } from '@/hooks/use-status-toast'
-import { useRouter } from 'next/navigation'
-import { respones } from '@/types'
 import Link from 'next/link'
 import { getImageUrl } from '@/lib/image';
-import { editRecipeApi } from '../../services/editRecipe.api';
+import { useEditRecipe } from '../../hooks/use-edit-recipe';
+import { EditRecipeFormProps } from '../../types';
 
-type EditRecipeFormProps = {
-    initialValues: RecipeFormValues & { _id: string };
-};
 
 export default function EditRecipeForm({
     initialValues,
 }: EditRecipeFormProps) {
-    const { showToast } = useStatusToast();
-    const router = useRouter()
+    const { form, onSubmit } = useEditRecipe(initialValues._id, initialValues);
     const {
         register,
-        handleSubmit,
-        setError,
         formState: { errors, isSubmitting },
-    } = useForm<z.input<typeof editRecipeSchema>, unknown, EditRecipeFormValues>({
-        resolver: zodResolver(editRecipeSchema),
-        defaultValues: initialValues
-    });
-
+    } = form;
     const coverImage = initialValues.coverImage
 
     const difficultyOptions = [
@@ -42,40 +26,13 @@ export default function EditRecipeForm({
         { label: "متوسط", value: "medium" },
         { label: "صعب", value: "hard" },
     ];
-
-    const onSubmit = async (values: EditRecipeFormValues) => {
-        try {
-            const response = await editRecipeApi({
-                values: values as Parameters<typeof editRecipeApi>[0]['values'],
-                id: initialValues._id,
-            }) as respones;
-            if (response?.status === "success") {
-                showToast({
-                    type: "success",
-                    description: "تم تعديل الوصفة بنجاح",
-                })
-                router.refresh()
-                router.push("/dashboard/recipes")
-            } else {
-                showToast({
-                    type: "error",
-                    description: "فشل في تعديل الوصفة وحاول مرة تانية",
-                });
-            }
-        } catch {
-            setError("root", {
-                message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
-            });
-        }
-    };
-
     return (
         <AddCard
             title="تعديل بيانات الوصفة"
             description="أدخل تفاصيل الوصفة كما ستظهر للزوّار"
         >
             <Separator className='bg-[#eee8e1]' />
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form onSubmit={onSubmit} noValidate>
                 <FieldGroup>
                     <AddField
                         input
@@ -168,7 +125,6 @@ export default function EditRecipeForm({
                     </CardFooter>
                 </FieldGroup>
             </form>
-
         </AddCard>
     )
 }

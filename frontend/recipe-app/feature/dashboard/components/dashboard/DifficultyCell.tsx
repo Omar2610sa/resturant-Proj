@@ -1,5 +1,4 @@
-import { cn } from "@/lib/utils";
-import { difficultyConfig } from "../../config/difficultyConfig";
+import { difficultyConfig } from "../../../recipes/config/difficultyConfig";
 
 
 

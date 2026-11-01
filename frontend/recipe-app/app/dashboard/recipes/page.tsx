@@ -1,5 +1,5 @@
 import { DataTableSkeleton } from "@/components/data-table/DataTableSkeleton";
-import { RecipesTableSection } from "@/feature/recipes/components/dashboard/RecipeseSectionTable";
+import { RecipesTableSection } from "@/feature/dashboard/components/dashboard/RecipeseSectionTable";
 import { searchParams } from "@/types";
 import { connection } from "next/server";
 import { Suspense } from "react";

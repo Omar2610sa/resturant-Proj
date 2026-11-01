@@ -1,4 +1,4 @@
-import { DifficultyBadge } from '@/feature/recipes/components/dashboard/DifficultyCell'
+import { DifficultyBadge } from '@/feature/dashboard/components/dashboard/DifficultyCell'
 import { Recipe } from '@/feature/recipes/types'
 import { getImageUrl } from '@/lib/image';
 import Image from 'next/image'

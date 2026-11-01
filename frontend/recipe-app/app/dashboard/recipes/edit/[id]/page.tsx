@@ -1,4 +1,4 @@
-import EditRecipeForm from "@/feature/recipes/components/editRecipe/EditRecipeForm";
+import EditRecipeForm from "@/feature/dashboard/components/editRecipe/EditRecipeForm";
 import { getSingleRecipe } from "@/feature/Single recipe/services/SingleRecipe.api";
 import { ParamsPageProps } from "@/types";
 

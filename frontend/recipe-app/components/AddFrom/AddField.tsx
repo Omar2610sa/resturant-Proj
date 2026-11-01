@@ -53,7 +53,7 @@ export default function AddField({
                     <select
                         defaultValue='اختر مستوى الصعوبة'
                         {...registration}
-                        className="h-12 w-full rounded-xl border bg-[#fffefa] px-4 text-sm outline-none focus:ring-4 focus:ring-primary/10"
+                        className="h-12 w-full rounded-xl border dark:bg-input/30 bg-[#fffefa] px-4 text-sm outline-none focus:ring-4 focus:ring-primary/10"
                     >
                         <option value="easy">سهل</option>
                         <option value="medium">متوسط</option>

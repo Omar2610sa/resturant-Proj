@@ -1,5 +1,5 @@
 import { apiClient } from "@/lib/apis/apiClient";
-import type { RecipeFormValues } from "../schema/recipe.schema";
+import { RecipeFormValues } from "@/feature/dashboard/schema/recipe.schema";
 
 export async function   editRecipeApi({ values, id }: { values: RecipeFormValues, id: string }) {
   const formData = new FormData();

@@ -1,5 +1,5 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { Recipe } from "../../types";
+import { Recipe } from "../../../recipes/types";
 import ImagePreviewCell from "@/components/shared/ImagePreviewCell";
 import { DifficultyBadge } from "./DifficultyCell";
 import TableActions from "@/components/data-table/TableActions";

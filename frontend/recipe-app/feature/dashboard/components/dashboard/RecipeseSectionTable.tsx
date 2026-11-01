@@ -1,5 +1,5 @@
 import DashboardSectionsTitle from "@/components/dashboard/layout/DashboardSectionsTitle";
-import { getRecipes } from "../../services/recipes.api";
+import { getRecipes } from "../../../recipes/services/recipes.api";
 import { RecipesTable } from "./RecipesTable";
 import { searchParams } from "@/types";
 import PaginationRouter from "@/components/Pagination";

@@ -9,11 +9,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Separator } from '@/components/ui/separator';
 import { CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { addRecipeApi } from '../../services/addRecipe.api'
 import { useStatusToast } from '@/hooks/use-status-toast'
 import { useRouter } from 'next/navigation'
 import { respones } from '@/types'
 import Link from 'next/link'
+import { addRecipeApi } from '../../services/addRecipe.api';
 
 export default function AddRecipeForm() {
     const { showToast } = useStatusToast();
@@ -32,7 +32,7 @@ const {
             difficulty: 'easy',
             ingredients: "",
             instructions: "",
-            cookingTime: undefined,
+            cookingTime: 1,
             servingSize: 1,
             coverImage: ""
         },
@@ -76,7 +76,7 @@ const {
             footerText="ليس لديك حساب؟"
             footerHref="/register"
         >
-            <Separator className='bg-[#eee8e1]' />
+            <Separator className='bg-accent' />
             <form  onSubmit={handleSubmit(onSubmit)} noValidate>
                 <FieldGroup>
                     <AddField
@@ -153,7 +153,7 @@ const {
                         registration={register("coverImage")}
                         error={errors.coverImage?.message}
                     />
-                    <Separator className='bg-[#eee8e1]' />
+                    <Separator className='bg-accent' />
                     <CardFooter className='flex flex-col-reverse gap-3   sm:flex-row sm:justify-end sm:px-7'>
                         <Link
                             href='/dashboard/recipes'

@@ -1,6 +1,7 @@
 import NewRecipesPreview from "@/feature/analytics/components/NewRecipesPreview";
 import { StatsSection } from "@/feature/analytics/components/StatsSection";
 import { getAnalytics } from "@/feature/analytics/services/analytics.api";
+import { connection } from "next/server";
 
 export async function generateMetadata() {
     return {
@@ -9,6 +10,7 @@ export async function generateMetadata() {
     };
 }
 export default async function page() {
+    await connection();
     const response = await getAnalytics();
     return (
         <div className="flexSection">

@@ -13,6 +13,7 @@ export interface Recipe {
     coverImage: string;
     createdAt: string;
     difficulty: difficulty
+    servingSize: number
 }
 
 export interface RecipeData {
@@ -20,6 +21,5 @@ export interface RecipeData {
     recipe?: Recipe 
     pagination: Pagination
 }
-    
 
 

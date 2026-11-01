@@ -58,7 +58,7 @@ const getSingleRecipe = asyncWrapper(
 const addRecipe = asyncWrapper(
     async (req, res, next) => {
         const errors = validationResult(req)
-        const { title, description, ingredients, instructions, cookingTime, difficulty } = req.body
+        const { title, description, ingredients, instructions, cookingTime, difficulty, servingSize } = req.body
         if (!errors.isEmpty()) {
             return next(appError.create(errors.array(), 400, httpStatus.FAIL))
         }
@@ -70,7 +70,8 @@ const addRecipe = asyncWrapper(
             instructions,
             cookingTime,
             difficulty,
-            coverImage: req.file.filename
+            coverImage: req.file.filename,
+            servingSize
         })
         await newRecipe.save()
         res.status(201).json({ status: httpStatus.SUCCESS, data: { recipe: newRecipe } })
@@ -88,8 +89,8 @@ const updateRecipe = asyncWrapper(
             return next(appError.create('Recipe not found', 404, httpStatus.FAIL));
         }
 
-        const { title, description, ingredients, instructions, cookingTime, difficulty } = req.body;
-        const updates = { title, description, ingredients, instructions, cookingTime, difficulty };
+        const { title, description, ingredients, instructions, cookingTime, difficulty, servingSize } = req.body;
+        const updates = { title, description, ingredients, instructions, cookingTime, difficulty, servingSize };
         Object.keys(updates).forEach((key) => updates[key] === undefined && delete updates[key]);
 
         const oldImage = recipe.coverImage;

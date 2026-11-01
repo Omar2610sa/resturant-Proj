@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Recipe } from "../types"
 import Image from "next/image"
-import { ArrowLeft, TimerIcon } from "lucide-react"
+import { ArrowLeft, TimerIcon, User } from "lucide-react"
 import Link from "next/link";
 import { difficultyConfig } from "../config/difficultyConfig";
 import { getImageUrl } from "@/lib/image";
@@ -29,6 +29,11 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
                         className={`absolute start-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm ${difficulty.className}`}
                     >
                         {difficulty.label}
+                    </span>
+                    <span
+                        className={`absolute end-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm bg-orange-100 text-orange-800 `}
+                    >
+                        تكفي {recipe.servingSize > 1 ? `${recipe.servingSize} أفراد` : "فرد واحد"}
                     </span>
                 </div>
 

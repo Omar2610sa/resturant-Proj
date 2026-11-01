@@ -17,7 +17,9 @@ router.route('/')
     body('ingredients').not().isEmpty().withMessage('Ingredients are required'),
     body('instructions').not().isEmpty().withMessage('Instructions are required'),
     body('cookingTime').not().isEmpty().withMessage('Cooking time is required'),
-    body('difficulty').not().isEmpty().withMessage('Difficulty is required')], recipeController.addRecipe)
+    body('difficulty').not().isEmpty().withMessage('Difficulty is required'),
+    body('servingSize').not().isEmpty().withMessage('Serving size is required')
+], recipeController.addRecipe)
 
 
 router.route('/:id')

@@ -14,7 +14,6 @@ export function DashboardTopbar() {
                 </MobileSidebar>
                 <DashboardPageTitle />
             </div>
-
             <div className="flex shrink-0 items-center gap-3">
                 <DarkModeToggle />
                 <UserInfo />

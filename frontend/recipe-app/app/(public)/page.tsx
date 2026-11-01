@@ -14,11 +14,14 @@ export async function generateMetadata() {
 export default async function page() {
   const { data: recipeData } = await getRecipes({ limit: 6 })
   const recipes = recipeData?.recipes;
-
   return (
     <div>
       <Hero />
-      <RecipeSection recipes={recipes} />
+      {
+        recipes && (
+          <RecipeSection recipes={recipes} />
+        )
+      }
       <AboutBanner />
       <InfoHomeBanner />
     </div>

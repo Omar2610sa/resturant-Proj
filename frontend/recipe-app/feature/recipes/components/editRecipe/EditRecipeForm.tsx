@@ -125,6 +125,16 @@ export default function EditRecipeForm({
                             error={errors.cookingTime?.message}
                         />
                         <AddField
+                            input
+                            id="servingSize"
+                            label="يكفي لكام شخص"
+                            type="number"
+                            registration={register("servingSize", {
+                                valueAsNumber: true,
+                            })}
+                            error={errors.servingSize?.message}
+                        />
+                        <AddField
                             id="difficulty"
                             label="مستوى الصعوبة"
                             placeholder="اختر مستوى الصعوبة"
@@ -139,7 +149,6 @@ export default function EditRecipeForm({
                         label="صورة الوصفة"
                         upload
                         currentImageUrl={typeof coverImage === 'string' ? getImageUrl(coverImage) : undefined}
-                        registration={register("coverImage")}
                         error={errors.coverImage?.message}
                     />
                     <Separator className='bg-[#eee8e1]' />

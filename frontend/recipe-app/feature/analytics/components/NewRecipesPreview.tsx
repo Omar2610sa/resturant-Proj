@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function NewRecipesPreview({ newRecipes }: { newRecipes: Recipe[] }) {
 
     return (
-        <section className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+        <section className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
             <div className="mb-5 flex items-center justify-between ">
                 <h2 className="font-black text-2xl">أحدث الوصفات</h2>
                 <Link
@@ -16,7 +16,7 @@ export default function NewRecipesPreview({ newRecipes }: { newRecipes: Recipe[]
                     عرض الكل
                 </Link>
             </div>
-            <div className="space-y-3 divide-y divide-[#f0ebe5]">
+            <div className="space-y-3 divide-y divide-border">
                 {newRecipes.map((recipe) => {
                     const date = new Date(recipe.createdAt);
                     const formattedDate = date.toLocaleDateString("ar-EG", {
@@ -34,7 +34,7 @@ export default function NewRecipesPreview({ newRecipes }: { newRecipes: Recipe[]
                                 className="h-15 w-25 rounded-lg object-cover"
                             />
                             <div className="min-w-0 flex-1">
-                                <strong className="block truncate text-lg font-extrabold text-[#38332e]">
+                                <strong className="block truncate text-lg font-extrabold ">
                                     {recipe.title}
                                 </strong>
                                 <span className="text-sm text-[#948d85]">{formattedDate}</span>

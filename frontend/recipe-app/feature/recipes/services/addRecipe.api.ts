@@ -11,6 +11,7 @@ export async function addRecipeApi(values: RecipeFormValues) {
   formData.append("cookingTime", String(values.cookingTime));
   formData.append("difficulty", values.difficulty);
   formData.append("coverImage", values.coverImage);
+  formData.append("servingSize", String(values.servingSize));
 
   return apiClient("recipe", {
     method: "POST",

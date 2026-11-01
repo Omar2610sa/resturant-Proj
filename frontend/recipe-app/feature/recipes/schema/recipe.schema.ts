@@ -7,8 +7,8 @@ const imageFile = z
 
 const toFile = (value: unknown) => {
     if (value instanceof FileList) return value.item(0) ?? undefined;
-    if (value === "" || value === null) return undefined;
-    return value;
+    if (value instanceof File) return value;
+    return undefined;
 };
 
 
@@ -39,6 +39,11 @@ const recipeBaseSchema = z.object({
         .number("مدة الطهي لازم تكون رقم")
         .positive("مدة الطهي لازم تكون أكبر من صفر")
         .int("مدة الطهي لازم تكون عدد صحيح"),
+
+    servingSize: z
+        .number("عدد الأشخاص لازم يكون رقم")
+        .positive("عدد الأشخاص لازم يكون أكبر من صفر")
+        .int("عدد الأشخاص لازم يكون عدد صحيح"),
 
     difficulty: z.enum(
         ["easy", "medium", "hard"],

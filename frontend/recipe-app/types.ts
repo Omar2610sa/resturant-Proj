@@ -63,7 +63,7 @@ export type AddFieldProps = {
     autoComplete?: string;
     defaultValue?: string;
     error?: string;
-    registration: UseFormRegisterReturn;
+    registration?: UseFormRegisterReturn;
     input?: boolean;
     upload?: boolean;
     textarea?: boolean;

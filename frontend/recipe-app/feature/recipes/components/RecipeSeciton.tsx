@@ -19,7 +19,7 @@ export default function RecipeSection({ recipes }: { recipes: Recipe[] }) {
                     />
                     <Link
                     href='/recipes'
-                        className="hidden shrink-0 items-center gap-2 rounded-xl border border-primary bg-white px-5 py-3 font-extrabold text-primary transition-colors hover:border-black hover:text-black sm:flex"
+                        className="hidden shrink-0 items-center gap-2 rounded-xl border border-primary bg- px-5 py-3 font-extrabold text-primary transition-colors hover:border-white hover:text-white sm:flex"
                     >
                         كل الوصفات
                         <ArrowLeft className="h-5 w-5" />

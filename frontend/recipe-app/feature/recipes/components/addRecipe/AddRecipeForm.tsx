@@ -33,6 +33,7 @@ const {
             ingredients: "",
             instructions: "",
             cookingTime: undefined,
+            servingSize: 1,
             coverImage: ""
         },
     });
@@ -124,6 +125,16 @@ const {
                                 valueAsNumber: true,
                             })}
                             error={errors.cookingTime?.message}
+                        />
+                        <AddField
+                            input
+                            id="servingSize"
+                            label="يكفي لكام شخص"
+                            type="number"
+                            registration={register("servingSize", {
+                                valueAsNumber: true,
+                            })}
+                            error={errors.servingSize?.message}
                         />
                         <AddField
                             id="difficulty"

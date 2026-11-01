@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, User } from "lucide-react";
 import { Recipe } from "../../recipes/types";
 import { getImageUrl } from "@/lib/image";
 import { difficultyConfig } from "../../recipes/config/difficultyConfig";
@@ -35,34 +35,50 @@ export default function RecipeHero({ recipe }: { recipe: Recipe }) {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
                     </div>
                 </div>
-
                 <div className="relative z-10 space-y-5">
                     <div className="space-y-1">
-
                         <span className="text-xl font-bold text-primary block">
                             وصفة اليوم
                         </span>
-                        <h1 className=" text-5xl font-black leading-16 sm:leading-20 text-foreground sm:text-6xl">
-                            {recipe.title}
-                        </h1>
+                        {
+                            recipe.title && (
+                                <h1 className=" text-5xl font-black leading-16 sm:leading-20 text-foreground sm:text-6xl">
+                                    {recipe.title}
+                                </h1>
+                            )
+                        }
                     </div>
-                    <p className=" text-xl   text-muted-foreground">
-                        {recipe.description}
-                    </p>
+                    {recipe.description && (
+                        <p className=" text-xl   text-muted-foreground">
+                            {recipe.description}
+                        </p>
+                    )}
                     <div className="flex flex-wrap gap-3">
-                        <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
-                            <Clock className="size-5 text-primary" />
-                            {recipe.cookingTime} دقيقة
-                        </span>
-                        <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
-                            <Calendar className="size-5 text-primary" />
-                            نشر في : {formattedDate}
-                        </span>
-                        <span
-                            className={`flex items-center gap-2 rounded-xl  px-4 py-3 text-sm font-extrabold  shadow-sm ${difficult.className}`}
-                        >
-                            {difficult.label}
-                        </span>
+                        {recipe.cookingTime && (
+                            <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
+                                <Clock className="size-5 text-primary" />
+                                {recipe.cookingTime} دقيقة
+                            </span>
+                        )}
+                        {recipe.servingSize && (
+                            <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
+                                <User className="size-5 text-primary" />
+                                يكفي ل  {recipe.servingSize > 1 ? `${recipe.servingSize} أشخاص` : "شخص واحد"}
+                            </span>
+                        )}
+                        {recipe.createdAt && (
+                            <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
+                                <Calendar className="size-5 text-primary" />
+                                نشر في : {formattedDate}
+                            </span>
+                        )}
+                        {recipe.difficulty && (
+                            <span
+                                className={`flex items-center gap-2 rounded-xl  px-4 py-3 text-sm font-extrabold  shadow-sm ${difficult.className}`}
+                            >
+                                {difficult.label}
+                            </span>
+                        )}
                     </div>
                 </div>
 

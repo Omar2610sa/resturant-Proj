@@ -41,6 +41,12 @@ const recipeSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    servingSize: {
+        type: Number,
+        required: true,
+        min: 1,
+        default: 1
     }
 })
 

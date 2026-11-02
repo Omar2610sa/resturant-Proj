@@ -104,7 +104,7 @@ const updateRecipe = asyncWrapper(
         await recipe.save();
 
         if (req.file && oldImage) {
-            await fs.unlink(path.join(__dirname, '..', 'uploads', oldImage)).catch(() => { });
+            await deleteFromCloudinary(oldImage);
         }
 
         res.status(200).json({ status: httpStatus.SUCCESS, data: { recipe } });

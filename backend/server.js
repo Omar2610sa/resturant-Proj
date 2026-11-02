@@ -21,7 +21,9 @@ connectDB()
 
 // to work at client side
 app.use(cors({
-    origin: "https://resturant-proj-front-end.vercel.app",
+    origin: ["https://resturant-proj-front-end.vercel.app",
+        process.env.CLIENT_URL,
+    ],
     credentials: true
 }));
 

@@ -24,7 +24,7 @@ export function AuthCard({
 }: AuthCardProps) {
     return (
         <div className={cn("w-full max-w-md", className)}>
-            <Card className="rounded-3xl border shadow-sm">
+            <Card className="rounded-3xl shadow-xs border-0">
                 <CardHeader className="space-y-1 text-center">
                     <div className="mx-auto relative">
                         <Image src={logo} width={60} height={60} alt="logo" className="object-cover " />

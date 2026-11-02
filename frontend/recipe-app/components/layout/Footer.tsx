@@ -1,4 +1,4 @@
-import {  Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import Logo from "../Logo";
 import { headerLinks } from "@/lib/navLinks";
@@ -8,13 +8,13 @@ export default function Footer() {
     return (
         <footer className="bg-[#151414] text-white text-xl">
             <div className="mx-auto flex justify-between md:items-start space-y-10 md:space-x-10 container flex-col sm:px-8 md:flex-row">
-                <div data-aos="fade-down" data-aos-duration="1500">
+                <div >
                     <Logo />
                     <p className="mt-4 max-w-sm text-md leading-7 text-gray-300 ">
                         وصفات منزلية موثوقة، نشاركها معك لتصنع لحظات ألذ حول المائدة.
                     </p>
                 </div>
-                <div data-aos="fade-down" data-aos-duration="1500">
+                <div >
                     <h3 className="mb-4 font-extrabold">روابط سريعة</h3>
                     <div className="flex flex-col items-start gap-3 text-md text-gray-300 ">
                         {
@@ -32,14 +32,14 @@ export default function Footer() {
                         }
                     </div>
                 </div>
-                <div data-aos-duration="1500" data-aos="fade-down">
+                <div >
                     <h3 className="mb-4 font-extrabold">حسابك</h3>
                     <div className="flex flex-col items-start gap-3 text-md text-gray-300 ">
                         <Link href="/login" className="hover:text-primary duration-200">تسجيل الدخول</Link>
                         <Link href="/register" className="hover:text-primary duration-200">إنشاء حساب</Link>
                     </div>
                 </div>
-                <div data-aos="fade-down" data-aos-duration="2000" >
+                <div>
                     <h3 className="mb-4 font-extrabold">معلومات التواصل</h3>
                     <div className="flex flex-col items-start gap-3  text-gray-300 ">
                         <div className="duration-200 flex items-center gap-2" >

@@ -23,7 +23,7 @@ export default async function page({
     return (
         <section className=" flexSection">
             <section className="border-b w-full  bg-about ">
-                <div className="mx-auto container space-y-3 text-center">
+                <div data-aos="fade-down" className="mx-auto container space-y-3 text-center">
                     <span className=" block text-lg font-extrabold text-primary">
                         اختيارات لكل الأذواق
                     </span>
@@ -41,19 +41,21 @@ export default async function page({
                 </div>
             </section>
             <section className="space-y-5 container">
-                <div className="flex justify-between items-center mx-4">
-                    <h2 className="text-4xl font-black">
+                <div  className="flex justify-between items-center mx-4">
+                    <h2  className="text-4xl font-black">
                         عدد الوصفات
                     </h2>
-                    <span className="text-xl font-bold">
+                    <span  className="text-xl font-bold">
                         {recipes.length} وصفات
                     </span>
                 </div>
                 {/* when search wrong recipe */}
                 {recipes?.length === 0 && <NotFoundRecipes />}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
-                    {recipes.map((recipe) => (
-                        <RecipeCard key={recipe._id} recipe={recipe} />
+                    {recipes.map((recipe,index) => (
+                        <div key={recipe._id} data-aos="fade-down" data-aos-delay={100 + index * 100}>
+                        <RecipeCard recipe={recipe} />
+                        </div>
                     ))}
                 </div>
                 <PaginationRouter pagination={pagination} />

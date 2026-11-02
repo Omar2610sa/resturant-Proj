@@ -11,12 +11,16 @@ export default async function MobileNavAuth() {
     if (!token) {
         return (
             <>
-                <Button size={'lg'}>
-                    <Link href="/login">تسجيل الدخول</Link>
-                </Button>
-                <Button variant="outline" size={'lg'}>
-                    <Link href="/register">إنشاء حساب</Link>
-                </Button>
+                <Link href="/login">
+                    <Button size={'lg'}>
+                        تسجيل الدخول
+                    </Button>
+                </Link>
+                <Link href="/register">
+                    <Button variant="outline" size={'lg'}>
+                        إنشاء حساب
+                    </Button>
+                </Link>
             </>
         );
     }
@@ -24,9 +28,11 @@ export default async function MobileNavAuth() {
     return (
         <>
             <SideBarUserCard />
-            <Button variant="outline" size={'lg'}>
-                <Link href="/dashboard">لوحة التحكم</Link>
-            </Button>
+            <Link href="/dashboard">
+                <Button variant="outline" size={'lg'}>
+                    لوحة التحكم
+                </Button>
+            </Link>
             <LogoutButton />
         </>
     );

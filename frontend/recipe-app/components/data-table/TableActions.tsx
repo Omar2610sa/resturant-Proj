@@ -12,17 +12,14 @@ const TableActions = ({
     isDelete = false,
     itemName = "item",
     endpoint = "/dashboard/admin/slider",
-    onDeleteSuccess
 }: TableActionsProps) => {
     const { handleDelete } = useDelete({
         name: itemName,
         endpoint,
         itemId: String(itemId)
     });
-
-
     return (
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex gap-2 justify-end md:items-center md:justify-center">
             {edit && (
                 <Link
                     href={`/dashboard/${editHref}/edit/${itemId}`}

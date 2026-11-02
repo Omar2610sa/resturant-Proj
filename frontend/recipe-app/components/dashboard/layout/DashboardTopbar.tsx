@@ -1,6 +1,4 @@
 import { DarkModeToggle } from "@/components/DarkMode";
-import UserInfo from "@/components/UserInfo";
-
 import { DashboardPageTitle } from "./DashboardPageTitle";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { MobileSidebar } from "./MobileSidebar";
@@ -16,7 +14,6 @@ export function DashboardTopbar() {
             </div>
             <div className="flex shrink-0 items-center gap-3">
                 <DarkModeToggle />
-                <UserInfo />
             </div>
         </header>
     );

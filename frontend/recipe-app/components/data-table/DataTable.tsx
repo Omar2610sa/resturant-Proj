@@ -33,52 +33,107 @@ export function DataTable<TData, TValue>({
         getCoreRowModel: getCoreRowModel(),
     });
 
-    return (
-        <div className="overflow-hidden  rounded-2xl border bg-card ">
-            <Table className="text-center ">
-                <TableHeader className="bg-muted/50">
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id}
-                        className="bg-tableHead font-extrabold text-[#716a63]"
-                        >
-                            {headerGroup.headers.map((header) => (
-                                <TableHead
-                                    key={header.index}
-                                    className="px-4 py-3 text-center text-md font-bold "
-                                >
-                                    {flexRender(
-                                        header.column.columnDef.header,
-                                        header.getContext(),
-                                    )}
-                                </TableHead>
-                            ))}
-                        </TableRow>
-                    ))}
-                </TableHeader>
+    const rows = table.getRowModel().rows;
 
-                <TableBody className="">
-                    {table.getRowModel().rows.length ? (
-                        table.getRowModel().rows.map((row) => (
-                            <TableRow key={row.index}>
-                                {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id} className="p-5">
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </TableCell>
+    return (
+        <>
+            {/* ================= Desktop / Tablet: جدول ================= */}
+            <div className="hidden overflow-hidden rounded-2xl border bg-card sm:block">
+                <Table className="text-center">
+                    <TableHeader className="bg-muted/50">
+                        {table.getHeaderGroups().map((headerGroup) => (
+                            <TableRow
+                                key={headerGroup.id}
+                                className="bg-tableHead font-extrabold text-[#716a63]"
+                            >
+                                {headerGroup.headers.map((header) => (
+                                    <TableHead
+                                        key={header.id}
+                                        className="px-4 py-3 text-center text-md font-bold"
+                                    >
+                                        {header.isPlaceholder
+                                            ? null
+                                            : flexRender(
+                                                header.column.columnDef.header,
+                                                header.getContext(),
+                                            )}
+                                    </TableHead>
                                 ))}
                             </TableRow>
-                        ))
-                    ) : (
-                        <TableRow>
-                            <TableCell
-                                colSpan={columns.length}
-                                className="h-32 text-center  text-muted-foreground"
-                            >
-                                {emptyMessage}
-                            </TableCell>
-                        </TableRow>
-                    )}
-                </TableBody>
-            </Table>
-        </div>
+                        ))}
+                    </TableHeader>
+
+                    <TableBody>
+                        {rows.length ? (
+                            rows.map((row) => (
+                                <TableRow key={row.id}>
+                                    {row.getVisibleCells().map((cell) => (
+                                        <TableCell key={cell.id} className="p-5">
+                                            {flexRender(
+                                                cell.column.columnDef.cell,
+                                                cell.getContext(),
+                                            )}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <TableCell
+                                    colSpan={columns.length}
+                                    className="h-32 text-center text-muted-foreground"
+                                >
+                                    {emptyMessage}
+                                </TableCell>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+            <div className="space-y-3 sm:hidden">
+                {rows.length ? (
+                    rows.map((row) => (
+                        <div
+                            key={row.id}
+                            className="overflow-hidden rounded-xl border bg-card shadow-sm"
+                        >
+                            {row.getVisibleCells().map((cell) => {
+                                const header = cell.column.columnDef.header;
+                                const label =
+                                    typeof header === "string"
+                                        ? header
+                                        : flexRender(header, {
+                                            column: cell.column,
+                                            header: undefined as never,
+                                            table,
+                                        });
+                                return (
+                                    <div
+                                        key={cell.id}
+                                        className="flex items-center justify-between gap-3 border-b px-4 py-3 last:border-b-0"
+                                    >
+                                        <span className="shrink-0 text-xs font-medium text-muted-foreground">
+                                            {label}
+                                        </span>
+                                        <div className="min-w-0 flex-1 text-end text-sm text-foreground">
+                                            {flexRender(
+                                                cell.column.columnDef.cell,
+                                                cell.getContext(),
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    ))
+                ) : (
+                    <div className="flex min-h-40 w-full items-center justify-center rounded-xl border border-dashed bg-card py-10">
+                        <h3 className="text-sm font-medium text-muted-foreground">
+                            {emptyMessage}
+                        </h3>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }

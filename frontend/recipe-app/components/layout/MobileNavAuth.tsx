@@ -11,7 +11,7 @@ export default async function MobileNavAuth() {
     if (!token) {
         return (
             <>
-                <Button  size={'lg'}>
+                <Button size={'lg'}>
                     <Link href="/login">تسجيل الدخول</Link>
                 </Button>
                 <Button variant="outline" size={'lg'}>
@@ -23,7 +23,7 @@ export default async function MobileNavAuth() {
 
     return (
         <>
-        <SideBarUserCard />
+            <SideBarUserCard />
             <Button variant="outline" size={'lg'}>
                 <Link href="/dashboard">لوحة التحكم</Link>
             </Button>

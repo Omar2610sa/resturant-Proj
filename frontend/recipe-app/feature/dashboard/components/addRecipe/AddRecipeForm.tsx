@@ -66,7 +66,7 @@ export default function AddRecipeForm() {
                         placeholder="اكتب خطوات التحضير بوضوح وبالترتيب..."
                         error={errors.instructions?.message}
                     />
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col sm:flex-row justify-between gap-5">
                         <AddField
                             input
                             id="cookingTime"
@@ -105,10 +105,10 @@ export default function AddRecipeForm() {
                         error={errors.coverImage?.message}
                     />
                     <Separator className='bg-accent' />
-                    <CardFooter className='flex flex-col-reverse gap-3   sm:flex-row sm:justify-end sm:px-7'>
+                    <CardFooter className='flex justify-end gap-3   sm:flex-row sm:justify-end sm:px-7'>
                         <Link
                             href='/dashboard/recipes'
-                            className="rounded-xl border border-black/20 bg-white py-2.5 px-5   text-black hover:bg-primary/20">
+                            className="rounded-xl border border-black/20  tex py-2.5 px-5    hover:bg-primary/20">
                             إلغاء
                         </Link>
                         <Button

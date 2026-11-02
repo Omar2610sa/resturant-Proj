@@ -22,7 +22,7 @@ export default function DashboardSectionsTitle({
     searchColumnId?: string
 }) {
     return (
-        <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
+        <div className='flex flex-col gap-6 justify-center text-center sm:text-start md:gap-4 sm:flex-row sm:items-center sm:justify-between'>
             <div>
                 <h2 className="text-3xl font-black">
                     {title}

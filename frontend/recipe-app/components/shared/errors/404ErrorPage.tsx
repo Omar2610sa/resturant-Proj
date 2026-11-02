@@ -13,12 +13,12 @@ export default function Error404Page() {
 
                 />
                 <h2 className="text-center font-bold lg:text-2xl text-lg  ">
-                    {"page not found"}
+                    هذه الصفحة غير موجودة
                 </h2>
                 <h2 className="text-center lg:w-[30%] w-3/4 mx-auto font-medium leading-8 text-lg text-sub">
-                    {"page not found description"}
+                    عذرًا، الصفحة التي تبحث عنها غير موجودة. تحقق من الرابط أو العودة إلى الصفحة الرئيسية.
                 </h2>
-                <ErrorButton title={"Back to home"} link="/" />
+                <ErrorButton title=" العودة إلى الصفحة الرئيسية" link="/" />
             </div>
         </div>
     )

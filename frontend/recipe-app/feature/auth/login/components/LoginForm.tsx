@@ -48,7 +48,7 @@ export function LoginForm({
                     <Button
                         type="submit"
                         size="lg"
-                        className="w-full font-extrabold"
+                        className="w-full font-extrabold text-white"
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}

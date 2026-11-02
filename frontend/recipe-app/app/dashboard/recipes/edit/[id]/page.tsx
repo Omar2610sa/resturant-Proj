@@ -21,7 +21,7 @@ export default async function page({ params }: ParamsPageProps) {
         <section>
             <Link
                 href="/dashboard/recipes"
-                className="mb-5 flex items-center gap-2 text-sm font-extrabold text-primary"
+                className="mb-5 flex items-center gap-2 text-xl font-extrabold text-primary"
             >
                 <ArrowRight className="size-4" />
                 العودة إلى الوصفات

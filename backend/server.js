@@ -21,7 +21,8 @@ connectDB()
 
 // to work at client side
 app.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: "https://resturant-proj-front-2z5ju4ks8-omar-salams-projects.vercel.app",
+    
 }));
 
 // to send body as json 

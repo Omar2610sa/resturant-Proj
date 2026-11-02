@@ -19,8 +19,8 @@ export default function MobileNav({ links, children }: MobileNavProps) {
             <DarkModeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger>
-                    <div aria-label="القائمة">
-                        <Menu className="size-6" />
+                    <div aria-label="القائمة" >
+                        <Menu className="relative flex h-10 w-10 items-center justify-center rounded-lg border bg-background p-2 text-sm transition-all hover:bg-accent/50" />
                     </div>
                 </SheetTrigger>
                 <SheetContent

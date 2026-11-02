@@ -109,7 +109,7 @@ export default function EditRecipeForm({
                         error={errors.coverImage?.message}
                     />
                     <Separator className='bg-[#eee8e1]' />
-                    <CardFooter className='flex  gap-3   sm:flex-row sm:justify-end sm:px-7'>
+                    <CardFooter className='flex justify-end gap-3   sm:flex-row sm:justify-end sm:px-7'>
                         <Link
                             href='/dashboard/recipes'
                             className="rounded-xl border border-black/20 bg-white py-2.5 px-5   text-black hover:bg-primary/20">

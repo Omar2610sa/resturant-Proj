@@ -20,8 +20,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "resturant-proj.vercel.app",
-        pathname: "/api/uploads/**",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
       },
     ],
   },

@@ -8,12 +8,12 @@ export const recipesColumns: ColumnDef<Recipe, unknown>[] = [
     {
         accessorKey: "coverImage",
         header: "الصورة",
-        // cell: ({ row }) => (
-        //     <ImagePreviewCell
-        //         coverImage={row.original.coverImage}
-        //         alt={row.original.title}
-        //     />
-        // )
+        cell: ({ row }) => (
+            <ImagePreviewCell
+                coverImage={row.original.coverImage}
+                alt={row.original.title}
+            />
+        )
     },
     {
         accessorKey: "title",

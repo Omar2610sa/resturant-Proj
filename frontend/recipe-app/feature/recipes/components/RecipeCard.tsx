@@ -1,22 +1,20 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Recipe } from "../types"
 import Image from "next/image"
-import { ArrowLeft, TimerIcon, User } from "lucide-react"
+import { ArrowLeft, TimerIcon } from "lucide-react"
 import Link from "next/link";
 import { difficultyConfig } from "../config/difficultyConfig";
-import { getImageUrl } from "@/lib/image";
 
 
 export default function RecipeCard({ recipe }: { recipe: Recipe }) {
     const difficulty = difficultyConfig[recipe.difficulty];
-    const imageUrl = getImageUrl(recipe.coverImage);
     return (
         <Link href={`/recipe/${recipe._id}`} className="group block h-full">
             <Card className="h-full gap-0 overflow-hidden rounded-2xl border bg-card py-0 shadow-none ring-0 transition-shadow duration-300 group-hover:shadow-lg">
                 <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted">
-                    {/* {recipe.coverImage ? (
+                    {recipe.coverImage ? (
                         <Image
-                            src={imageUrl ?? ''}
+                            src={recipe.coverImage ?? ''}
                             alt={recipe.title}
                             fill
                             sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
@@ -24,7 +22,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
                         />
                     ) : (
                         <div className="h-full w-full bg-muted" aria-hidden="true" />
-                    )} */}
+                    )}
                     <span
                         className={`absolute start-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm ${difficulty.className}`}
                     >

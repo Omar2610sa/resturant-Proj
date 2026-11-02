@@ -12,7 +12,6 @@ interface ImagePreviewCellProps {
 const ImagePreviewCell = ({ coverImage, alt = "preview" }: ImagePreviewCellProps) => {
     const [isHovered, setIsHovered] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
-    const imageUrl = getImageUrl(coverImage);
 
     return (
         <>
@@ -25,7 +24,7 @@ const ImagePreviewCell = ({ coverImage, alt = "preview" }: ImagePreviewCellProps
                 <Image
                     width={350}
                     height={350}
-                    src={imageUrl ?? ''}
+                    src={coverImage ?? ''}
                     className="size-12 xl:size-25 rounded-xl mx-auto bg-gray-50 object-cover"
                     alt={alt}
                 />
@@ -40,7 +39,7 @@ const ImagePreviewCell = ({ coverImage, alt = "preview" }: ImagePreviewCellProps
             <Dialog open={isOpen} onOpenChange={setIsOpen} >
                 <DialogContent showCloseButton={false} className="max-w-3xl ring-0  bg-transparent shadow-none">
                     <Image
-                        src={imageUrl ?? ''}
+                        src={coverImage ?? ''}
                         className="rounded-lg w-full h-auto object-contain"
                         alt={alt}
                         width={350}

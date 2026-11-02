@@ -9,7 +9,7 @@ export function Hero() {
         <section className="relative overflow-hidden bg-primary/5 ">
             <div className="pointer-events-none absolute -right-40 -top-40 h-[430px] w-[430px] rounded-full bg-primary/15 blur-3xl" />
             <div className=" grid container  items-center gap-10 lg:grid-cols-2 ">
-                <div className="relative z-10 space-y-6">
+                <div data-aos="fade-left"  className="relative z-10 space-y-6">
                     <span className=" inline-flex items-center gap-2 rounded-full border border-primary/30 text-md bg-background/75 px-5 py-3  font-extrabold text-primary">
                         <span className="h-2 w-2 rounded-full bg-primary" />
                         وصفات مجرّبة بكل حب
@@ -31,10 +31,9 @@ export function Hero() {
                         </Button>
                     </Link>
                 </div>
-
-                <div className="relative mx-auto w-full ">
+                <div data-aos="fade-right" className="relative mx-auto w-full ">
                     <div className="absolute -bottom-5 -left-5 h-full w-full rounded-[34px] border-2 border-primary/40" />
-                    <div className="relative  overflow-hidden rounded-2xl bg-muted shadow-2xl h-96">
+                    <div   className="relative  overflow-hidden rounded-2xl bg-muted shadow-2xl h-96">
                         <Image
                             src={heroPhoto}
                             alt="مائدة شهية تضم أطباقًا عربية متنوعة"

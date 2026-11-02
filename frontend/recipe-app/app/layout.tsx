@@ -8,6 +8,7 @@ import AuthReasonToast from "@/components/AuthReasonToast";
 import AuthExpiryWatcher from "@/components/AuthExpiryWatcher";
 import { Metadata } from "next";
 import logo from "@/assets/Orange Chef Hat App Icon.png"
+import AnimationLayout from "@/components/shared/AnimationLayout";
 
 const tajawal = Tajawal({
   variable: "--font-tajawal",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  
+
   return (
     <html
       lang="ar"
@@ -32,21 +33,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn("h-full")}
       suppressHydrationWarning
     >
-      <body className={`${tajawal.variable} font-sans antialiased bg-primary/5 `}>
-        <Toaster limit={5} />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Suspense>
-            <AuthReasonToast />
-            <AuthExpiryWatcher />
-          </Suspense>
-          {children}
-        </ThemeProvider>
-      </body>
+      <AnimationLayout>
+        <body className={`${tajawal.variable} font-sans antialiased bg-primary/5 `}>
+          <Toaster limit={5} />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Suspense>
+              <AuthReasonToast />
+              <AuthExpiryWatcher />
+            </Suspense>
+            {children}
+          </ThemeProvider>
+        </body>
+      </AnimationLayout>
     </html>
   );
 }

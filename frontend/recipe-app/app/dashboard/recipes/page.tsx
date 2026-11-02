@@ -5,7 +5,12 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 
 
-
+export async function generateMetadata() {
+    return {
+        title: "مَذاق | إدارة الوصفات",
+        description: "مَذاق للوصفات الشهية والعربية الأصيلة",
+    };
+}
 
 export default async function page({ searchParams }: searchParams) {
   await connection();

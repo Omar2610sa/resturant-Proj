@@ -2,6 +2,13 @@ import AboutBanner from "@/feature/about/components/AboutBanner";
 import { AboutHero } from "@/feature/about/components/AboutHero";
 import ProgrammerCard from "@/feature/about/components/ProgrammerCard";
 
+
+export async function generateMetadata() {
+    return {
+        title: "مَذاق | من نحن",
+        description: "مَذاق للوصفات الشهية والعربية الأصيلة",
+    };
+}
 export default function page() {
     return (
         <div className="flexSection">

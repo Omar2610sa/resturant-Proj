@@ -5,6 +5,14 @@ import { searchParams } from "@/types";
 import SearchFilter from "@/components/dashboard/SerchFilter";
 import NotFoundRecipes from "@/feature/recipes/components/NotFoundRecipes";
 
+
+export async function generateMetadata() {
+    return {
+        title: "مَذاق | الوصفات",
+        description: "مَذاق للوصفات الشهية والعربية الأصيلة",
+    };
+}
+
 export default async function page({
     searchParams
 }: searchParams) {

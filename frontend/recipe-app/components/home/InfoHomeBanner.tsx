@@ -25,7 +25,7 @@ export default async function InfoHomeBanner() {
             <div className="container grid grid-cols-1 gap-10 lg:grid-cols-3 items-center justify-center ">
                 {
                     infoItems.map((item, index) => (
-                        <div key={index} className="flex flex-col items-center text-center gap-6 group">
+                        <div data-aos="fade-down" data-aos-delay={100 + index * 100} key={index} className="flex flex-col items-center text-center gap-6 group">
                             <span className="flex size-14 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/25">
                                 <item.icon className="size-8 text-white group-hover:scale-110 transition-transform duration-300" />
                             </span>

@@ -1,5 +1,5 @@
 import { useStatusToast } from "@/hooks/use-status-toast";
-import { RegisterFormValues, registerSchema } from "../register.schema";
+import { RegisterFormValues, registerSchema } from "../schema/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TOKEN_NAME } from "@/lib/constants";
 import { registerService } from "../services/register.api";

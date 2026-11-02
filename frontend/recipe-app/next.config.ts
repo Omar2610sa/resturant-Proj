@@ -16,13 +16,12 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
-     dangerouslyAllowLocalIP: true,
+    dangerouslyAllowLocalIP: true,
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "5000",
-        pathname: "/uploads/**",
+        protocol: "https",
+        hostname: "resturant-proj.vercel.app",
+        pathname: "/api/uploads/**",
       },
     ],
   },

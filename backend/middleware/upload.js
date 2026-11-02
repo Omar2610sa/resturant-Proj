@@ -1,26 +1,25 @@
-const multer = require("multer")
 
+const multer = require("multer");
+const appError = require("../utils/appError");
 
-const diskStorage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/')
-    },
-    filename: (req, file, cb) => {
-        const ext = file.mimetype.split("/")[1]
-        const fileName = `recipe-${Date.now()}.${ext}`
-        cb(null, fileName)
-    }
-})
+const storage = multer.memoryStorage();
 
 const upload = multer({
-    storage: diskStorage, fileFilter: (req, file, cb) => {
-        const imageType = file.mimetype.split("/")[0]
-        if (imageType === "image") {
-            return cb(null, true)
-        } else {
-            return cb(appError.create("only image is allowed", 400), false)
-        }
-    }
-})
+    storage,
 
-module.exports = upload
+    fileFilter: (req, file, cb) => {
+        const imageType = file.mimetype.split("/")[0];
+
+        if (imageType === "image") {
+            return cb(null, true);
+        }
+
+        return cb(appError.create("only image is allowed", 400), false);
+    },
+
+    limits: {
+        fileSize: 5 * 1024 * 1024
+    }
+});
+
+module.exports = upload;

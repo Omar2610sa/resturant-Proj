@@ -5,6 +5,7 @@ const appError = require('../utils/appError')
 const httpStatus = require('../utils/httpStatusText')
 const fs = require('fs/promises');
 const path = require('path');
+const uploadToCloudinary = require('../utils/uploadToCloudinary')
 
 const getAllRecipes = asyncWrapper(
     async (req, res, next) => {
@@ -62,7 +63,7 @@ const addRecipe = asyncWrapper(
         if (!errors.isEmpty()) {
             return next(appError.create(errors.array(), 400, httpStatus.FAIL))
         }
-
+        const result = await uploadToCloudinary(req.file.buffer);
         const newRecipe = new Recipe({
             title,
             description,
@@ -70,7 +71,7 @@ const addRecipe = asyncWrapper(
             instructions,
             cookingTime,
             difficulty,
-            coverImage: req.file.filename,
+            coverImage: result.secure_url,
             servingSize
         })
         await newRecipe.save()
@@ -94,7 +95,10 @@ const updateRecipe = asyncWrapper(
         Object.keys(updates).forEach((key) => updates[key] === undefined && delete updates[key]);
 
         const oldImage = recipe.coverImage;
-        if (req.file) updates.coverImage = req.file.filename;
+        if (req.file) {
+            const result = await uploadToCloudinary(req.file.buffer);
+            updates.coverImage = result.secure_url;
+        }
 
         recipe.set(updates);
         await recipe.save();

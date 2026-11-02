@@ -14,7 +14,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
         <Link href={`/recipe/${recipe._id}`} className="group block h-full">
             <Card className="h-full gap-0 overflow-hidden rounded-2xl border bg-card py-0 shadow-none ring-0 transition-shadow duration-300 group-hover:shadow-lg">
                 <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted">
-                    {recipe.coverImage ? (
+                    {/* {recipe.coverImage ? (
                         <Image
                             src={imageUrl ?? ''}
                             alt={recipe.title}
@@ -24,7 +24,7 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
                         />
                     ) : (
                         <div className="h-full w-full bg-muted" aria-hidden="true" />
-                    )}
+                    )} */}
                     <span
                         className={`absolute start-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm ${difficulty.className}`}
                     >

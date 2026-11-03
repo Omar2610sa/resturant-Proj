@@ -6,6 +6,8 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { DarkModeToggle } from "../DarkMode";
 import Logo from "../Logo";
+import { usePathname } from "next/navigation";
+import { cn } from "cn";
 
 interface MobileNavProps {
     links: { title: string; link: string }[];
@@ -13,6 +15,7 @@ interface MobileNavProps {
 }
 export default function MobileNav({ links, children }: MobileNavProps) {
     const [open, setOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <div className="md:hidden flex items-center gap-2">
@@ -25,23 +28,32 @@ export default function MobileNav({ links, children }: MobileNavProps) {
                 </SheetTrigger>
                 <SheetContent
                     side="right"
-                    showCloseButton={false}
+                    // showCloseButton={false}
                     className="flex w-72 flex-col gap-6 p-6">
                     <SheetTitle>
                         <Logo />
                     </SheetTitle>
-
                     <nav className="flex flex-col gap-1">
-                        {links.map((item) => (
-                            <Link
-                                key={item.title}
-                                href={item.link}
-                                onClick={() => setOpen(false)}
-                                className="rounded-lg px-3 py-2.5 text-lg font-medium duration-200 hover:bg-accent hover:text-primary"
-                            >
-                                {item.title}
-                            </Link>
-                        ))}
+                        {links.map((item) => {
+                            const isActive = item.link === "/"
+                                ? pathname === item.link
+                                : pathname.startsWith(item.link);
+                            return (
+                                <Link
+                                    key={item.title}
+                                    href={item.link}
+                                    onClick={() => setOpen(false)}
+                                    className={cn(
+                                        "flex items-center gap-3 rounded-xl px-4 py-3 text-xl font-bold transition-colors",
+                                        isActive
+                                            ? "bg-primary/10 text-primary"
+                                            : " hover:bg-muted hover:text-foreground",
+                                    )}
+                                >
+                                    {item.title}
+                                </Link>
+                            )
+                        })}
                     </nav>
 
                     <div

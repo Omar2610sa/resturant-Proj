@@ -14,6 +14,8 @@ export function useLogout() {
         const result = await CheckAlert({ title: "هل انت متأكد من تسجيل الخروج" })
         if (result.isConfirmed) {
             Cookies.remove(TOKEN_NAME);
+            Cookies.remove("userName");
+            Cookies.remove("userRole");
             showToast({
                 type: "success",
                 description: "تم تسجيل الخروج بنجاح",

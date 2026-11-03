@@ -17,7 +17,7 @@ export default function UploadField({
     registration,
     currentImageUrl,
 }: UploadFieldProps) {
-    const [preview, setPreview] = useState<string | null>(currentImageUrl ?? null);
+    const [preview, setPreview] = useState<string | null>(null);
 
     useEffect(() => {
         return () => {

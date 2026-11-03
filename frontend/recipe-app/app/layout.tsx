@@ -35,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <AnimationLayout>
         <body className={`${tajawal.variable} font-sans antialiased bg-primary/5 `}>
-          <Toaster limit={5} />
+          <Toaster  limit={5} />
           <ThemeProvider
             attribute="class"
             defaultTheme="light"

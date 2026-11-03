@@ -1,9 +1,10 @@
-"use client"
-import { useAuthStore } from '@/feature/auth/store/auth.store';
+"use client";
 import { User2Icon } from 'lucide-react'
+import Cookies from "js-cookie"
 
-export default function SideBarUserCard() {
-    const user = useAuthStore((state) => state.user);
+export default  function SideBarUserCard() {
+    const userName = Cookies.get("userName")
+    const userRole =  Cookies.get("userRole")
     return (
         <div className="flex items-center justify-between px-2  text-md py-3 rounded-xl">
             <div className='flex items-center gap-3'>
@@ -11,11 +12,11 @@ export default function SideBarUserCard() {
                     <User2Icon className="size-4" />
                 </span>
                 <p className="truncate  font-extrabold">
-                    {user?.firstName} {user?.lastName}
+                    {userName}
                 </p>
             </div>
             <p>
-                الدور : {user?.role === "admin" ? "مسؤول" : "مستخدم"}
+                الدور : {userRole === "admin" ? "مسؤول" : "مستخدم"}
             </p>
         </div>
     )

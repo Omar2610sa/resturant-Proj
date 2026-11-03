@@ -23,7 +23,7 @@ export function useLogin() {
             const response = await loginService(data);
             if (response?.status === "success") {
                 const token = response.data?.token
-                const userName  = response.data.firstName + response.data.lastName
+                const userName  = response.data.firstName + " " + response.data.lastName
                 const userRole  = response.data.role
                 Cookies.set(TOKEN_NAME, token)
                 Cookies.set("userName", userName)

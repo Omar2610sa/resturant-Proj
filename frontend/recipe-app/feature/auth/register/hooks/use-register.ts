@@ -4,15 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TOKEN_NAME } from "@/lib/constants";
 import { registerService } from "../services/register.api";
 import { useForm } from "react-hook-form";
-import { useAuthStore } from "../../store/auth.store";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie"
-import { User } from "../../types";
 
 export function useRegister() {
     const { showToast } = useStatusToast();
     const router = useRouter();
-    const setUser = useAuthStore((state) => state.setUser)
 
     const form = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
@@ -29,13 +26,15 @@ export function useRegister() {
 
             if (response?.status === "success") {
                 const token = response.data?.token
-                const user = response.data as unknown as User
+                const userName  = response.data.firstName + " " + response.data.lastName
+                const userRole  = response.data.role
                 Cookies.set(TOKEN_NAME, token)
+                Cookies.set("userName", userName)
+                Cookies.set("userRole", userRole)
                 showToast({
                     type: "success",
                     description: "تم إنشاء الحساب بنجاح",
                 })
-                setUser(user)
                 router.refresh()
                 router.push("/")
             }

@@ -4,11 +4,13 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
 import Link from "next/link";
 import { useAuthStore } from "@/feature/auth/store/auth.store";
 import { useLogout } from "@/feature/auth/utils/logout";
+import Cookies from "js-cookie"
 
 export default function UserInfo() {
     const user = useAuthStore((state) => state.user)
     const { handleLogout } = useLogout();
-
+    const userName = Cookies.get("userName")
+    const userRole =  Cookies.get("userRole")
     return (
         <DropdownMenu modal={false}>
             <DropdownMenuTrigger
@@ -18,7 +20,7 @@ export default function UserInfo() {
                     <User2Icon className="size-4" />
                 </span>
                 <span className=" text-sm font-extrabold text-accent-foreground sm:flex gap-5">
-                    {user?.firstName} {user?.lastName}
+                    {userName}
                 </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className=" md:w-40" align="center">

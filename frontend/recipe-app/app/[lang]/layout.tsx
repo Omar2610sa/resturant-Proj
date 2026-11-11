@@ -38,7 +38,7 @@ export default async function RootLayout({
   if (!isLocale(lang)) notFound();
 
   setRequestLocale(lang);
-  const messages = await getMessages();
+  const messages = await getMessages({ locale: lang });
   const direction = lang === "ar" ? "rtl" : "ltr";
 
   return (

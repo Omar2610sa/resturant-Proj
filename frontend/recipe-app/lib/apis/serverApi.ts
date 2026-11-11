@@ -3,10 +3,12 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { TOKEN_NAME } from "../constants";
 import axios from "axios";
+import { connection } from "next/server";
 
 const instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     timeout: 10000,
+    
 });
 
 export async function serverApi<T = unknown>(
@@ -14,7 +16,7 @@ export async function serverApi<T = unknown>(
     options: Options = {}
 ): Promise<T> {
     const { method = "GET", body, headers = {} } = options;
-
+await connection();
     const cookieStore = await cookies();
     const token = cookieStore.get(TOKEN_NAME)?.value;
     // const language = cookieStore.get("NEXT_LOCALE")?.value;

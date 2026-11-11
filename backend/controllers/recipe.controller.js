@@ -6,6 +6,7 @@ const httpStatus = require('../utils/httpStatusText')
 const fs = require('fs/promises');
 const path = require('path');
 const uploadToCloudinary = require('../utils/uploadToCloudinary')
+const localizeRecipe = require('../utils/localizeRecipe')
 
 const getAllRecipes = asyncWrapper(
     async (req, res, next) => {
@@ -28,11 +29,15 @@ const getAllRecipes = asyncWrapper(
             Recipe.countDocuments(filter),
         ]);
 
+        const localizedRecipes = recipes.map((recipe) =>
+            localizeRecipe(recipe, req.language)
+        );
+
         const totalPages = Math.ceil(totalRecipes / limit);
         res.json({
             status: httpStatus.SUCCESS,
             data: {
-                recipes,
+                recipes: localizedRecipes,
                 pagination: {
                     currentPage: page,
                     limit,
@@ -49,10 +54,12 @@ const getAllRecipes = asyncWrapper(
 const getSingleRecipe = asyncWrapper(
     async (req, res, next) => {
         const recipe = await Recipe.findById(req.params.id, { '__v': false })
+
         if (!recipe) {
             return next(appError.create('not found recipe', 404, httpStatus.FAIL))
         }
-        res.json({ status: httpStatus.SUCCESS, data: { recipe } })
+        const localizedRecipes = localizeRecipe(recipe, req.language)
+        res.json({ status: httpStatus.SUCCESS, data:  localizedRecipes  })
     }
 )
 

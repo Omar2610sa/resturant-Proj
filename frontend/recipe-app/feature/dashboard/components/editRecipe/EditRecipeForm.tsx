@@ -36,39 +36,75 @@ export default function EditRecipeForm({
                 <FieldGroup>
                     <AddField
                         input
-                        id="address"
-                        label="العنوان"
+                        id="titleAr"
+                        label="العنوان بالعربي"
                         type="text"
-                        registration={register('title')}
+                        registration={register('title.ar')}
                         placeholder="مثال: فئة حمص الشام"
-                        error={errors.title?.message}
+                        error={errors.title?.ar?.message}
+                    />
+                    <AddField
+                        input
+                        id="titleEn"
+                        label="العنوان بالإنجليزية"
+                        type="text"
+                        registration={register('title.en')}
+                        placeholder="مثال: Sham Hummus"
+                        error={errors.title?.en?.message}
                     />
                     <AddField
                         textarea
-                        id="description"
-                        label="وصف مختصر"
+                        id="descriptionAr"
+                        label="وصف مختصر بالعربي"
                         type="text"
-                        registration={register('description')}
+                        registration={register('description.ar')}
                         placeholder="اكتب وصفًا شهيًا ومختصرًا للوصفة..."
-                        error={errors.description?.message}
+                        error={errors.description?.ar?.message}
                     />
                     <AddField
                         textarea
-                        id="ingredients"
-                        label="المكونات"
+                        id="descriptionEn"
+                        label="وصف مختصر بالإنجليزية"
                         type="text"
-                        registration={register('ingredients')}
+                        registration={register('description.en')}
+                        placeholder="اكتب وصفًا شهيًا ومختصرًا للوصفة..."
+                        error={errors.description?.en?.message}
+                    />
+                    <AddField
+                        textarea
+                        id="ingredientsAr"
+                        label="المكونات بالعربي"
+                        type="text"
+                        registration={register('ingredients.ar')}
                         placeholder={"مثال:\nكوبان من الحمص\nملعقة زيت زيتون\nعصير ليمونة"}
-                        error={errors.ingredients?.message}
+                        error={errors.ingredients?.ar?.message}
                     />
                     <AddField
                         textarea
-                        id="instructions"
-                        label="طريقة التحضير"
+                        id="ingredientsEn"
+                        label="المكونات بالإنجليزية"
                         type="text"
-                        registration={register('instructions')}
+                        registration={register('ingredients.en')}
+                        placeholder="مثال:\n1 cup of chickpeas\n1 tablespoon olive oil\n1 tablespoon lemon juice"
+                        error={errors.ingredients?.en?.message}
+                    />
+                    <AddField
+                        textarea
+                        id="instructionsAr"
+                        label="طريقة التحضير بالعربي"
+                        type="text"
+                        registration={register('instructions.ar')}
                         placeholder="اكتب خطوات التحضير بوضوح وبالترتيب..."
-                        error={errors.instructions?.message}
+                        error={errors.instructions?.ar?.message}
+                    />
+                    <AddField
+                        textarea
+                        id="instructionsEn"
+                        label="طريقة التحضير بالإنجليزية"
+                        type="text"
+                        registration={register('instructions.en')}
+                        placeholder="Write the preparation steps clearly and in order..."
+                        error={errors.instructions?.en?.message}
                     />
                     <div className="flex flex-col sm:flex-row justify-between gap-5">
                         <AddField

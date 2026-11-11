@@ -9,7 +9,8 @@ const cors = require('cors');
 const path = require("node:path");
 const AuthRouter = require('./routes/auth.route')
 const AnalyticsRouter = require('./routes/analytics.route')
-const usersRouter = require('./routes/users.route')
+const usersRouter = require('./routes/users.route');
+const languageMiddleware = require("./middleware/language.middleware");
 
 
 
@@ -29,6 +30,7 @@ app.use(cors({
 
 // to send body as json 
 app.use(express.json())
+app.use(languageMiddleware);
 app.use('/uploads', express.static(path.join(__dirname, "uploads")))
 
 

@@ -17,7 +17,7 @@ export async function serverApi<T = unknown>(
 
     const cookieStore = await cookies();
     const token = cookieStore.get(TOKEN_NAME)?.value;
-    // const language = cookieStore.get("NEXT_LOCALE")?.value;
+    const language = cookieStore.get("NEXT_LOCALE")?.value;
     try {
         const res = await instance.request<T>({
             url: endpoint,
@@ -26,7 +26,7 @@ export async function serverApi<T = unknown>(
             headers: {
                 "Content-Type": "application/json",
                 ...(token ? { Authorization: `Bearer ${token}` } : {}),
-                // ...(language ? { "Accept-Language": language } : {}),
+                ...(language ? { "Accept-Language": language } : {}),
                 ...headers,
             },
         });

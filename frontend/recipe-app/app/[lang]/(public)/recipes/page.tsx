@@ -6,8 +6,13 @@ import SearchFilter from "@/components/dashboard/SerchFilter";
 import NotFoundRecipes from "@/feature/recipes/components/NotFoundRecipes";
 import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata() {
-    const t = await getTranslations("Metadata");
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ lang: string }>;
+}) {
+    const { lang } = await params;
+    const t = await getTranslations({ locale: lang, namespace: "Metadata" });
     return {
         title: t("recipesTitle"),
         description: t("description"),

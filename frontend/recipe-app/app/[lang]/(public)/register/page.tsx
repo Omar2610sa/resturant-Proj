@@ -1,13 +1,8 @@
 import { RegisterForm } from "@/feature/auth/register/components/RegisterForm";
 import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ lang: string }>;
-}) {
-    const { lang } = await params;
-    const t = await getTranslations({ locale: lang, namespace: "Metadata" });
+export async function generateMetadata() {
+    const t = await getTranslations("Metadata");
     return {
         title: t("registerTitle"),
         description: t("registerDescription"),

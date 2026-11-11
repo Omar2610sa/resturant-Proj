@@ -5,24 +5,15 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ lang: string }>;
-}) {
-    const { lang } = await params;
-    const t = await getTranslations({
-        locale: lang,
-        namespace: "Dashboard.metadata",
-    });
+export async function generateMetadata() {
+    const t = await getTranslations("Dashboard.metadata");
     return {
         title: t("editRecipeTitle"),
         description: t("descriptionRecipes"),
     };
 }
-async function EditRecipePageContent({ params }: ParamsPageProps) {
+export default async function page({ params }: ParamsPageProps) {
     const t = await getTranslations("Dashboard.recipes");
     const { id } = await params
     const { data: recipeData } = await getSingleRecipe({ id })
@@ -47,12 +38,4 @@ async function EditRecipePageContent({ params }: ParamsPageProps) {
             </div>
         </section>
     )
-}
-
-export default function page({ params }: ParamsPageProps) {
-    return (
-        <Suspense fallback={<div className="min-h-40 animate-pulse rounded-2xl bg-muted" />}>
-            <EditRecipePageContent params={params} />
-        </Suspense>
-    );
 }

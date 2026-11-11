@@ -6,33 +6,23 @@ import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ lang: string }>;
-}) {
-    const { lang } = await params;
-    const t = await getTranslations({
-        locale: lang,
-        namespace: "Dashboard.metadata",
-    });
+export async function generateMetadata() {
+    const t = await getTranslations("Dashboard.metadata");
     return {
         title: t("recipesTitle"),
         description: t("descriptionRecipes"),
     };
 }
 
-async function RecipesPageContent({ searchParams }: searchParams) {
+export default async function page({ searchParams }: searchParams) {
   await connection();
-  return <RecipesTableSection searchParams={searchParams} />;
-}
-
-export default function page({ searchParams }: searchParams) {
   return (
     <section>
       <Suspense fallback={<DataTableSkeleton columns={5} rows={5} />}>
-        <RecipesPageContent searchParams={searchParams} />
+        <RecipesTableSection
+          searchParams={searchParams}
+        />
       </Suspense>
     </section>
-  );
+  )
 }

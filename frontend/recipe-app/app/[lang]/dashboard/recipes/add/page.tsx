@@ -3,16 +3,8 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-    params,
-}: {
-    params: Promise<{ lang: string }>;
-}) {
-    const { lang } = await params;
-    const t = await getTranslations({
-        locale: lang,
-        namespace: "Dashboard.metadata",
-    });
+export async function generateMetadata() {
+    const t = await getTranslations("Dashboard.metadata");
     return {
         title: t("addRecipeTitle"),
         description: t("descriptionRecipes"),

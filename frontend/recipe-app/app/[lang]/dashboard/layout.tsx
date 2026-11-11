@@ -1,8 +1,6 @@
 import {DashboardSidebar} from "@/components/dashboard/layout/DashboardSidebar";
 import {DashboardTopbar} from "@/components/dashboard/layout/DashboardTopbar";
 
-export const instant = false;
-
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex min-h-svh bg-muted/30">

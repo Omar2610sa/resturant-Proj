@@ -5,13 +5,8 @@ import RecipeSection from "@/feature/recipes/components/RecipeSeciton";
 import { getRecipes } from "@/feature/recipes/services/recipes.api";
 import { getTranslations } from "next-intl/server";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
-  const { lang } = await params;
-  const t = await getTranslations({ locale: lang, namespace: "Metadata" });
+export async function generateMetadata() {
+  const t = await getTranslations("Metadata");
   return {
     title: t("homeTitle"),
     description: t("description"),

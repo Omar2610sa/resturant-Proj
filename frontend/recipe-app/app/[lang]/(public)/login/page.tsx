@@ -1,9 +1,11 @@
 import { LoginForm } from "@/feature/auth/login/components/LoginForm";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
+    const t = await getTranslations("Metadata");
     return {
-        title: "مَذاق | تسجيل الدخول",
-        description: "قم بالتسجيل الدخول لإضافة وصفاتك",
+        title: t("loginTitle"),
+        description: t("loginDescription"),
     };
 }
 

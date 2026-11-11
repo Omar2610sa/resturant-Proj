@@ -4,9 +4,12 @@ import Image from "next/image"
 import { ArrowLeft, TimerIcon } from "lucide-react"
 import Link from "next/link";
 import { difficultyConfig } from "../config/difficultyConfig";
+import { getTranslations } from "next-intl/server";
+import ArrorDirectionIcon from "@/components/shared/ArrorDirectionIcon";
 
 
-export default function RecipeCard({ recipe }: { recipe: Recipe }) {
+export default async function RecipeCard({ recipe }: { recipe: Recipe }) {
+    const t = await getTranslations("Recipes");
     const difficulty = difficultyConfig[recipe.difficulty];
     return (
         <Link href={`/recipe/${recipe._id}`} className="group block h-full">
@@ -26,12 +29,12 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
                     <span
                         className={`absolute start-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm ${difficulty.className}`}
                     >
-                        {difficulty.label}
+                        {t(`difficulty.${recipe.difficulty}`)}
                     </span>
                     <span
                         className={`absolute end-4 top-4 rounded-full px-3 py-1 text-sm font-extrabold shadow-sm bg-orange-100 text-orange-800 `}
                     >
-                        تكفي {recipe.servingSize > 1 ? `${recipe.servingSize} أفراد` : "فرد واحد"}
+                        {t("card.serving", { count: recipe.servingSize })}
                     </span>
                 </div>
 
@@ -46,11 +49,11 @@ export default function RecipeCard({ recipe }: { recipe: Recipe }) {
                     <div className="mt-auto flex items-center justify-between border-t pt-4">
                         <div className="flex items-center gap-2 text-sm font-bold text-foreground">
                             <TimerIcon className="size-4 text-primary" />
-                            {recipe.cookingTime} دقيقة
+                            {t("card.cookingTime", { count: recipe.cookingTime })}
                         </div>
                         <span className="flex items-center gap-1 text-sm font-extrabold text-primary">
-                            عرض الوصفة
-                            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+                            {t("card.viewRecipe")}
+                            <ArrorDirectionIcon />
                         </span>
                     </div>
                 </CardContent>

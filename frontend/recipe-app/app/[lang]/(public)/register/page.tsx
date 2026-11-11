@@ -1,9 +1,11 @@
 import { RegisterForm } from "@/feature/auth/register/components/RegisterForm";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
+    const t = await getTranslations("Metadata");
     return {
-        title: "مَذاق | إنشاء حساب",
-        description: "قم بإنشاء حسابك لإضافة وصفاتك",
+        title: t("registerTitle"),
+        description: t("registerDescription"),
     };
 }
 export default function page() {

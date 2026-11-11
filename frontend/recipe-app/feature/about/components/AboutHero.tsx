@@ -1,24 +1,27 @@
 import {  ChefHatIcon } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export function AboutHero() {
+export async function AboutHero() {
+    const t = await getTranslations("About.hero");
+
     return (
         <section className="relative overflow-hidden bg-primary/5 ">
             <div className="pointer-events-none absolute -right-40 -top-40 size-80 rounded-full bg-primary/15 blur-3xl" />
             <div className=" grid container  items-center gap-10 lg:grid-cols-2 ">
                 <div className="relative z-10 space-y-6">
                     <span className="text-2xl font-bold text-primary block">
-                        قصتنا
+                        {t("eyebrow")}
                     </span>
                     <h1 className=" text-5xl font-black leading-16 sm:leading-20 text-foreground sm:text-6xl">
-                        مذاق، مساحة عربية
-                        <span className="block text-primary">تلهمك لتطبخ بحب</span>
+                        {t("title")}
+                        <span className="block text-primary">{t("titleAccent")}</span>
                     </h1>
                     <div className="space-y-4 text-base leading-8 sm:text-md font-bold text-muted-foreground">
                         <p>
-                            بدأ مذاق بفكرة بسيطة: أن تكون تجربة الطبخ اليومية أوضح وأقرب إلى كل بيت عربي، بمحتوى سهل ولغة دافئة تشبه لحظاتنا حول المائدة.
+                            {t("paragraphOne")}
                         </p>
                         <p >
-                            نصنع مساحة تجمع الإلهام والبساطة في مكان واحد، ونؤمن أن الوجبات الجميلة لا تحتاج إلى تعقيد، بل إلى خطوات واضحة ولمسة من الحب.
+                            {t("paragraphTwo")}
                         </p>
                     </div>
                 </div>
@@ -32,10 +35,10 @@ export function AboutHero() {
                         </span>
                         <div className="space-y-2 flex flex-col">
                             <strong className="mt-6 text-3xl font-black ">
-                                نكهات تجمعنا
+                                {t("featureTitle")}
                             </strong>
                             <span className=" text-sm font-bold text-foreground">
-                                من القلب إلى المائدة
+                                {t("featureSubtitle")}
                             </span>
                         </div>
                     </div>

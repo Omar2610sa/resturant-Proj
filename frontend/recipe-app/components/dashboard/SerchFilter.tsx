@@ -1,18 +1,22 @@
 "use client";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { Search } from "lucide-react";
 import { Input } from "../ui/input";
+import { useTranslations } from "next-intl";
+import Cookies from "js-cookie"
 
 export default function SearchFilter({
-    placeholder = "ابحث...",
+    placeholder,
 }: {
     placeholder?: string;
 }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
+    const t = useTranslations("Recipes.page");
+
+    const isRtl = Cookies.get("NEXT_LOCALE") === 'ar'
 
     const handleSearch = useDebouncedCallback((term: string) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -27,12 +31,12 @@ export default function SearchFilter({
 
     return (
         <label className="relative w-full sm:w-80">
-            <Search className="absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#938c84]" />
+            <Search className={`absolute ${isRtl ? "right-3.5" : "left-3.5"} top-1/2 h-4 w-4 -translate-y-1/2 text-[#938c84]`} />
             <Input
                 defaultValue={searchParams.get("search") ?? ""}
                 onChange={(e) => handleSearch(e.target.value)}
-                placeholder={placeholder}
-                className="h-11 w-full rounded-xl bg-white pr-10 pl-4 text-sm"
+                placeholder={placeholder ?? t("searchPlaceholder")}
+                className={`h-11 w-full rounded-xl bg-white ${isRtl ? "pr-10" : "pl-10"}  text-sm`}
             />
         </label>
     );

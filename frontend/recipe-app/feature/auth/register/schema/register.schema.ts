@@ -1,10 +1,17 @@
 import { z } from "zod";
 
-export const registerSchema = z.object({
-  firstName: z.string().min(3, "الاسم الاول لازم تكون 3 أحرف على الأقل"),
-  lastName: z.string().min(3, "الاسم الاخير لازم تكون 3 أحرف على الأقل"),
-  email: z.email("عنوان بريد إلكتروني غير صالح"),
-  password: z.string().min(7, "كلمة المرور لازم تكون 7 أحرف على الأقل"),
-});
+export function createRegisterSchema(messages: {
+  invalidEmail: string;
+  passwordMin: string;
+  firstNameMin: string;
+  lastNameMin: string;
+}) {
+  return z.object({
+    firstName: z.string().min(3, messages.firstNameMin),
+    lastName: z.string().min(3, messages.lastNameMin),
+    email: z.email(messages.invalidEmail),
+    password: z.string().min(7, messages.passwordMin),
+  });
+}
 
-export type RegisterFormValues = z.infer<typeof registerSchema>;
+export type RegisterFormValues = z.infer<ReturnType<typeof createRegisterSchema>>;

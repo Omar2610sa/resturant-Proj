@@ -1,18 +1,25 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { LoginFormValues, loginSchema } from "../login.schema";
+import { LoginFormValues, createLoginSchema } from "../login.schema";
 import { useRouter } from "next/navigation";
 import { useStatusToast } from "@/hooks/use-status-toast";
 import { loginService } from "../services/login.api";
 import { TOKEN_NAME } from "@/lib/constants";
 import Cookies from "js-cookie"
+import { useTranslations } from "next-intl";
 
 export function useLogin() {
     const { showToast } = useStatusToast();
     const router = useRouter();
+    const t = useTranslations("Auth.login");
+    const validationT = useTranslations("Auth.validation");
+    const schema = createLoginSchema({
+        invalidEmail: validationT("invalidEmail"),
+        passwordMin: validationT("passwordMin"),
+    });
 
     const form = useForm<LoginFormValues>({
-        resolver: zodResolver(loginSchema),
+        resolver: zodResolver(schema),
         defaultValues: {
             email: "",
             password: "",
@@ -30,7 +37,7 @@ export function useLogin() {
                 Cookies.set("userRole", userRole)
                 showToast({
                     type: "success",
-                    description: "تم تسجيل الدخول بنجاح",
+                    description: t("success"),
                 })
                 router.refresh()
                 router.push("/")
@@ -38,12 +45,12 @@ export function useLogin() {
             else {
                 showToast({
                     type: "error",
-                    description: "فشل تسجيل الدخول، راجع بياناتك وحاول مرة تانية",
+                    description: t("failure"),
                 })
             }
         } catch {
             form.setError("root", {
-                message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
+                message: t("error"),
             });
         }
     })

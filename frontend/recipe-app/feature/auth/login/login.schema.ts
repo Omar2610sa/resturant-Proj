@@ -1,8 +1,13 @@
 import { z } from "zod";
 
-export const loginSchema = z.object({
-  email: z.email("عنوان بريد إلكتروني غير صالح"),
-  password: z.string().min(7, "كلمة المرور لازم تكون 7 أحرف على الأقل"),
-});
+export function createLoginSchema(messages: {
+  invalidEmail: string;
+  passwordMin: string;
+}) {
+  return z.object({
+    email: z.email(messages.invalidEmail),
+    password: z.string().min(7, messages.passwordMin),
+  });
+}
 
-export type LoginFormValues = z.infer<typeof loginSchema>;
+export type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;

@@ -2,15 +2,14 @@
 import { Home, LayoutDashboard, LogOut, User2Icon } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
-import { useAuthStore } from "@/feature/auth/store/auth.store";
 import { useLogout } from "@/feature/auth/utils/logout";
 import Cookies from "js-cookie"
+import { useTranslations } from "next-intl";
 
 export default function UserInfo() {
-    const user = useAuthStore((state) => state.user)
     const { handleLogout } = useLogout();
     const userName = Cookies.get("userName")
-    const userRole =  Cookies.get("userRole")
+    const t = useTranslations("Navigation");
     return (
         <DropdownMenu modal={false}>
             <DropdownMenuTrigger
@@ -28,13 +27,13 @@ export default function UserInfo() {
                     <DropdownMenuItem>
                         <Link href='/' className="flex  items-center justify-between gap-3">
                             <Home />
-                            الصفحة الرئيسية
+                            {t("profileHome")}
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <Link href='/dashboard' className="flex  items-center justify-between gap-3">
                             <LayoutDashboard />
-                            لوحة التحكم
+                            {t("dashboard")}
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -44,7 +43,7 @@ export default function UserInfo() {
                         className="flex items-center text-red-700 bg-transparent  gap-3"
                     >
                         <LogOut />
-                        تسجيل خروج
+                        {t("logout")}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

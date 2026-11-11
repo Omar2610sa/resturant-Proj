@@ -1,6 +1,6 @@
 
 export const headerLinks = [
-    { title: "الرئيسية", link: "/" },
-    { title: "الوصفات", link: "/recipes" },
-    { title: "من نحن", link: "/about" },
+    { titleKey: "home", link: "/" },
+    { titleKey: "recipes", link: "/recipes" },
+    { titleKey: "about", link: "/about" },
 ];

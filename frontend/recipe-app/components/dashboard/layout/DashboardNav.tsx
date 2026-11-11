@@ -1,18 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/routing";
 
 import { cn } from "@/lib/utils";
 import { dashboardNav } from "@/lib/dashboard-nav";
+import { useTranslations } from "next-intl";
 
 export function DashboardNav() {
     const pathname = usePathname();
+    const t = useTranslations("Dashboard.navigation");
 
     return (
-        <nav aria-label="قائمة لوحة التحكم" className="flex-1 overflow-y-auto p-3">
+        <nav aria-label={t("label")} className="flex-1 overflow-y-auto p-3">
             <ul className="space-y-1">
-                {dashboardNav.map(({ href, label, icon: Icon }) => {
+                {dashboardNav.map(({ href, labelKey, icon: Icon }) => {
                     const isActive =
                         href === "/dashboard"
                             ? pathname === href
@@ -31,7 +33,7 @@ export function DashboardNav() {
                                 )}
                             >
                                 <Icon className="size-5" />
-                                {label}
+                                {t(labelKey)}
                             </Link>
                         </li>
                     );

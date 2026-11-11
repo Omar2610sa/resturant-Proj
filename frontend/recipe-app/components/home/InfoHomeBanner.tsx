@@ -1,23 +1,25 @@
-import { BookOpen, ChefHat, Clock, Heart } from "lucide-react";
+import { ChefHat, Clock, Heart } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 
 export default async function InfoHomeBanner() {
+    const t = await getTranslations("Home.features");
 
     const infoItems = [
         {
             icon: ChefHat,
-            title: "وصفات لكل الأذواق",
-            description: "اكتشف مجموعة متنوعة من الوصفات المناسبة لكل ذوق ومناسبة.",
+            title: t("varietyTitle"),
+            description: t("varietyDescription"),
         },
         {
             icon: Clock,
-            title: "وفّر وقتك",
-            description: "اعثر على وصفات تناسب وقتك وساعد نفسك في تخطيط وجباتك.",
+            title: t("timeTitle"),
+            description: t("timeDescription"),
         },
         {
             icon: Heart,
-            title: "شارك شغفك بالطبخ",
-            description: "اكتشف وصفات جديدة واحفظ أطباقك المفضلة للرجوع إليها.",
+            title: t("favoritesTitle"),
+            description: t("favoritesDescription"),
         },
     ];
     return (

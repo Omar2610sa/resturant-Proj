@@ -1,0 +1,311 @@
+{
+  "LanguageSwitcher": {
+    "label": "التبديل إلى الإنجليزية"
+  },
+  "logo": {
+    "name": "مَذاق"
+  },
+  "Metadata": {
+    "description": "مَذاق للوصفات الشهية والعربية الأصيلة",
+    "homeTitle": "مَذاق | الرئيسية",
+    "aboutTitle": "مَذاق | من نحن",
+    "loginTitle": "مَذاق | تسجيل الدخول",
+    "registerTitle": "مَذاق | إنشاء حساب",
+    "recipesTitle": "مَذاق | الوصفات",
+    "recipeTitle": "مَذاق | الوصفة",
+    "loginDescription": "سجّل الدخول لإضافة وصفاتك",
+    "registerDescription": "أنشئ حسابك لإضافة وصفاتك"
+  },
+  "Navigation": {
+    "home": "الرئيسية",
+    "recipes": "الوصفات",
+    "about": "من نحن",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "dashboard": "لوحة التحكم",
+    "menu": "القائمة",
+    "logout": "تسجيل الخروج",
+    "profileHome": "الصفحة الرئيسية",
+    "logoutConfirm": "هل أنت متأكد من تسجيل الخروج؟",
+    "confirm": "نعم",
+    "cancel": "لا",
+    "logoutSuccess": "تم تسجيل الخروج بنجاح"
+  },
+  "Footer": {
+    "description": "وصفات منزلية موثوقة، نشاركها معك لتصنع لحظات ألذ حول المائدة.",
+    "quickLinks": "روابط سريعة",
+    "account": "حسابك",
+    "contact": "معلومات التواصل",
+    "copyright": "جميع الحقوق محفوظة لمذاق © 2026",
+    "developedBy": "من تطوير وبرمجة",
+    "developer": "عمر معتز"
+  },
+  "Home": {
+    "hero": {
+      "badge": "وصفات مجرّبة بكل حب",
+      "title": "كل يوم طعم جديد",
+      "titleAccent": "على مائدتك",
+      "description": "اكتشف وصفات عربية شهية وسهلة التحضير، بمكوّنات متوفرة وخطوات واضحة لوجبات تجمع العائلة.",
+      "browseRecipes": "تصفح الوصفات",
+      "imageAlt": "مائدة شهية تضم أطباقًا عربية متنوعة",
+      "recipeOfTheDay": "وصفة اليوم",
+      "featuredRecipe": "سلطة متوسطية طازجة"
+    },
+    "features": {
+      "varietyTitle": "وصفات لكل الأذواق",
+      "varietyDescription": "اكتشف مجموعة متنوعة من الوصفات المناسبة لكل ذوق ومناسبة.",
+      "timeTitle": "وفّر وقتك",
+      "timeDescription": "اعثر على وصفات تناسب وقتك وساعد نفسك في تخطيط وجباتك.",
+      "favoritesTitle": "شارك شغفك بالطبخ",
+      "favoritesDescription": "اكتشف وصفات جديدة واحفظ أطباقك المفضلة للرجوع إليها."
+    },
+    "recipeSection": {
+      "eyebrow": "من مطبخنا إليك",
+      "title": "أحدث الوصفات",
+      "description": "أفكار شهية ومتنوعة اخترناها لتجعل طبخك اليومي أبسط وألذ.",
+      "allRecipes": "كل الوصفات"
+    }
+  },
+  "About": {
+    "hero": {
+      "eyebrow": "قصتنا",
+      "title": "مذاق، مساحة عربية",
+      "titleAccent": "تلهمك لتطبخ بحب",
+      "paragraphOne": "بدأ مذاق بفكرة بسيطة: أن تكون تجربة الطبخ اليومية أوضح وأقرب إلى كل بيت عربي، بمحتوى سهل ولغة دافئة تشبه لحظاتنا حول المائدة.",
+      "paragraphTwo": "نصنع مساحة تجمع الإلهام والبساطة في مكان واحد، ونؤمن أن الوجبات الجميلة لا تحتاج إلى تعقيد، بل إلى خطوات واضحة ولمسة من الحب.",
+      "featureTitle": "نكهات تجمعنا",
+      "featureSubtitle": "من القلب إلى المائدة"
+    },
+    "programmer": {
+      "eyebrow": "وراء التجربة",
+      "title": "من يقف خلف مذاق؟",
+      "description": "فكرة صُممت بعناية لتقديم تجربة عربية بسيطة، سريعة، ومريحة في كل شاشة.",
+      "role": "تصميم وتطوير",
+      "name": "عمر معتز سلام",
+      "bio": "قمت بتطوير هذا الموقع بالاعتماد على خبرتي في مجال الـ Front-End باستخدام Next.js وTypeScript وTailwind CSS وShadcn UI، بالإضافة إلى بناء الـ Back-End باستخدام Node.js وExpress.js وربطه بقاعدة بيانات MongoDB لتقديم تجربة متكاملة."
+    },
+    "cta": {
+      "title": "انضم إلى مجتمع مذاق",
+      "description": "أنشئ حسابك وابدأ رحلتك مع محتوى يلهم مائدتك ويضيف نكهة جديدة إلى يومك.",
+      "button": "إنشاء حساب"
+    }
+  },
+  "Recipes": {
+    "page": {
+      "eyebrow": "اختيارات لكل الأذواق",
+      "title": "الوصفات",
+      "description": "ابحث عن وصفتك المفضلة واستمتع بتجربة طبخ سهلة ولذيذة.",
+      "searchPlaceholder": "ابحث عن وصفتك...",
+      "countTitle": "عدد الوصفات",
+      "count": "{count, plural, zero {لا توجد وصفات} one {وصفة واحدة} two {وصفتان} few {# وصفات} many {# وصفة} other {# وصفة}}"
+    },
+    "card": {
+      "serving": "{count, plural, one {تكفي فردًا واحدًا} two {تكفي فردين} few {تكفي # أفراد} many {تكفي # فردًا} other {تكفي # فرد}}",
+      "cookingTime": "{count, plural, one {دقيقة واحدة} two {دقيقتان} few {# دقائق} many {# دقيقة} other {# دقيقة}}",
+      "viewRecipe": "عرض الوصفة"
+    },
+    "difficulty": {
+      "easy": "سهل",
+      "medium": "متوسط",
+      "hard": "صعب"
+    },
+    "empty": {
+      "title": "لا توجد وصفة بهذا الاسم",
+      "description": "ابحث عن وصفة أخرى"
+    },
+    "pagination": {
+      "previous": "السابق",
+      "next": "التالي"
+    }
+  },
+  "RecipeDetail": {
+    "hero": {
+      "recipeOfTheDay": "وصفة اليوم",
+      "cookingTime": "{count, plural, one {دقيقة واحدة} two {دقيقتان} few {# دقائق} many {# دقيقة} other {# دقيقة}}",
+      "serving": "{count, plural, one {تكفي شخصًا واحدًا} two {تكفي شخصين} few {تكفي # أشخاص} many {تكفي # شخصًا} other {تكفي # شخص}}",
+      "published": "نُشرت في: {date}"
+    },
+    "details": {
+      "ingredients": "المكونات",
+      "ingredientCount": "{count, plural, zero {لا توجد مكونات} one {مكون واحد} two {مكونان} few {# مكونات} many {# مكونًا} other {# مكون}}",
+      "instructions": "طريقة التحضير"
+    },
+    "notFound": {
+      "title": "الوصفة غير موجودة",
+      "description": "ربما تم تغيير رابط الوصفة أو إزالتها.",
+      "backToRecipes": "العودة إلى الوصفات"
+    }
+  },
+  "Dashboard": {
+    "metadata": {
+      "title": "مَذاق | لوحة التحكم",
+      "description": "لوحة التحكم الخاصة بمذاق",
+      "recipesTitle": "مَذاق | إدارة الوصفات",
+      "usersTitle": "مَذاق | إدارة المستخدمين",
+      "addRecipeTitle": "مَذاق | أضف وصفة",
+      "editRecipeTitle": "مَذاق | تعديل الوصفة",
+      "descriptionRecipes": "مَذاق للوصفات الشهية والعربية الأصيلة"
+    },
+    "navigation": {
+      "analytics": "التحليلات",
+      "recipes": "الوصفات",
+      "users": "المستخدمون",
+      "label": "قائمة لوحة التحكم",
+      "mobileOpen": "فتح القائمة",
+      "mobileTitle": "قائمة لوحة التحكم",
+      "mobileDescription": "التنقل بين أقسام لوحة التحكم",
+      "returnHome": "العودة إلى الرئيسية"
+    },
+    "overview": {
+      "totalRecipes": "إجمالي الوصفات",
+      "totalUsers": "إجمالي المستخدمين",
+      "recipesThisWeek": "وصفات جديدة هذا الأسبوع",
+      "ariaLabel": "إحصائيات عامة",
+      "latestRecipes": "أحدث الوصفات",
+      "viewAll": "عرض الكل"
+    },
+    "recipes": {
+      "title": "إدارة الوصفات",
+      "description": "أضف الوصفات وعدّل محتواها من مكان واحد.",
+      "new": "وصفة جديدة",
+      "back": "العودة إلى الوصفات",
+      "addFormTitle": "بيانات الوصفة",
+      "editFormTitle": "تعديل بيانات الوصفة",
+      "formDescription": "أدخل تفاصيل الوصفة كما ستظهر للزوّار",
+      "table": {
+        "image": "الصورة",
+        "title": "العنوان",
+        "cookingTime": "مدة التحضير",
+        "difficulty": "الصعوبة",
+        "createdAt": "تاريخ الإضافة",
+        "actions": "الإجراءات"
+      }
+    },
+    "users": {
+      "title": "المستخدمون",
+      "description": "إدارة حسابات مستخدمي الموقع.",
+      "searchPlaceholder": "ابحث عن مستخدم",
+      "table": {
+        "user": "المستخدم",
+        "email": "البريد الإلكتروني",
+        "role": "الدور",
+        "roleAction": "تعديل الدور",
+        "createdAt": "تاريخ التسجيل",
+        "actions": "الإجراءات"
+      }
+    },
+    "form": {
+      "title": "العنوان",
+      "titlePlaceholder": "مثال: حمص الشام",
+      "description": "وصف مختصر",
+      "descriptionPlaceholder": "اكتب وصفًا شهيًا ومختصرًا للوصفة...",
+      "ingredients": "المكونات",
+      "ingredientsPlaceholder": "مثال:\nكوبان من الحمص\nملعقة زيت زيتون\nعصير ليمونة",
+      "instructions": "طريقة التحضير",
+      "instructionsPlaceholder": "اكتب خطوات التحضير بوضوح وبالترتيب...",
+      "cookingTime": "مدة التحضير بالدقائق",
+      "servingSize": "عدد الأشخاص",
+      "difficulty": "مستوى الصعوبة",
+      "selectDifficulty": "اختر مستوى الصعوبة",
+      "coverImage": "صورة الوصفة",
+      "cancel": "إلغاء",
+      "saving": "جارٍ الحفظ...",
+      "save": "حفظ الوصفة"
+    },
+    "upload": {
+      "drop": "اسحب الصورة هنا أو اضغط للاختيار",
+      "formats": "PNG أو JPG أو WEBP، حتى 5 ميجابايت",
+      "preview": "معاينة الصورة",
+      "previewAlt": "معاينة {label}",
+      "chooseAnother": "اضغط على الصورة لاختيار صورة أخرى"
+    },
+    "validation": {
+      "imageRequired": "اختر صورة للوصفة",
+      "imageType": "صيغة الصورة غير مدعومة",
+      "imageSize": "يجب ألا يتجاوز حجم الصورة 5 ميجابايت",
+      "titleMin": "يجب ألا يقل عنوان الوصفة عن 3 أحرف",
+      "titleMax": "يجب ألا يزيد عنوان الوصفة عن 100 حرف",
+      "descriptionMin": "يجب ألا يقل الوصف المختصر عن 10 أحرف",
+      "descriptionMax": "يجب ألا يزيد الوصف المختصر عن 150 حرفًا",
+      "ingredientsMin": "اكتب مكونات الوصفة",
+      "instructionsMin": "يجب ألا تقل طريقة التحضير عن 10 أحرف",
+      "cookingTimeNumber": "أدخل مدة الطهي كرقم",
+      "cookingTimePositive": "يجب أن تكون مدة الطهي أكبر من صفر",
+      "cookingTimeInteger": "يجب أن تكون مدة الطهي عددًا صحيحًا",
+      "servingSizeNumber": "أدخل عدد الأشخاص كرقم",
+      "servingSizePositive": "يجب أن يكون عدد الأشخاص أكبر من صفر",
+      "servingSizeInteger": "يجب أن يكون عدد الأشخاص عددًا صحيحًا",
+      "difficultyRequired": "اختر مستوى صعوبة الوصفة"
+    },
+    "feedback": {
+      "addSuccess": "تمت إضافة الوصفة بنجاح",
+      "addFailure": "تعذرت إضافة الوصفة. حاول مرة أخرى.",
+      "addError": "حدث خطأ أثناء إضافة الوصفة. حاول مرة أخرى.",
+      "editSuccess": "تم تعديل الوصفة بنجاح",
+      "editFailure": "تعذر تعديل الوصفة. حاول مرة أخرى.",
+      "editError": "حدث خطأ أثناء حفظ الوصفة. حاول مرة أخرى."
+    },
+    "roles": {
+      "role": "الدور",
+      "admin": "مسؤول",
+      "user": "مستخدم",
+      "grantAdmin": "منح صلاحية المدير إلى {name}",
+      "updated": "تم تحديث الدور",
+      "updateFailed": "تعذّر تحديث الدور"
+    },
+    "table": {
+      "noData": "لا توجد بيانات",
+      "edit": "تعديل",
+      "delete": "حذف"
+    },
+    "delete": {
+      "recipe": "الوصفة",
+      "user": "المستخدم",
+      "confirm": "هل أنت متأكد من حذف {name}؟",
+      "yes": "نعم",
+      "no": "لا",
+      "success": "تم حذف {name} بنجاح",
+      "error": "حدث خطأ أثناء الحذف"
+    }
+  },
+  "Auth": {
+    "validation": {
+      "invalidEmail": "عنوان بريد إلكتروني غير صالح",
+      "passwordMin": "يجب ألا تقل كلمة المرور عن 7 أحرف",
+      "firstNameMin": "يجب ألا يقل الاسم الأول عن 3 أحرف",
+      "lastNameMin": "يجب ألا يقل الاسم الأخير عن 3 أحرف"
+    },
+    "login": {
+      "title": "مرحبًا بعودتك",
+      "description": "سجّل دخولك لتحتفظ بوصفاتك المفضلة.",
+      "footerText": "ليس لديك حساب؟",
+      "footerLink": "إنشاء حساب",
+      "emailLabel": "البريد الإلكتروني",
+      "emailPlaceholder": "بريدك الإلكتروني",
+      "passwordLabel": "كلمة المرور",
+      "passwordPlaceholder": "كلمة المرور الخاصة بك",
+      "submitting": "جارٍ تسجيل الدخول...",
+      "submit": "تسجيل الدخول",
+      "success": "تم تسجيل الدخول بنجاح",
+      "failure": "تعذر تسجيل الدخول. راجع بياناتك وحاول مرة أخرى.",
+      "error": "حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى."
+    },
+    "register": {
+      "title": "أنشئ حسابك",
+      "description": "انضم إلينا واكتشف عالمًا من النكهات",
+      "firstNameLabel": "الاسم الأول",
+      "firstNamePlaceholder": "اسمك الأول",
+      "lastNameLabel": "الاسم الأخير",
+      "lastNamePlaceholder": "اسمك الأخير",
+      "emailLabel": "البريد الإلكتروني",
+      "emailPlaceholder": "بريدك الإلكتروني",
+      "passwordLabel": "كلمة المرور",
+      "passwordPlaceholder": "أنشئ كلمة مرور",
+      "submitting": "جارٍ إنشاء الحساب...",
+      "submit": "إنشاء الحساب",
+      "success": "تم إنشاء الحساب بنجاح",
+      "failure": "تعذر إنشاء الحساب. راجع بياناتك وحاول مرة أخرى.",
+      "error": "حدث خطأ أثناء إنشاء الحساب. حاول مرة أخرى."
+    }
+  }
+}

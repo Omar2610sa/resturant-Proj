@@ -1,10 +1,12 @@
 "use client";
 import { User2Icon } from 'lucide-react'
 import Cookies from "js-cookie"
+import { useTranslations } from "next-intl";
 
 export default  function SideBarUserCard() {
     const userName = Cookies.get("userName")
     const userRole =  Cookies.get("userRole")
+    const t = useTranslations("Dashboard.roles");
     return (
         <div className="flex items-center justify-between px-2  text-md py-3 rounded-xl">
             <div className='flex items-center gap-3'>
@@ -16,7 +18,7 @@ export default  function SideBarUserCard() {
                 </p>
             </div>
             <p>
-                الدور : {userRole === "admin" ? "مسؤول" : "مستخدم"}
+                {t("role")}: {userRole === "admin" ? t("admin") : t("user")}
             </p>
         </div>
     )

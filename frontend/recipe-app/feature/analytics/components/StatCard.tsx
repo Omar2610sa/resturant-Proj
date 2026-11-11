@@ -3,6 +3,7 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { StatCardProps, StatTone } from "../types";
+import { getLocale } from "next-intl/server";
 
 const toneStyles: Record<StatTone, string> = {
     primary: "bg-primary/10 text-primary",
@@ -11,7 +12,9 @@ const toneStyles: Record<StatTone, string> = {
 };
 
 
-export function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProps) {
+export async function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProps) {
+    const locale = await getLocale();
+    const numberFormatter = new Intl.NumberFormat(locale);
     const isUp = trend !== undefined && trend >= 0;
 
     return (
@@ -41,7 +44,7 @@ export function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProp
                             ) : (
                                 <TrendingDown className="size-3.5" />
                             )}
-                            {Math.abs(trend).toLocaleString("ar-EG")}٪
+                            {numberFormatter.format(Math.abs(trend))}{locale === "ar" ? "٪" : "%"}
                         </span>
                     )}
                 </div>
@@ -49,7 +52,7 @@ export function StatCard({ label, value, icon: Icon, tone, trend }: StatCardProp
                 <div>
                     <p className="text-lg font-bold text-muted-foreground">{label}</p>
                     <p className="mt-1 text-3xl font-black">
-                        {value.toLocaleString("ar-EG")}
+                        {numberFormatter.format(value)}
                     </p>
                 </div>
             </CardContent>

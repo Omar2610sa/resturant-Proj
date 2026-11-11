@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 import { AddFieldProps } from "@/types";
+import { useTranslations } from "next-intl";
 
 
 type UploadFieldProps = AddFieldProps & {
@@ -18,6 +19,7 @@ export default function UploadField({
     currentImageUrl,
 }: UploadFieldProps) {
     const [preview, setPreview] = useState<string | null>(null);
+    const t = useTranslations("Dashboard.upload");
 
     useEffect(() => {
         return () => {
@@ -37,18 +39,18 @@ export default function UploadField({
                         </div>
 
                         <span className="text-sm font-medium text-gray-700">
-                            اسحب الصورة هنا أو اضغط للاختيار
+                            {t("drop")}
                         </span>
 
                         <p className="text-xs text-gray-500">
-                            PNG أو JPG أو WEBP، حتى 2MB
+                            {t("formats")}
                         </p>
                     </div>
                 ) : (
                     <div className="w-full space-y-3">
                         <div className="flex items-center justify-between">
                             <span className="text-sm font-medium text-gray-700">
-                                معاينة الصورة
+                                {t("preview")}
                             </span>
 
                             <span className="text-xs text-gray-500">
@@ -59,7 +61,7 @@ export default function UploadField({
                         <div className="relative aspect-video w-full overflow-hidden rounded-lg border bg-muted">
                             <Image
                                 src={preview}
-                                alt={`معاينة ${label}`}
+                                alt={t("previewAlt", { label })}
                                 fill
                                 unoptimized
                                 className="object-contain"
@@ -68,7 +70,7 @@ export default function UploadField({
                         </div>
 
                         <p className="text-center text-xs text-gray-500">
-                            اضغط على الصورة لاختيار صورة أخرى
+                            {t("chooseAnother")}
                         </p>
                     </div>
                 )}

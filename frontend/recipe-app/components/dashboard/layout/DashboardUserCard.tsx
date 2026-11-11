@@ -5,9 +5,12 @@ import { useLogout } from "@/feature/auth/utils/logout";
 import Link from "next/link";
 import SideBarUserCard from "@/components/SideBarUserCard";
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from "next-intl";
 
 export function DashboardUserCard() {
     const { handleLogout } = useLogout();
+    const t = useTranslations("Dashboard.navigation");
+    const navigationT = useTranslations("Navigation");
 
     return (
         <div className="shrink-0 space-y-1  p-3 ">
@@ -20,7 +23,7 @@ export function DashboardUserCard() {
                         variant={'secondary'}
                     >
                         <Home className="size-5" />
-                        العودة الى الرئيسية
+                        {t("returnHome")}
                     </Button>
                 </Link>
                 <Button
@@ -29,7 +32,7 @@ export function DashboardUserCard() {
                     onClick={handleLogout}
                 >
                     <LogOut className="size-5" />
-                    تسجيل الخروج
+                    {navigationT("logout")}
                 </Button>
             </div>
         </div>

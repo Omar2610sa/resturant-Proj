@@ -1,0 +1,311 @@
+{
+  "LanguageSwitcher": {
+    "label": "Switch to Arabic"
+  },
+  "logo": {
+    "name": "Mazzaq"
+  },
+  "Metadata": {
+    "description": "Mazaaq for delicious recipes and authentic Arabic flavors",
+    "homeTitle": "Mazaaq | Home",
+    "aboutTitle": "Mazaaq | About",
+    "loginTitle": "Mazaaq | Sign in",
+    "registerTitle": "Mazaaq | Create an account",
+    "recipesTitle": "Mazaaq | Recipes",
+    "recipeTitle": "Mazaaq | Recipe",
+    "loginDescription": "Sign in to add your recipes",
+    "registerDescription": "Create an account to add your recipes"
+  },
+  "Navigation": {
+    "home": "Home",
+    "recipes": "Recipes",
+    "about": "About us",
+    "login": "Sign in",
+    "register": "Create account",
+    "dashboard": "Dashboard",
+    "menu": "Menu",
+    "logout": "Sign out",
+    "profileHome": "Home page",
+    "logoutConfirm": "Are you sure you want to sign out?",
+    "confirm": "Yes",
+    "cancel": "No",
+    "logoutSuccess": "You have signed out successfully"
+  },
+  "Footer": {
+    "description": "Trusted home recipes to help you create delicious moments around the table.",
+    "quickLinks": "Quick links",
+    "account": "Your account",
+    "contact": "Contact information",
+    "copyright": "All rights reserved to Mazaaq © 2026",
+    "developedBy": "Designed and developed by",
+    "developer": "Omar Moataz"
+  },
+  "Home": {
+    "hero": {
+      "badge": "Recipes tried and made with love",
+      "title": "A new flavor every day",
+      "titleAccent": "at your table",
+      "description": "Discover delicious Arabic recipes that are easy to make, with accessible ingredients and clear steps for meals that bring the family together.",
+      "browseRecipes": "Explore recipes",
+      "imageAlt": "A delicious table with a variety of Arabic dishes",
+      "recipeOfTheDay": "Recipe of the day",
+      "featuredRecipe": "Fresh Mediterranean salad"
+    },
+    "features": {
+      "varietyTitle": "Recipes for every taste",
+      "varietyDescription": "Discover a variety of recipes for every taste and occasion.",
+      "timeTitle": "Save time",
+      "timeDescription": "Find recipes that fit your schedule and make meal planning easier.",
+      "favoritesTitle": "Share your passion for cooking",
+      "favoritesDescription": "Discover new recipes and save your favorite dishes for later."
+    },
+    "recipeSection": {
+      "eyebrow": "From our kitchen to yours",
+      "title": "Latest recipes",
+      "description": "Delicious, varied ideas chosen to make everyday cooking simpler and tastier.",
+      "allRecipes": "All recipes"
+    }
+  },
+  "About": {
+    "hero": {
+      "eyebrow": "Our story",
+      "title": "Mazaaq, an Arabic space",
+      "titleAccent": "that inspires you to cook with love",
+      "paragraphOne": "Mazaaq began with a simple idea: to make everyday cooking clearer and closer to every Arabic home, with accessible content and warm language that feels like sharing a meal around the table.",
+      "paragraphTwo": "We create a space that brings inspiration and simplicity together. We believe great meals do not need to be complicated, just clear steps and a touch of love.",
+      "featureTitle": "Flavors that bring us together",
+      "featureSubtitle": "From the heart to the table"
+    },
+    "programmer": {
+      "eyebrow": "Behind the experience",
+      "title": "Who is behind Mazaaq?",
+      "description": "Thoughtfully designed to offer a simple, fast Arabic experience on every screen.",
+      "role": "Design and development",
+      "name": "Omar Moataz Salam",
+      "bio": "I developed this website using my front-end experience with Next.js, TypeScript, Tailwind CSS, and Shadcn UI. I also built the back end with Node.js and Express.js and connected it to MongoDB to deliver a complete experience."
+    },
+    "cta": {
+      "title": "Join the Mazaaq community",
+      "description": "Create an account and start a journey filled with inspiration for your table and a new flavor for every day.",
+      "button": "Create account"
+    }
+  },
+  "Recipes": {
+    "page": {
+      "eyebrow": "Something for every taste",
+      "title": "Recipes",
+      "description": "Find your favorite recipe and enjoy an easy, delicious cooking experience.",
+      "searchPlaceholder": "Search for a recipe...",
+      "countTitle": "Number of recipes",
+      "count": "{count, plural, =0 {No recipes} one {# recipe} other {# recipes}}"
+    },
+    "card": {
+      "serving": "{count, plural, one {Serves # person} other {Serves # people}}",
+      "cookingTime": "{count, plural, one {# minute} other {# minutes}}",
+      "viewRecipe": "View recipe"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "empty": {
+      "title": "No recipes found with that name",
+      "description": "Try searching for another recipe"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "RecipeDetail": {
+    "hero": {
+      "recipeOfTheDay": "Recipe of the day",
+      "cookingTime": "{count, plural, one {# minute} other {# minutes}}",
+      "serving": "{count, plural, one {Serves # person} other {Serves # people}}",
+      "published": "Published: {date}"
+    },
+    "details": {
+      "ingredients": "Ingredients",
+      "ingredientCount": "{count, plural, =0 {No ingredients} one {# item} other {# items}}",
+      "instructions": "Instructions"
+    },
+    "notFound": {
+      "title": "Recipe not found",
+      "description": "The recipe link may have changed or the recipe may have been removed.",
+      "backToRecipes": "Back to recipes"
+    }
+  },
+  "Dashboard": {
+    "metadata": {
+      "title": "Mazaaq | Dashboard",
+      "description": "Mazaaq dashboard",
+      "recipesTitle": "Mazaaq | Manage recipes",
+      "usersTitle": "Mazaaq | Manage users",
+      "addRecipeTitle": "Mazaaq | Add a recipe",
+      "editRecipeTitle": "Mazaaq | Edit recipe",
+      "descriptionRecipes": "Mazaaq for delicious recipes and authentic Arabic flavors"
+    },
+    "navigation": {
+      "analytics": "Analytics",
+      "recipes": "Recipes",
+      "users": "Users",
+      "label": "Dashboard navigation",
+      "mobileOpen": "Open navigation menu",
+      "mobileTitle": "Dashboard menu",
+      "mobileDescription": "Navigate between dashboard sections",
+      "returnHome": "Back to home"
+    },
+    "overview": {
+      "totalRecipes": "Total recipes",
+      "totalUsers": "Total users",
+      "recipesThisWeek": "New recipes this week",
+      "ariaLabel": "Overview statistics",
+      "latestRecipes": "Latest recipes",
+      "viewAll": "View all"
+    },
+    "recipes": {
+      "title": "Manage recipes",
+      "description": "Add recipes and edit their details in one place.",
+      "new": "New recipe",
+      "back": "Back to recipes",
+      "addFormTitle": "Recipe details",
+      "editFormTitle": "Edit recipe details",
+      "formDescription": "Enter the recipe details as they will appear to visitors.",
+      "table": {
+        "image": "Image",
+        "title": "Title",
+        "cookingTime": "Cooking time",
+        "difficulty": "Difficulty",
+        "createdAt": "Date added",
+        "actions": "Actions"
+      }
+    },
+    "users": {
+      "title": "Users",
+      "description": "Manage website user accounts.",
+      "searchPlaceholder": "Search for a user",
+      "table": {
+        "user": "User",
+        "email": "Email address",
+        "role": "Role",
+        "roleAction": "Change role",
+        "createdAt": "Registration date",
+        "actions": "Actions"
+      }
+    },
+    "form": {
+      "title": "Title",
+      "titlePlaceholder": "Example: Chickpea soup",
+      "description": "Short description",
+      "descriptionPlaceholder": "Write a delicious, concise recipe description...",
+      "ingredients": "Ingredients",
+      "ingredientsPlaceholder": "Example:\n2 cups chickpeas\n1 tablespoon olive oil\nJuice of 1 lemon",
+      "instructions": "Instructions",
+      "instructionsPlaceholder": "Write the preparation steps clearly and in order...",
+      "cookingTime": "Cooking time in minutes",
+      "servingSize": "Number of servings",
+      "difficulty": "Difficulty",
+      "selectDifficulty": "Select difficulty",
+      "coverImage": "Recipe image",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "save": "Save recipe"
+    },
+    "upload": {
+      "drop": "Drop an image here or click to choose",
+      "formats": "PNG, JPG, or WEBP, up to 5 MB",
+      "preview": "Image preview",
+      "previewAlt": "Preview of {label}",
+      "chooseAnother": "Click the image to choose another one"
+    },
+    "validation": {
+      "imageRequired": "Choose a recipe image",
+      "imageType": "Unsupported image format",
+      "imageSize": "Image size must be 5 MB or less",
+      "titleMin": "Recipe title must be at least 3 characters",
+      "titleMax": "Recipe title must be no more than 100 characters",
+      "descriptionMin": "Short description must be at least 10 characters",
+      "descriptionMax": "Short description must be no more than 150 characters",
+      "ingredientsMin": "Enter the recipe ingredients",
+      "instructionsMin": "Instructions must be at least 10 characters",
+      "cookingTimeNumber": "Cooking time must be a number",
+      "cookingTimePositive": "Cooking time must be greater than zero",
+      "cookingTimeInteger": "Cooking time must be a whole number",
+      "servingSizeNumber": "Number of servings must be a number",
+      "servingSizePositive": "Number of servings must be greater than zero",
+      "servingSizeInteger": "Number of servings must be a whole number",
+      "difficultyRequired": "Select a recipe difficulty"
+    },
+    "feedback": {
+      "addSuccess": "Recipe added successfully",
+      "addFailure": "Could not add the recipe. Please try again.",
+      "addError": "Something went wrong while adding the recipe. Please try again.",
+      "editSuccess": "Recipe updated successfully",
+      "editFailure": "Could not update the recipe. Please try again.",
+      "editError": "Something went wrong while saving the recipe. Please try again."
+    },
+    "roles": {
+      "role": "Role",
+      "admin": "Admin",
+      "user": "User",
+      "grantAdmin": "Grant administrator access to {name}",
+      "updated": "User role updated",
+      "updateFailed": "Could not update user role"
+    },
+    "table": {
+      "noData": "No data available",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "delete": {
+      "recipe": "recipe",
+      "user": "user",
+      "confirm": "Are you sure you want to delete {name}?",
+      "yes": "Yes",
+      "no": "No",
+      "success": "{name} was deleted successfully",
+      "error": "An error occurred while deleting"
+    }
+  },
+  "Auth": {
+    "validation": {
+      "invalidEmail": "Enter a valid email address",
+      "passwordMin": "Password must be at least 7 characters",
+      "firstNameMin": "First name must be at least 3 characters",
+      "lastNameMin": "Last name must be at least 3 characters"
+    },
+    "login": {
+      "title": "Welcome back",
+      "description": "Sign in to save your favorite recipes.",
+      "footerText": "Don't have an account?",
+      "footerLink": "Create account",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Your email address",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "submitting": "Signing in...",
+      "submit": "Sign in",
+      "success": "You have signed in successfully",
+      "failure": "Unable to sign in. Check your details and try again.",
+      "error": "Something went wrong while signing in. Please try again."
+    },
+    "register": {
+      "title": "Create your account",
+      "description": "Join us and discover a world of flavors",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "Your first name",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "Your last name",
+      "emailLabel": "Email address",
+      "emailPlaceholder": "Your email address",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Create a password",
+      "submitting": "Creating account...",
+      "submit": "Create account",
+      "success": "Your account was created successfully",
+      "failure": "Unable to create your account. Check your details and try again.",
+      "error": "Something went wrong while creating your account. Please try again."
+    }
+  }
+}

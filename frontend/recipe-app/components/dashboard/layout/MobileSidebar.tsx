@@ -11,24 +11,26 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTranslations } from "next-intl";
 
 export function MobileSidebar({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
+    const t = useTranslations("Dashboard.navigation");
 
     return (
         <Sheet open={open} onOpenChange={setOpen} >
             <SheetTrigger>
                 <div className="relative flex size-10  md:hidden items-center justify-center rounded-lg border bg-background p-2 text-sm transition-all hover:bg-accent/50"
-                    aria-label="فتح القائمة"
+                    aria-label={t("mobileOpen")}
                     >
                     <Menu className="size-5" />
                 </div>
             </SheetTrigger>
 
             <SheetContent side="right" className="w-72 p-0" showCloseButton={false}>
-                <SheetTitle className="sr-only">قائمة لوحة التحكم</SheetTitle>
+                <SheetTitle className="sr-only">{t("mobileTitle")}</SheetTitle>
                 <SheetDescription className="sr-only">
-                    التنقل بين أقسام لوحة التحكم
+                    {t("mobileDescription")}
                 </SheetDescription>
 
                 <div

@@ -1,18 +1,27 @@
 import { useStatusToast } from "@/hooks/use-status-toast";
-import { RegisterFormValues, registerSchema } from "../schema/register.schema";
+import { RegisterFormValues, createRegisterSchema } from "../schema/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TOKEN_NAME } from "@/lib/constants";
 import { registerService } from "../services/register.api";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie"
+import { useTranslations } from "next-intl";
 
 export function useRegister() {
     const { showToast } = useStatusToast();
     const router = useRouter();
+    const t = useTranslations("Auth.register");
+    const validationT = useTranslations("Auth.validation");
+    const schema = createRegisterSchema({
+        invalidEmail: validationT("invalidEmail"),
+        passwordMin: validationT("passwordMin"),
+        firstNameMin: validationT("firstNameMin"),
+        lastNameMin: validationT("lastNameMin"),
+    });
 
     const form = useForm<RegisterFormValues>({
-        resolver: zodResolver(registerSchema),
+        resolver: zodResolver(schema),
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -33,7 +42,7 @@ export function useRegister() {
                 Cookies.set("userRole", userRole)
                 showToast({
                     type: "success",
-                    description: "تم إنشاء الحساب بنجاح",
+                    description: t("success"),
                 })
                 router.refresh()
                 router.push("/")
@@ -41,12 +50,12 @@ export function useRegister() {
             else {
                 showToast({
                     type: "error",
-                    description: "فشل إنشاء الحساب راجع بياناتك وحاول مرة تانية",
+                    description: t("failure"),
                 })
             }
         } catch {
             form.setError("root", {
-                message: "حصل خطأ أثناء إنشاء الحساب, حاول مرة تانية",
+                message: t("error"),
             });
         }
     })

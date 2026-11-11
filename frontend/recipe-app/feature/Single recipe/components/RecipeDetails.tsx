@@ -4,6 +4,7 @@ import { ChefHat, ShoppingBasket } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Recipe } from "@/feature/recipes/types";
+import { useTranslations } from "next-intl";
 
 const splitIngredients = (text: string) =>
     text
@@ -18,6 +19,7 @@ const splitInstructions = (text: string) =>
         .filter(Boolean);
 
 export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
+    const t = useTranslations("RecipeDetail.details");
     const ingredients = useMemo(
         () => splitIngredients(recipe.ingredients),
         [recipe.ingredients]
@@ -36,10 +38,10 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
                             <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                                 <ShoppingBasket className="size-5" />
                             </span>
-                            المكونات
+                            {t("ingredients")}
                         </CardTitle>
                         <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
-                            {ingredients.length} عناصر
+                            {t("ingredientCount", { count: ingredients.length })}
                         </span>
                     </div>
                 </CardHeader>
@@ -70,7 +72,7 @@ export default function RecipeDetails({ recipe }: { recipe: Recipe }) {
                             <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                                 <ChefHat className="size-5" />
                             </span>
-                            طريقة التحضير
+                            {t("instructions")}
                         </CardTitle>
                     </div>
                 </CardHeader>

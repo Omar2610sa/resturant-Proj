@@ -4,16 +4,18 @@ import { Button } from "@/components/ui/button";
 import LogoutButton from "./LogoutButton";
 import { TOKEN_NAME } from "@/lib/constants";
 import SideBarUserCard from "../SideBarUserCard";
+import { getTranslations } from "next-intl/server";
 
 export default async function MobileNavAuth() {
     const token = (await cookies()).get(TOKEN_NAME)?.value ?? null
+    const t = await getTranslations("Navigation");
 
     if (!token) {
         return (
             <>
                 <Link href="/login" >
                     <Button size={'lg'} className="w-full">
-                        تسجيل الدخول
+                        {t("login")}
                     </Button>
                 </Link>
                 <Link href="/register">
@@ -22,7 +24,7 @@ export default async function MobileNavAuth() {
                         size={'lg'}
                         className="w-full"
                     >
-                        إنشاء حساب
+                        {t("register")}
                     </Button>
                 </Link>
             </>
@@ -34,7 +36,7 @@ export default async function MobileNavAuth() {
             <SideBarUserCard />
             <Link href="/dashboard">
                 <Button variant="outline" className="w-full" size={'lg'}>
-                    لوحة التحكم
+                    {t("dashboard")}
                 </Button>
             </Link>
             <LogoutButton />

@@ -1,37 +1,67 @@
-import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
+import createMiddleware from "next-intl/middleware";
+import { NextRequest, NextResponse } from "next/server";
+import { isLocale, routing, type Locale } from "./i18n/routing";
 import { TOKEN_NAME } from "./lib/constants";
-import { cookies } from 'next/headers'
 
-
-type Lang = 'ar' | 'en'
 const secret = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
-export default async function proxy(request: NextRequest) {
-    const token = request.cookies.get(TOKEN_NAME)?.value;
+const handleI18nRouting = createMiddleware(routing);
 
-    // Set locale at cookies
-    const cookiesStore = await cookies()
-    cookiesStore.set('NEXT_LOCALE', (cookiesStore.get("NEXT_LOCALE")?.value || 'en') as Lang)
-console.log(cookiesStore.get("NEXT_LOCALE"))
+function getLocalizedPath(pathname: string, locale: Locale) {
+    return locale === routing.defaultLocale
+        ? pathname
+        : `/${locale}${pathname}`;
+}
+
+function setLocaleCookie(response: NextResponse, locale: Locale) {
+    response.cookies.set("NEXT_LOCALE", locale, { path: "/", sameSite: "lax" });
+    return response;
+}
+
+export default async function proxy(request: NextRequest) {
+    const response = handleI18nRouting(request);
+    const { pathname } = request.nextUrl;
+    const pathnameLocale = routing.locales.find(
+        (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+    );
+    const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
+    const locale = pathnameLocale
+        ?? (isLocale(cookieLocale) ? cookieLocale : routing.defaultLocale);
+    const pathnameWithoutLocale = pathnameLocale
+        ? pathname.slice(pathnameLocale.length + 1) || "/"
+        : pathname;
+    const isDashboardPath = pathnameWithoutLocale === "/dashboard"
+        || pathnameWithoutLocale.startsWith("/dashboard/");
+
+    if (!isDashboardPath) {
+        return setLocaleCookie(response, locale);
+    }
+
+    const token = request.cookies.get(TOKEN_NAME)?.value;
     if (!token) {
-        return NextResponse.redirect(new URL("/login?reason=unauthenticated", request.url));
+        const loginUrl = new URL(getLocalizedPath("/login", locale), request.url);
+        loginUrl.searchParams.set("reason", "unauthenticated");
+        return setLocaleCookie(NextResponse.redirect(loginUrl), locale);
     }
 
     try {
         const { payload } = await jwtVerify(token, secret);
 
         if (payload.role !== "admin") {
-            return NextResponse.redirect(new URL("/?reason=forbidden", request.url));
+            const homeUrl = new URL(getLocalizedPath("/", locale), request.url);
+            homeUrl.searchParams.set("reason", "forbidden");
+            return setLocaleCookie(NextResponse.redirect(homeUrl), locale);
         }
 
-        return NextResponse.next();
+        return setLocaleCookie(response, locale);
     } catch {
-        const res = NextResponse.redirect(new URL("/login", request.url));
+        const loginUrl = new URL(getLocalizedPath("/login", locale), request.url);
+        const res = NextResponse.redirect(loginUrl);
         res.cookies.delete(TOKEN_NAME);
-        return res;
+        return setLocaleCookie(res, locale);
     }
 }
 
 export const config = {
-    matcher: ["/dashboard/:path*"],
+    matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
 };

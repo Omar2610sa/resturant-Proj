@@ -15,6 +15,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { useTranslations } from "next-intl";
 
 type DataTableProps<TData, TValue> = {
     columns: ColumnDef<TData, TValue>[];
@@ -25,8 +26,10 @@ type DataTableProps<TData, TValue> = {
 export function DataTable<TData, TValue>({
     columns,
     data,
-    emptyMessage = "لا توجد بيانات",
+    emptyMessage,
 }: DataTableProps<TData, TValue>) {
+    const t = useTranslations("Dashboard.table");
+    const message = emptyMessage ?? t("noData");
     const table = useReactTable({
         data,
         columns,
@@ -83,7 +86,7 @@ export function DataTable<TData, TValue>({
                                     colSpan={columns.length}
                                     className="h-32 text-center text-muted-foreground"
                                 >
-                                    {emptyMessage}
+                                    {message}
                                 </TableCell>
                             </TableRow>
                         )}
@@ -129,7 +132,7 @@ export function DataTable<TData, TValue>({
                 ) : (
                     <div className="flex min-h-40 w-full items-center justify-center rounded-xl border border-dashed bg-card py-10">
                         <h3 className="text-sm font-medium text-muted-foreground">
-                            {emptyMessage}
+                            {message}
                         </h3>
                     </div>
                 )}

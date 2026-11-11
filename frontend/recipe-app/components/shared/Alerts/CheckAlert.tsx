@@ -1,6 +1,14 @@
 import Swal from "sweetalert2";
 
-export const CheckAlert = ({ title }: { title: string }) => {
+export const CheckAlert = ({
+    title,
+    confirmButtonText,
+    cancelButtonText,
+}: {
+    title: string;
+    confirmButtonText: string;
+    cancelButtonText: string;
+}) => {
 
     return Swal.fire({
         title,
@@ -8,8 +16,8 @@ export const CheckAlert = ({ title }: { title: string }) => {
         showCancelButton: true,
         confirmButtonColor: "#ef4444",
         cancelButtonColor: "#6b7280",
-        confirmButtonText: 'نعم',
-        cancelButtonText: 'لا',
+        confirmButtonText,
+        cancelButtonText,
         background: 'auto',
         customClass: {
             popup: 'rounded-2xl shadow-2xl bg-accet dark:bg-slate-900 border border-slate-200 dark:border-slate-700',

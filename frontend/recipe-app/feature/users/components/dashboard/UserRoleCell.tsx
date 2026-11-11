@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState, useTransition } from "react";
 
 import { useStatusToast } from "@/hooks/use-status-toast";
@@ -7,12 +9,14 @@ import { User } from "@/feature/auth/types";
 import { useRouter } from "next/navigation";
 import { RoleSwitcher } from "./RoleSwitcher";
 import { updateUserRole } from "../../action/update-user-role";
+import { useTranslations } from "next-intl";
 
 export function UserRoleCell({ user }: { user: User }) {
     const [isAdmin, setIsAdmin] = useState(user.role === "admin");
     const [isPending, startTransition] = useTransition();
     const { showToast } = useStatusToast();
     const router = useRouter();
+    const t = useTranslations("Dashboard.roles");
 
     function handleChange(next: boolean) {
         const previous = isAdmin;
@@ -24,10 +28,10 @@ export function UserRoleCell({ user }: { user: User }) {
 
             if (!result.ok) {
                 setIsAdmin(previous);
-                showToast({ type: "error", description: result.message });
+                showToast({ type: "error", description: t("updateFailed") });
                 return;
             }
-            showToast({ type: "success", description: "تم تحديث الدور" });
+            showToast({ type: "success", description: t("updated") });
         });
     }
 
@@ -36,7 +40,9 @@ export function UserRoleCell({ user }: { user: User }) {
             isAdmin={isAdmin}
             onChange={handleChange}
             disabled={isPending}
-            label={`منح صلاحية مدير إلى ${user.firstName} ${user.lastName}`}
+            label={t("grantAdmin", {
+                name: `${user.firstName} ${user.lastName}`,
+            })}
         />
     );
 }

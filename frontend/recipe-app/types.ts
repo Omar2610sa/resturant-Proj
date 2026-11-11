@@ -25,7 +25,7 @@ export interface TableActionsProps {
     edit?: boolean
     editHref?: string
     itemId: number | string
-    itemName?: string
+    itemName?: "recipe" | "user"
     endpoint?: string
     onDeleteSuccess?: () => void
 }

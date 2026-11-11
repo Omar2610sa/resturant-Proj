@@ -9,27 +9,25 @@ import Link from 'next/link'
 import { getImageUrl } from '@/lib/image';
 import { useEditRecipe } from '../../hooks/use-edit-recipe';
 import { EditRecipeFormProps } from '../../types';
+import { useTranslations } from "next-intl";
 
 
 export default function EditRecipeForm({
     initialValues,
 }: EditRecipeFormProps) {
     const { form, onSubmit } = useEditRecipe(initialValues._id, initialValues);
+    const t = useTranslations("Dashboard.form");
+    const recipesT = useTranslations("Dashboard.recipes");
     const {
         register,
         formState: { errors, isSubmitting },
     } = form;
     const coverImage = initialValues.coverImage
 
-    const difficultyOptions = [
-        { label: "سهل", value: "easy" },
-        { label: "متوسط", value: "medium" },
-        { label: "صعب", value: "hard" },
-    ];
     return (
         <AddCard
-            title="تعديل بيانات الوصفة"
-            description="أدخل تفاصيل الوصفة كما ستظهر للزوّار"
+            title={recipesT("editFormTitle")}
+            description={recipesT("formDescription")}
         >
             <Separator className='bg-[#eee8e1]' />
             <form onSubmit={onSubmit} noValidate>
@@ -37,44 +35,44 @@ export default function EditRecipeForm({
                     <AddField
                         input
                         id="address"
-                        label="العنوان"
+                        label={t("title")}
                         type="text"
                         registration={register('title')}
-                        placeholder="مثال: فئة حمص الشام"
+                        placeholder={t("titlePlaceholder")}
                         error={errors.title?.message}
                     />
                     <AddField
                         textarea
                         id="description"
-                        label="وصف مختصر"
+                        label={t("description")}
                         type="text"
                         registration={register('description')}
-                        placeholder="اكتب وصفًا شهيًا ومختصرًا للوصفة..."
+                        placeholder={t("descriptionPlaceholder")}
                         error={errors.description?.message}
                     />
                     <AddField
                         textarea
                         id="ingredients"
-                        label="المكونات"
+                        label={t("ingredients")}
                         type="text"
                         registration={register('ingredients')}
-                        placeholder={"مثال:\nكوبان من الحمص\nملعقة زيت زيتون\nعصير ليمونة"}
+                        placeholder={t("ingredientsPlaceholder")}
                         error={errors.ingredients?.message}
                     />
                     <AddField
                         textarea
                         id="instructions"
-                        label="طريقة التحضير"
+                        label={t("instructions")}
                         type="text"
                         registration={register('instructions')}
-                        placeholder="اكتب خطوات التحضير بوضوح وبالترتيب..."
+                        placeholder={t("instructionsPlaceholder")}
                         error={errors.instructions?.message}
                     />
                     <div className="flex flex-col sm:flex-row justify-between gap-5">
                         <AddField
                             input
                             id="cookingTime"
-                            label="مدة لتحضير"
+                            label={t("cookingTime")}
                             type="number"
                             registration={register("cookingTime", {
                                 valueAsNumber: true,
@@ -84,7 +82,7 @@ export default function EditRecipeForm({
                         <AddField
                             input
                             id="servingSize"
-                            label="يكفي لكام شخص"
+                            label={t("servingSize")}
                             type="number"
                             registration={register("servingSize", {
                                 valueAsNumber: true,
@@ -93,17 +91,16 @@ export default function EditRecipeForm({
                         />
                         <AddField
                             id="difficulty"
-                            label="مستوى الصعوبة"
-                            placeholder="اختر مستوى الصعوبة"
+                            label={t("difficulty")}
+                            placeholder={t("selectDifficulty")}
                             select
                             registration={register("difficulty")}
-                            values={difficultyOptions}
                             error={errors.difficulty?.message}
                         />
                     </div>
                     <AddField
                         id="coverImage"
-                        label="صورة الوصفة"
+                        label={t("coverImage")}
                         upload
                         currentImageUrl={typeof coverImage === 'string' ? getImageUrl(coverImage) : undefined}
                         error={errors.coverImage?.message}
@@ -113,14 +110,14 @@ export default function EditRecipeForm({
                         <Link
                             href='/dashboard/recipes'
                             className="rounded-xl border border-black/20 bg-white py-2.5 px-5   text-black hover:bg-primary/20">
-                            إلغاء
+                            {t("cancel")}
                         </Link>
                         <Button
                             type='submit'
                             className="rounded-xl bg-primary p-5  font-bold text-white shadow-sm transition-all cursor-pointer"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? "جارٍ الحفظ..." : "حفظ الوصفة"}
+                            {isSubmitting ? t("saving") : t("save")}
                         </Button>
                     </CardFooter>
                 </FieldGroup>

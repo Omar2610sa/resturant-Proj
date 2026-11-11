@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 
 
 
-export default function layout({ children }: LayoutProps<"/">) {
+export default function layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             <Navbar />

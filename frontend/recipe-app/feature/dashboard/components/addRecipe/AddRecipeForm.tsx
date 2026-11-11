@@ -7,25 +7,21 @@ import { CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link'
 import { useAddRecipe } from '../../hooks/use-add-recipe';
+import { useTranslations } from "next-intl";
 
 export default function AddRecipeForm() {
     const { form, onSubmit } = useAddRecipe();
+    const t = useTranslations("Dashboard.form");
+    const recipesT = useTranslations("Dashboard.recipes");
     const {
         register,
         formState: { errors, isSubmitting },
     } = form;
 
-        const difficultyOptions = [
-        { label: "سهل", value: "easy" },
-        { label: "متوسط", value: "medium" },
-        { label: "صعب", value: "hard" },
-    ];
     return (
         <AddCard
-            title="بيانات الوصفة"
-            description="أدخل تفاصيل الوصفة كما ستظهر للزوّار"
-            footerText="ليس لديك حساب؟"
-            footerHref="/register"
+            title={recipesT("addFormTitle")}
+            description={recipesT("formDescription")}
         >
             <Separator className='bg-accent' />
             <form  onSubmit={onSubmit} noValidate>
@@ -33,44 +29,44 @@ export default function AddRecipeForm() {
                     <AddField
                         input
                         id="address"
-                        label="العنوان"
+                        label={t("title")}
                         type="text"
                         registration={register('title')}
-                        placeholder="مثال: فئة حمص الشام"
+                        placeholder={t("titlePlaceholder")}
                         error={errors.title?.message}
                     />
                     <AddField
                         textarea
                         id="description"
-                        label="وصف مختصر"
+                        label={t("description")}
                         type="text"
                         registration={register('description')}
-                        placeholder="اكتب وصفًا شهيًا ومختصرًا للوصفة..."
+                        placeholder={t("descriptionPlaceholder")}
                         error={errors.description?.message}
                     />
                     <AddField
                         textarea
                         id="ingredients"
-                        label="المكونات"
+                        label={t("ingredients")}
                         type="text"
                         registration={register('ingredients')}
-                        placeholder={"مثال:\nكوبان من الحمص\nملعقة زيت زيتون\nعصير ليمونة"}
+                        placeholder={t("ingredientsPlaceholder")}
                         error={errors.ingredients?.message}
                     />
                     <AddField
                         textarea
                         id="instructions"
-                        label="طريقة التحضير"
+                        label={t("instructions")}
                         type="text"
                         registration={register('instructions')}
-                        placeholder="اكتب خطوات التحضير بوضوح وبالترتيب..."
+                        placeholder={t("instructionsPlaceholder")}
                         error={errors.instructions?.message}
                     />
                     <div className="flex flex-col sm:flex-row justify-between gap-5">
                         <AddField
                             input
                             id="cookingTime"
-                            label="مدة لتحضير"
+                            label={t("cookingTime")}
                             type="number"
                             registration={register("cookingTime", {
                                 valueAsNumber: true,
@@ -80,7 +76,7 @@ export default function AddRecipeForm() {
                         <AddField
                             input
                             id="servingSize"
-                            label="يكفي لكام شخص"
+                            label={t("servingSize")}
                             type="number"
                             registration={register("servingSize", {
                                 valueAsNumber: true,
@@ -89,17 +85,16 @@ export default function AddRecipeForm() {
                         />
                         <AddField
                             id="difficulty"
-                            label="مستوى الصعوبة"
-                            placeholder="اختر مستوى الصعوبة"
+                            label={t("difficulty")}
+                            placeholder={t("selectDifficulty")}
                             select
                             registration={register("difficulty")}
-                            values={difficultyOptions}
                             error={errors.difficulty?.message}
                         />
                     </div>
                     <AddField
                         id="coverImage"
-                        label="صورة الوصفة"
+                        label={t("coverImage")}
                         upload
                         registration={register("coverImage")}
                         error={errors.coverImage?.message}
@@ -109,14 +104,14 @@ export default function AddRecipeForm() {
                         <Link
                             href='/dashboard/recipes'
                             className="rounded-xl border border-black/20  tex py-2.5 px-5    hover:bg-primary/20">
-                            إلغاء
+                            {t("cancel")}
                         </Link>
                         <Button
                             type='submit'
                             className="rounded-xl bg-primary p-5  font-bold text-white shadow-sm transition-all cursor-pointer"
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? "جارٍ الحفظ..." : "حفظ الوصفة"}
+                            {isSubmitting ? t("saving") : t("save")}
                         </Button>
                     </CardFooter>
                 </FieldGroup>

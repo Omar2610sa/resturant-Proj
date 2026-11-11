@@ -4,13 +4,35 @@ import { addRecipeApi } from "../services/addRecipe.api";
 import { respones } from "@/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { addRecipeSchema, RecipeFormValues } from "../schema/recipe.schema";
+import { createAddRecipeSchema, RecipeFormValues } from "../schema/recipe.schema";
 import type { z } from 'zod';
+import { useTranslations } from "next-intl";
 
 
 export function useAddRecipe() {
     const { showToast } = useStatusToast();
     const router = useRouter();
+    const validationT = useTranslations("Dashboard.validation");
+    const feedbackT = useTranslations("Dashboard.feedback");
+    const addRecipeSchema = createAddRecipeSchema({
+        imageRequired: validationT("imageRequired"),
+        imageType: validationT("imageType"),
+        imageSize: validationT("imageSize"),
+        titleMin: validationT("titleMin"),
+        titleMax: validationT("titleMax"),
+        descriptionMin: validationT("descriptionMin"),
+        descriptionMax: validationT("descriptionMax"),
+        ingredientsMin: validationT("ingredientsMin"),
+        instructionsMin: validationT("instructionsMin"),
+        cookingTimeNumber: validationT("cookingTimeNumber"),
+        cookingTimePositive: validationT("cookingTimePositive"),
+        cookingTimeInteger: validationT("cookingTimeInteger"),
+        servingSizeNumber: validationT("servingSizeNumber"),
+        servingSizePositive: validationT("servingSizePositive"),
+        servingSizeInteger: validationT("servingSizeInteger"),
+        difficultyRequired: validationT("difficultyRequired"),
+    });
+
     const form = useForm<
         z.input<typeof addRecipeSchema>, unknown, RecipeFormValues>({
             resolver: zodResolver(addRecipeSchema),
@@ -32,7 +54,7 @@ export function useAddRecipe() {
 
                 showToast({
                     type: "success",
-                    description: "تم إضافة الوصفة بنجاح",
+                    description: feedbackT("addSuccess"),
                 })
                 router.refresh()
                 router.push("/dashboard/recipes")
@@ -40,12 +62,12 @@ export function useAddRecipe() {
             } else {
                 showToast({
                     type: "error",
-                    description: "فشل في إضافة الوصفة وحاول مرة تانية",
+                    description: feedbackT("addFailure"),
                 });
             }
         } catch {
             form.setError("root", {
-                message: "حصل خطأ أثناء تسجيل الدخول، حاول مرة تانية",
+                message: feedbackT("addError"),
             });
         }
     })

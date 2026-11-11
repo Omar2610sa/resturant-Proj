@@ -3,11 +3,13 @@ import InfoHomeBanner from "@/components/home/InfoHomeBanner";
 import AboutBanner from "@/feature/about/components/AboutBanner";
 import RecipeSection from "@/feature/recipes/components/RecipeSeciton";
 import { getRecipes } from "@/feature/recipes/services/recipes.api";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
+  const t = await getTranslations("Metadata");
   return {
-    title: "مَذاق | الرئيسية",
-    description: "مَذاق للوصفات الشهية والعربية الأصيلة",
+    title: t("homeTitle"),
+    description: t("description"),
   };
 }
 

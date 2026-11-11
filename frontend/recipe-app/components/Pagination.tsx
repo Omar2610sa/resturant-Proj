@@ -1,16 +1,18 @@
 "use client";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Pagination } from "@/types";
+import { useTranslations } from "next-intl";
+import Cookies from "js-cookie"
 
 export default function PaginationRouter({ pagination }: { pagination: Pagination }) {
     const { currentPage, totalPages, hasNextPage, hasPrevPage } = pagination;
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-
+    const t = useTranslations("Recipes.pagination");
+    const isRtl = Cookies.get("NEXT_LOCALE") === 'ar'
     if (totalPages <= 1) return null;
 
     const goToPage = (page: number) => {
@@ -29,8 +31,8 @@ export default function PaginationRouter({ pagination }: { pagination: Paginatio
                         onClick={() => goToPage(currentPage - 1)}
                         className="p-5 text-lg"
                     >
-                        <ArrowRight className="size-4" />
-                        السابق
+                        {isRtl ? <ArrowRight className="size-4" /> : <ArrowLeft className="size-4" />}
+                        {t("previous")}
                     </Button>
                 )
             }
@@ -54,8 +56,8 @@ export default function PaginationRouter({ pagination }: { pagination: Paginatio
                         onClick={() => goToPage(currentPage + 1)}
                         className="p-5 text-lg"
                     >
-                        التالي
-                        <ArrowLeft className="size-4" />
+                        {t("next")}
+                        {isRtl ? <ArrowLeft className="size-4" /> : <ArrowRight className="size-4" />}
                     </Button>
                 )
             }

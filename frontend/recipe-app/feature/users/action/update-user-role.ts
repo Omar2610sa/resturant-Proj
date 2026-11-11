@@ -15,6 +15,6 @@ export async function updateUserRole(userId: string, role: UserRole) {
         revalidatePath("/dashboard/users");
         return { ok: true as const };
     } catch {
-        return { ok: false as const, message: "تعذّر تحديث الدور" };
+        return { ok: false as const };
     }
 }

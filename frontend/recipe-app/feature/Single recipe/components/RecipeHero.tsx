@@ -3,11 +3,15 @@ import { Calendar, Clock, User } from "lucide-react";
 import { Recipe } from "../../recipes/types";
 import { getImageUrl } from "@/lib/image";
 import { difficultyConfig } from "../../recipes/config/difficultyConfig";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export default function RecipeHero({ recipe }: { recipe: Recipe }) {
+export default async function RecipeHero({ recipe }: { recipe: Recipe }) {
+    const t = await getTranslations("RecipeDetail.hero");
+    const recipesT = await getTranslations("Recipes");
+    const locale = await getLocale();
     const ImageUrl = getImageUrl(recipe.coverImage)
     const date = new Date(recipe.createdAt);
-    const formattedDate = date.toLocaleDateString("ar-EG", {
+    const formattedDate = date.toLocaleDateString(locale === "ar" ? "ar-EG" : "en-US", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -38,7 +42,7 @@ export default function RecipeHero({ recipe }: { recipe: Recipe }) {
                 <div className="relative z-10 space-y-5">
                     <div className="space-y-1">
                         <span className="text-xl font-bold text-primary block">
-                            وصفة اليوم
+                            {t("recipeOfTheDay")}
                         </span>
                         {
                             recipe.title && (
@@ -57,26 +61,26 @@ export default function RecipeHero({ recipe }: { recipe: Recipe }) {
                         {recipe.cookingTime && (
                             <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
                                 <Clock className="size-5 text-primary" />
-                                {recipe.cookingTime} دقيقة
+                                {t("cookingTime", { count: recipe.cookingTime })}
                             </span>
                         )}
                         {recipe.servingSize && (
                             <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
                                 <User className="size-5 text-primary" />
-                                يكفي ل  {recipe.servingSize > 1 ? `${recipe.servingSize} أشخاص` : "شخص واحد"}
+                                {t("serving", { count: recipe.servingSize })}
                             </span>
                         )}
                         {recipe.createdAt && (
                             <span className="flex items-center gap-2 rounded-xl border border-accent bg-background px-4 py-3 text-sm font-extrabold  shadow-sm">
                                 <Calendar className="size-5 text-primary" />
-                                نشر في : {formattedDate}
+                                {t("published", { date: formattedDate })}
                             </span>
                         )}
                         {recipe.difficulty && (
                             <span
                                 className={`flex items-center gap-2 rounded-xl  px-4 py-3 text-sm font-extrabold  shadow-sm ${difficult.className}`}
                             >
-                                {difficult.label}
+                                {recipesT(`difficulty.${recipe.difficulty}`)}
                             </span>
                         )}
                     </div>

@@ -5,17 +5,19 @@ import Cookies from "js-cookie";
 import { TOKEN_NAME } from '@/lib/constants';
 import { Button } from '@base-ui/react';
 import { useStatusToast } from '@/hooks/use-status-toast';
+import { useTranslations } from "next-intl";
 
 
 export default function LogoutBtn() {
     const router = useRouter();
         const { showToast } = useStatusToast();
+    const t = useTranslations("Navigation");
     
     const handleLogout = async () => {
         Cookies.remove(TOKEN_NAME)
         showToast({
             type: "success",
-            description: "تم تسجيل الخروج بنجاح",
+            description: t("logoutSuccess"),
         })
         router.push("/")
         router.refresh()
@@ -26,6 +28,6 @@ export default function LogoutBtn() {
             className="rounded-xl flex items-center gap-2 bg-destructive px-5 py-2.5 font-bold text-white shadow-sm transition-all  hover:bg-destructive"
         >
             <LogOut className="size-5 " />
-            تسجيل خروج
+            {t("logout")}
         </Button>)
 }

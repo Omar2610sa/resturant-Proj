@@ -3,19 +3,23 @@ import Link from "next/link";
 import Logo from "../Logo";
 import { headerLinks } from "@/lib/navLinks";
 import { socialLinks } from "@/lib/SocialLinks";
+import { getTranslations } from "next-intl/server";
 
-export default function Footer() {
+export default async function Footer() {
+    const t = await getTranslations("Footer");
+    const tNavigation = await getTranslations("Navigation");
+
     return (
         <footer className="bg-[#151414] text-white text-xl">
             <div className="mx-auto flex justify-between md:items-start space-y-10 md:space-x-10 container flex-col sm:px-8 md:flex-row">
                 <div >
                     <Logo />
                     <p className="mt-4 max-w-sm text-md leading-7 text-gray-300 ">
-                        وصفات منزلية موثوقة، نشاركها معك لتصنع لحظات ألذ حول المائدة.
+                        {t("description")}
                     </p>
                 </div>
                 <div >
-                    <h3 className="mb-4 font-extrabold">روابط سريعة</h3>
+                    <h3 className="mb-4 font-extrabold">{t("quickLinks")}</h3>
                     <div className="flex flex-col items-start gap-3 text-md text-gray-300 ">
                         {
                             headerLinks.map((link, index) => {
@@ -25,7 +29,7 @@ export default function Footer() {
                                         href={link.link}
                                         className="hover:text-primary duration-200"
                                     >
-                                        {link.title}
+                                        {tNavigation(link.titleKey)}
                                     </Link>
                                 )
                             })
@@ -33,14 +37,14 @@ export default function Footer() {
                     </div>
                 </div>
                 <div >
-                    <h3 className="mb-4 font-extrabold">حسابك</h3>
+                    <h3 className="mb-4 font-extrabold">{t("account")}</h3>
                     <div className="flex flex-col items-start gap-3 text-md text-gray-300 ">
-                        <Link href="/login" className="hover:text-primary duration-200">تسجيل الدخول</Link>
-                        <Link href="/register" className="hover:text-primary duration-200">إنشاء حساب</Link>
+                        <Link href="/login" className="hover:text-primary duration-200">{tNavigation("login")}</Link>
+                        <Link href="/register" className="hover:text-primary duration-200">{tNavigation("register")}</Link>
                     </div>
                 </div>
                 <div>
-                    <h3 className="mb-4 font-extrabold">معلومات التواصل</h3>
+                    <h3 className="mb-4 font-extrabold">{t("contact")}</h3>
                     <div className="flex flex-col items-start gap-3  text-gray-300 ">
                         <div className="duration-200 flex items-center gap-2" >
                             <Phone className="size-5" />
@@ -70,9 +74,9 @@ export default function Footer() {
                 </div>
             </div>
             <div className="border-t flex flex-col gap-3 border-white/70 px-5 py-5 text-center text-sm text-gray-300">
-                جميع الحقوق محفوظة لمذاق © 2026
+                {t("copyright")}
                 <span className="text-lg">
-                    من تطوير وبرمجة <Link href="https://omarsalam-portofolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white duration-200">عمر معتز</Link>
+                    {t("developedBy")} <Link href="https://omarsalam-portofolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white duration-200">{t("developer")}</Link>
                 </span>
             </div>
         </footer>

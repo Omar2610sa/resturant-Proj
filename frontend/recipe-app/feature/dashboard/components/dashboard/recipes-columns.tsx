@@ -1,78 +1,89 @@
+"use client";
+
 import type { ColumnDef } from "@tanstack/react-table";
-import { Recipe } from "../../../recipes/types";
+import { useLocale, useTranslations } from "next-intl";
 import ImagePreviewCell from "@/components/shared/ImagePreviewCell";
-import { DifficultyBadge } from "./DifficultyCell";
 import TableActions from "@/components/data-table/TableActions";
+import type { Recipe } from "../../../recipes/types";
+import { DifficultyBadge } from "./DifficultyCell";
+
+function RecipeColumnHeader({
+    messageKey,
+}: {
+    messageKey: "image" | "title" | "cookingTime" | "difficulty" | "createdAt" | "actions";
+}) {
+    const t = useTranslations("Dashboard.recipes.table");
+    return t(messageKey);
+}
+
+function RecipeCookingTime({ count }: { count: number }) {
+    const t = useTranslations("Recipes.card");
+    return t("cookingTime", { count });
+}
+
+function RecipeCreatedAt({ value }: { value: string }) {
+    const locale = useLocale();
+    const date = new Date(value);
+    return new Intl.DateTimeFormat(locale === "ar" ? "ar-EG" : "en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+    }).format(date);
+}
 
 export const recipesColumns: ColumnDef<Recipe, unknown>[] = [
     {
         accessorKey: "coverImage",
-        header: "الصورة",
+        header: () => <RecipeColumnHeader messageKey="image" />,
         cell: ({ row }) => (
             <ImagePreviewCell
                 coverImage={row.original.coverImage}
                 alt={row.original.title}
             />
-        )
+        ),
     },
     {
         accessorKey: "title",
-        header: "العنوان",
-        cell: ({ row }) => {
-            return (
-                <p className="font-extrabold ">
-                    {row.original.title}
-                </p>
-            )
-        }
+        header: () => <RecipeColumnHeader messageKey="title" />,
+        cell: ({ row }) => (
+            <p className="font-extrabold">{row.original.title}</p>
+        ),
     },
     {
         accessorKey: "cookingTime",
-        header: "مدة التحضير", cell: ({ row }) => {
-            return (
-                <div>
-                    {row.original.cookingTime} دقيقة
-                </div>
-            )
-        }
+        header: () => <RecipeColumnHeader messageKey="cookingTime" />,
+        cell: ({ row }) => (
+            <RecipeCookingTime count={row.original.cookingTime} />
+        ),
     },
     {
-        accessorKey: "difficulty", header: "الصعوبة",
-        cell: ({ row }) => {
-            return (
-                <div className="mx-auto">
-                    <DifficultyBadge difficulty={row.original.difficulty} />
-                </div>
-            )
-        }
+        accessorKey: "difficulty",
+        header: () => <RecipeColumnHeader messageKey="difficulty" />,
+        cell: ({ row }) => (
+            <div className="mx-auto">
+                <DifficultyBadge difficulty={row.original.difficulty} />
+            </div>
+        ),
     },
     {
-        accessorKey: "createdAt", header: "تاريخ الإضافة",
-        cell: ({ row }) => {
-            const date = new Date(row.original.createdAt);
-            const formattedDate = date.toLocaleDateString("ar-EG", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-            });
-            return (
-                <span>{formattedDate}</span>
-            )
-        }
+        accessorKey: "createdAt",
+        header: () => <RecipeColumnHeader messageKey="createdAt" />,
+        cell: ({ row }) => (
+            <RecipeCreatedAt value={row.original.createdAt} />
+        ),
     },
     {
         accessorKey: "_id",
-        header: "الإجراءات",
-        cell: ({ row }) => {
-            return (
-                <TableActions
-                    isDelete
-                    edit
-                    editHref="recipes"
-                    endpoint="recipe"
-                    itemName="الوصفة"
-                    itemId={row.original._id} />
-            )
-        }
-    }
+        header: () => <RecipeColumnHeader messageKey="actions" />,
+        cell: ({ row }) => (
+            <TableActions
+                isDelete
+                edit
+                editHref="recipes"
+                endpoint="recipe"
+                itemName="recipe"
+                itemId={row.original._id}
+            />
+        ),
+    },
 ];

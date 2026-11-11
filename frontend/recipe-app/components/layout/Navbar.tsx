@@ -7,7 +7,15 @@ import { headerLinks } from "@/lib/navLinks";
 import MobileNav from "./MobileNav";
 import MobileNavAuth from "./MobileNavAuth";
 import LangSwitcher from "../shared/lang/LangSwitcher";
-export default function Navbar() {
+import { getTranslations } from "next-intl/server";
+
+export default async function Navbar() {
+    const t = await getTranslations("Navigation");
+    const links = headerLinks.map(({ titleKey, link }) => ({
+        title: t(titleKey),
+        link,
+    }));
+
     return (
         <header className="sticky top-0 z-50 border-b  bg-accent backdrop-blur-xl text-xl">
             <div className="mx-auto flex h-10   items-center justify-between  container">
@@ -15,7 +23,7 @@ export default function Navbar() {
                 <Logo />
                 <nav className="hidden items-center   md:flex space-x-12" >
 
-                    {headerLinks.map((link, index) => {
+                    {links.map((link, index) => {
                         return (
                             <Link key={index} href={link.link}
                                 className="font-bold hover:text-primary duration-200" >
@@ -32,7 +40,7 @@ export default function Navbar() {
                     </Suspense>
                 </div>
 
-                <MobileNav links={headerLinks}>
+                <MobileNav links={links}>
                     <Suspense fallback={<div className="h-10" />}>
                         <MobileNavAuth />
                     </Suspense>

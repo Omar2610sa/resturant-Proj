@@ -3,23 +3,27 @@ import { Recipe } from '@/feature/recipes/types'
 import { getImageUrl } from '@/lib/image';
 import Image from 'next/image'
 import Link from 'next/link'
-export default function NewRecipesPreview({ newRecipes }: { newRecipes: Recipe[] }) {
+import { getLocale, getTranslations } from "next-intl/server";
+
+export default async function NewRecipesPreview({ newRecipes }: { newRecipes: Recipe[] }) {
+    const t = await getTranslations("Dashboard.overview");
+    const locale = await getLocale();
 
     return (
         <section className="rounded-2xl border bg-card p-5 shadow-sm sm:p-6">
             <div className="mb-5 flex items-center justify-between ">
-                <h2 className="font-black text-2xl">أحدث الوصفات</h2>
+                <h2 className="font-black text-2xl">{t("latestRecipes")}</h2>
                 <Link
                     href='/dashboard/recipes'
                     className=" font-extrabold text-primary text-xl"
                 >
-                    عرض الكل
+                    {t("viewAll")}
                 </Link>
             </div>
             <div className="space-y-3 divide-y divide-border">
                 {newRecipes.map((recipe) => {
                     const date = new Date(recipe.createdAt);
-                    const formattedDate = date.toLocaleDateString("ar-EG", {
+                    const formattedDate = date.toLocaleDateString(locale === "ar" ? "ar-EG" : "en-US", {
                         day: "numeric",
                         month: "long",
                         year: "numeric",

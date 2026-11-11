@@ -5,17 +5,19 @@ import { AuthField } from "../../components/AuthField";
 import { LockKeyhole, Mail, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRegister } from "../hooks/use-register";
+import { useTranslations } from "next-intl";
 
 export function RegisterForm({
     className,
 }: React.ComponentProps<"div">) {
     const { form, onSubmit } = useRegister();
+    const t = useTranslations("Auth.register");
     const { register, formState: { errors, isSubmitting },
     } = form;
     return (
         <AuthCard
-            title="أنشئ حسابك"
-            description="انضم إلينا واكتشف عالمًا من النكهات"
+            title={t("title")}
+            description={t("description")}
             className={className}
         >
             <form onSubmit={onSubmit} noValidate>
@@ -23,40 +25,40 @@ export function RegisterForm({
                     <div className="flex justify-between gap-5">
                         <AuthField
                             id="firstName"
-                            label="الإسم الاول"
+                            label={t("firstNameLabel")}
                             icon={User2}
                             type="text"
-                            placeholder="إسمك الاول"
+                            placeholder={t("firstNamePlaceholder")}
                             registration={register("firstName")}
                             error={errors.firstName?.message}
                         />
                         <AuthField
                             id="lastName"
-                            label="الإسم الاخير"
+                            label={t("lastNameLabel")}
                             icon={User2}
                             type="text"
-                            placeholder="إسمك الاخير"
+                            placeholder={t("lastNamePlaceholder")}
                             registration={register("lastName")}
                             error={errors.lastName?.message}
                         />
                     </div>
                     <AuthField
                         id="email"
-                        label="البريد الإلكتروني"
+                        label={t("emailLabel")}
                         icon={Mail}
                         type="email"
                         autoComplete="email"
-                        placeholder="بريدك الإلكتروني"
+                        placeholder={t("emailPlaceholder")}
                         registration={register("email")}
                         error={errors.email?.message}
                     />
                     <AuthField
                         id="password"
-                        label="كلمة المرور"
+                        label={t("passwordLabel")}
                         icon={LockKeyhole}
                         type="password"
-                        autoComplete="كلمة المرور"
-                        placeholder=""
+                        autoComplete="new-password"
+                        placeholder={t("passwordPlaceholder")}
                         registration={register("password")}
                         error={errors.password?.message}
                     />
@@ -66,7 +68,7 @@ export function RegisterForm({
                         className="w-full font-extrabold text-white"
                         disabled={isSubmitting}
                     >
-                        {isSubmitting ? "جاري إنشاء الحساب..." : "إنشاء الحساب"}
+                        {isSubmitting ? t("submitting") : t("submit")}
                     </Button>
                 </FieldGroup>
             </form>

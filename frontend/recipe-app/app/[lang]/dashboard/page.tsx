@@ -2,11 +2,13 @@ import NewRecipesPreview from "@/feature/analytics/components/NewRecipesPreview"
 import { StatsSection } from "@/feature/analytics/components/StatsSection";
 import { getAnalytics } from "@/feature/analytics/services/analytics.api";
 import { connection } from "next/server";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
+    const t = await getTranslations("Dashboard.metadata");
     return {
-        title: "مَذاق | لوحة التحكم",
-        description: "لوحة التحكم الخاصة بي مَذاق",
+        title: t("title"),
+        description: t("description"),
     };
 }
 export default async function page() {

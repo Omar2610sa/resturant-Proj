@@ -7,19 +7,21 @@ import { AuthCard } from "../../components/AuthCard";
 import { AuthField } from "../../components/AuthField";
 import { Button } from "@/components/ui/button";
 import { useLogin } from "../hooks/use-login";
+import { useTranslations } from "next-intl";
 
 export function LoginForm({
     className,
 }: React.ComponentProps<"div">) {
     const { form, onSubmit } = useLogin();
+    const t = useTranslations("Auth.login");
     const { register, formState: { errors, isSubmitting },
     } = form;
     return (
         <AuthCard
-            title="مرحبًا بعودتك"
-            description="سجّل دخولك لتحتفظ بوصفاتك المفضلة."
-            footerText="ليس لديك حساب؟"
-            footerLinkLabel="إنشاء حساب"
+            title={t("title")}
+            description={t("description")}
+            footerText={t("footerText")}
+            footerLinkLabel={t("footerLink")}
             footerHref="/register"
             className={className}
         >
@@ -27,21 +29,21 @@ export function LoginForm({
                 <FieldGroup>
                     <AuthField
                         id="email"
-                        label="البريد الإلكتروني"
+                        label={t("emailLabel")}
                         icon={Mail}
                         type="email"
                         autoComplete="email"
-                        placeholder="بريدك الإلكتروني"
+                        placeholder={t("emailPlaceholder")}
                         registration={register("email")}
                         error={errors.email?.message}
                     />
                     <AuthField
                         id="password"
-                        label="كلمة المرور"
+                        label={t("passwordLabel")}
                         icon={LockKeyhole}
                         type="password"
-                        autoComplete="كلمة المرور"
-                        placeholder="كلمة السر الخاصة بك"
+                        autoComplete="current-password"
+                        placeholder={t("passwordPlaceholder")}
                         registration={register("password")}
                         error={errors.password?.message}
                     />
@@ -51,7 +53,7 @@ export function LoginForm({
                         className="w-full font-extrabold text-white"
                         disabled={isSubmitting}
                     >
-                        {isSubmitting ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
+                        {isSubmitting ? t("submitting") : t("submit")}
                     </Button>
                 </FieldGroup>
             </form>

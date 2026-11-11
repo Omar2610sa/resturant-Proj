@@ -6,9 +6,10 @@ import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { DarkModeToggle } from "../DarkMode";
 import Logo from "../Logo";
-import { usePathname } from "next/navigation";
 import { cn } from "cn";
 import LangSwitcher from "../shared/lang/LangSwitcher";
+import { usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 interface MobileNavProps {
     links: { title: string; link: string }[];
@@ -17,6 +18,7 @@ interface MobileNavProps {
 export default function MobileNav({ links, children }: MobileNavProps) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
+    const t = useTranslations("Navigation");
 
     return (
         <div className="md:hidden flex items-center gap-2">
@@ -24,7 +26,7 @@ export default function MobileNav({ links, children }: MobileNavProps) {
             <DarkModeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger>
-                    <div aria-label="القائمة" >
+                    <div aria-label={t("menu")} >
                         <Menu className="relative flex h-10 w-10 items-center justify-center rounded-lg border bg-background p-2 text-sm transition-all hover:bg-accent/50" />
                     </div>
                 </SheetTrigger>

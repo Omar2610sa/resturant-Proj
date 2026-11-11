@@ -13,57 +13,27 @@ const toFile = (value: unknown) => {
 
 
 const recipeBaseSchema = z.object({
-    title: z.object({
-        ar: z
-            .string()
-            .trim()
-            .min(3, "عنوان الوصفة بالعربي لازم يكون 3 أحرف على الأقل")
-            .max(100, "عنوان الوصفة مينفعش يزيد عن 100 حرف"),
+    title: z
+        .string()
+        .trim()
+        .min(3, "عنوان الوصفة لازم يكون 3 أحرف على الأقل")
+        .max(100, "عنوان الوصفة مينفعش يزيد عن 100 حرف"),
 
-        en: z
-            .string()
-            .trim()
-            .min(3, "Recipe title must be at least 3 characters")
-            .max(100, "Recipe title cannot exceed 100 characters"),
-    }),
+    description: z
+        .string()
+        .trim()
+        .min(10, "الوصف المختصر لازم يكون 10 أحرف على الأقل")
+        .max(150, "الوصف المختصر مينفعش يزيد عن 150 حرف"),
 
-    description: z.object({
-        ar: z
-            .string()
-            .trim()
-            .min(10, "الوصف المختصر لازم يكون 10 أحرف على الأقل")
-            .max(150, "الوصف المختصر مينفعش يزيد عن 150 حرف"),
+    ingredients: z
+        .string()
+        .trim()
+        .min(5, "اكتب مكونات الوصفة"),
 
-        en: z
-            .string()
-            .trim()
-            .min(10, "Description must be at least 10 characters")
-            .max(150, "Description cannot exceed 150 characters"),
-    }),
-
-    ingredients: z.object({
-        ar: z
-            .string()
-            .trim()
-            .min(5, "اكتب مكونات الوصفة"),
-
-        en: z
-            .string()
-            .trim()
-            .min(5, "Please enter recipe ingredients"),
-    }),
-
-    instructions: z.object({
-        ar: z
-            .string()
-            .trim()
-            .min(10, "طريقة التحضير لازم تكون 10 أحرف على الأقل"),
-
-        en: z
-            .string()
-            .trim()
-            .min(10, "Instructions must be at least 10 characters"),
-    }),
+    instructions: z
+        .string()
+        .trim()
+        .min(10, "طريقة التحضير لازم تكون 10 أحرف على الأقل"),
 
     cookingTime: z
         .number("مدة الطهي لازم تكون رقم")

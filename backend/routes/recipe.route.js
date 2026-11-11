@@ -6,17 +6,20 @@ const upload = require('../middleware/upload')
 const verifyToken = require('../middleware/verifyToken')
 const userRole = require('../utils/userRole')
 const allowedTo = require('../middleware/allowedTo')
-const addRecipeValidation = require('../utils/addRecipeValidation')
 
 const router = express.Router()
 
 
 router.route('/')
     .get(recipeController.getAllRecipes)
-    .post(verifyToken, allowedTo(userRole.ADMIN), upload.single('coverImage'), addRecipeValidation, (req, res, next) => {
-        console.log("Reached route middleware");
-        next();
-    }, recipeController.addRecipe)
+    .post(verifyToken, allowedTo(userRole.ADMIN), upload.single('coverImage'), [body('title').not().isEmpty().withMessage('Title is required').isLength({ min: 2 }).withMessage('Title at least is 2 chrats'),
+    body('description').not().isEmpty().withMessage('Description is required'),
+    body('ingredients').not().isEmpty().withMessage('Ingredients are required'),
+    body('instructions').not().isEmpty().withMessage('Instructions are required'),
+    body('cookingTime').not().isEmpty().withMessage('Cooking time is required'),
+    body('difficulty').not().isEmpty().withMessage('Difficulty is required'),
+    body('servingSize').not().isEmpty().withMessage('Serving size is required')
+], recipeController.addRecipe)
 
 
 router.route('/:id')

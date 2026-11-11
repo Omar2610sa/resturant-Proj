@@ -4,50 +4,23 @@ const difficultyLevel = require('../utils/difficulty')
 
 const recipeSchema = new mongoose.Schema({
     title: {
-        ar: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        en: {
-            type: String,
-            required: true,
-            trim: true
-        }
+        type: String,
+        required: true,
+        trim: true
     },
     description: {
-        ar: {
-            type: String,
-            required: true,
-            trim: true,
-            maxlength: 150
-        },
-        en: {
-            type: String,
-            required: true,
-            trim: true,
-            maxlength: 150
-        },
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 150
     },
     ingredients: {
-        ar: {
-            type: String,
-            required: true
-        },
-        en: {
-            type: String,
-            required: true
-        }
+        type: String,
+        required: true
     },
     instructions: {
-        ar: {
-            type: String,
-            required: true
-        },
-        en: {
-            type: String,
-            required: true
-        }
+        type: String,
+        required: true
     },
     cookingTime: {
         type: Number,

@@ -10,7 +10,7 @@ import { cn } from "cn";
 import LangSwitcher from "../shared/lang/LangSwitcher";
 import { usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-
+import Cookies from "js-cookie"
 interface MobileNavProps {
     links: { title: string; link: string }[];
     children: React.ReactNode;
@@ -19,6 +19,7 @@ export default function MobileNav({ links, children }: MobileNavProps) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
     const t = useTranslations("Navigation");
+    const isRtl = Cookies.get("NEXT_LOCALE") === 'ar'
 
     return (
         <div className="md:hidden flex items-center gap-2">
@@ -31,8 +32,8 @@ export default function MobileNav({ links, children }: MobileNavProps) {
                     </div>
                 </SheetTrigger>
                 <SheetContent
-                    side="right"
-                    // showCloseButton={false}
+                    side={isRtl ? "right" : "left"}
+                    showCloseButton={false}
                     className="flex w-72 flex-col gap-6 p-6">
                     <SheetTitle>
                         <Logo />

@@ -10,11 +10,12 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { useTranslations } from "next-intl";
+import Cookies from "js-cookie"
 
 export function MobileSidebar({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false);
     const t = useTranslations("Dashboard.navigation");
-
+    const isRtl = Cookies.get("NEXT_LOCALE") === 'ar'
     return (
         <Sheet open={open} onOpenChange={setOpen} >
             <SheetTrigger>
@@ -25,7 +26,7 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
                 </div>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-72 p-0" showCloseButton={false}>
+            <SheetContent side={isRtl ? "right" : "left"} className="w-72 p-0" showCloseButton={false}>
                 <SheetTitle className="sr-only">{t("mobileTitle")}</SheetTitle>
                 <SheetDescription className="sr-only">
                     {t("mobileDescription")}

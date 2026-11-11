@@ -6,6 +6,7 @@ import NavbarAuth from "./NavbarAuth";
 import { headerLinks } from "@/lib/navLinks";
 import MobileNav from "./MobileNav";
 import MobileNavAuth from "./MobileNavAuth";
+import LangSwitcher from "../shared/lang/LangSwitcher";
 export default function Navbar() {
     return (
         <header className="sticky top-0 z-50 border-b  bg-accent backdrop-blur-xl text-xl">
@@ -24,6 +25,7 @@ export default function Navbar() {
                     })}
                 </nav>
                 <div className="hidden items-center gap-3 md:flex">
+                    <LangSwitcher />
                     <DarkModeToggle />
                     <Suspense fallback={<div className="h-10 w-24" />}>
                         <NavbarAuth />

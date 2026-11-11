@@ -18,9 +18,9 @@ export function MobileSidebar({ children }: { children: React.ReactNode }) {
     return (
         <Sheet open={open} onOpenChange={setOpen} >
             <SheetTrigger>
-                <div
-className="relative flex h-10 w-10 items-center justify-center rounded-lg border bg-background p-2 text-sm transition-all hover:bg-accent/50"                    aria-label="فتح القائمة"
-                >
+                <div className="relative flex size-10  md:hidden items-center justify-center rounded-lg border bg-background p-2 text-sm transition-all hover:bg-accent/50"
+                    aria-label="فتح القائمة"
+                    >
                     <Menu className="size-5" />
                 </div>
             </SheetTrigger>

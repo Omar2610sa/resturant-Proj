@@ -2,6 +2,7 @@ import { DarkModeToggle } from "@/components/DarkMode";
 import { DashboardPageTitle } from "./DashboardPageTitle";
 import { DashboardSidebar } from "./DashboardSidebar";
 import { MobileSidebar } from "./MobileSidebar";
+import LangSwitcher from "@/components/shared/lang/LangSwitcher";
 
 export function DashboardTopbar() {
     return (
@@ -13,6 +14,7 @@ export function DashboardTopbar() {
                 <DashboardPageTitle />
             </div>
             <div className="flex shrink-0 items-center gap-3">
+                <LangSwitcher />
                 <DarkModeToggle />
             </div>
         </header>

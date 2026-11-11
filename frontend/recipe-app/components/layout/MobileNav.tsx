@@ -8,6 +8,7 @@ import { DarkModeToggle } from "../DarkMode";
 import Logo from "../Logo";
 import { usePathname } from "next/navigation";
 import { cn } from "cn";
+import LangSwitcher from "../shared/lang/LangSwitcher";
 
 interface MobileNavProps {
     links: { title: string; link: string }[];
@@ -19,6 +20,7 @@ export default function MobileNav({ links, children }: MobileNavProps) {
 
     return (
         <div className="md:hidden flex items-center gap-2">
+            <LangSwitcher />
             <DarkModeToggle />
             <Sheet open={open} onOpenChange={setOpen}>
                 <SheetTrigger>
